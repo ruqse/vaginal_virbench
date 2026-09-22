@@ -4,7 +4,7 @@
 
 Faruk Dube, Anna-Ursula Happel, Heather B. Jaspan, Luisa Warchavchik Hugerth
 
-This document contains Supplementary Methods, Supplementary Figures S1 to S23, and legends for Supplementary Tables S1 to S41. The table data are in the accompanying workbook `supplementary_tables.xlsx`, one sheet per table.
+This document contains Supplementary Methods, Supplementary Figures S1 to S22, and legends for Supplementary Tables S1 to S41. The table data are in the accompanying workbook `supplementary_tables.xlsx`, one sheet per table.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -324,7 +324,7 @@ Track C negatives require bacterial or archaeal classification and the backgroun
 
 ![Figure S18](../figures/fig_s18.png){width=6.3in}
 
-**Figure S18. Phage recall varies by host genus.** Per-tool phage recall by host genus at 3,000 bp, the shortest length at which every panel tool (including Jaeger) is defined. n = 95 phage fragments at 3,000 bp across five host genera (Lactobacillus 24, Megasphaera 29, Gardnerella 16, Fannyhessea 13, Sneathia 13); 14 tools.
+**Figure S18. Assembled viral-contig length increases with simulated coverage.** Contig-length distribution by per-genome coverage on the two representative CST-I and CST-IV-B backgrounds, with the 1,500-bp benchmark cutoff marked (dashed line). n = 361 viral contigs ≥ 500 bp across three coverage depths (5×, 10×, 50×) and two backgrounds.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -336,7 +336,7 @@ Track C negatives require bacterial or archaeal classification and the backgroun
 
 ![Figure S19](../figures/fig_s19.png){width=6.3in}
 
-**Figure S19. Assembled viral-contig length increases with simulated coverage.** Contig-length distribution by per-genome coverage on the two representative CST-I and CST-IV-B backgrounds, with the 1,500-bp benchmark cutoff marked (dashed line). n = 361 viral contigs ≥ 500 bp across three coverage depths (5×, 10×, 50×) and two backgrounds.
+**Figure S19. Per-background MCC underlying the CST-IV-B diversity contrast.** MCC for the nine tools with the highest mean MCC in CST-I at 10× coverage across four CST-I and four CST-IV-B real backgrounds, with the CST groups distinguished by colour; each background is a point and the vertical bar is the arm mean. n = 4 backgrounds per arm.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -348,7 +348,7 @@ Track C negatives require bacterial or archaeal classification and the backgroun
 
 ![Figure S20](../figures/fig_s20.png){width=6.3in}
 
-**Figure S20. Per-background MCC underlying the CST-IV-B diversity contrast.** MCC for the nine tools with the highest mean MCC in CST-I at 10× coverage across four CST-I and four CST-IV-B real backgrounds, with the CST groups distinguished by colour; each background is a point and the vertical bar is the arm mean. n = 4 backgrounds per arm.
+**Figure S20. Per-sample counts of viral-positive contigs by community state type.** Per-sample counts of Tier 1 and Tier 2 viral-positive contigs by CST across the 13 UChoose primary-cohort assemblies. n = 13 samples; 1,453 Tier 1+2 contigs.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -360,7 +360,7 @@ Track C negatives require bacterial or archaeal classification and the backgroun
 
 ![Figure S21](../figures/fig_s21.png){width=6.3in}
 
-**Figure S21. Per-sample counts of viral-positive contigs by community state type.** Per-sample counts of Tier 1 and Tier 2 viral-positive contigs by CST across the 13 UChoose primary-cohort assemblies. n = 13 samples; 1,453 Tier 1+2 contigs.
+**Figure S21. Viral-category composition of the multi-evidence and Track C positive sets.** Viral-category composition of the multi-evidence Tier 1+2 viral-positive contigs and the Track C true-positive contigs (n = 29), on a log~10~(count + 1) axis; free phage dominate both sets.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -372,19 +372,7 @@ Track C negatives require bacterial or archaeal classification and the backgroun
 
 ![Figure S22](../figures/fig_s22.png){width=6.3in}
 
-**Figure S22. Viral-category composition of the multi-evidence and Track C positive sets.** Viral-category composition of the multi-evidence Tier 1+2 viral-positive contigs and the Track C true-positive contigs (n = 29), on a log~10~(count + 1) axis; free phage dominate both sets.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-```{=html}
-<div style="page-break-after: always;"></div>
-```
-
-![Figure S23](../figures/fig_s23.png){width=6.3in}
-
-**Figure S23. Highest-MCC tools by community state type in MiTCH.** Results are shown for CST-IV-B (18 samples), CST-I (6) and CST-III (4). CST-V and CST-IV-C each contain one sample and are omitted. Comparisons within these small groups are descriptive. Sample size: 28 plotted samples from the 30-sample cohort.
+**Figure S22. Highest-MCC tools by community state type in MiTCH.** Results are shown for CST-IV-B (18 samples), CST-I (6) and CST-III (4). CST-V and CST-IV-C each contain one sample and are omitted. Comparisons within these small groups are descriptive. Sample size: 28 plotted samples from the 30-sample cohort.
 
 ---
 
