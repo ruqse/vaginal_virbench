@@ -1,0 +1,29 @@
+=== Q2 / Table S13 (13-sample pooled, >=1500bp) ===
+prophage contigs: 49   free-phage contigs: 1342
+prophage recall  marker=91.3% (n=4)  sequence=77.0% (n=7)  [excl Jaeger/Seeker/Sourmash]
+free-phage rate  marker=21.8%  sequence=37.0%  (fold 1.7x)
+  Tier 1 prophage recall     marker 91.3% [75.5-98.0]  sequence 77.0% [38.8-91.8]  U=23.0  p=0.097 (exact, two-sided)
+  free-phage positive rate   marker 21.8% [10.3-29.2]  sequence 37.0% [18.3-63.5]  U=4.0  p=0.073 (exact, two-sided)
+
+=== Cross-track / Table S22 + §8 ===
+Panel B (14 tools, 10 pairs): rho 0.51-0.91  median 0.74  9/10 significant (q<0.05)
+Panel C (top-5 Track A): rho 0.50-1.00  median 0.70  1/10 significant
+
+=== S11 tier-sensitivity: geNomad rank by variant ===
+  {'primary': 1, 'no_E1b': 2, 'merged_E1E2': 2, 'no_E5': 2}
+
+=== Multi-evidence ranking (new) ===
+   1. geNomad        0.4400
+   2. VIBRANT        0.4390
+   3. VirSorter2     0.3816
+   4. Jaeger         0.2918
+   5. VirSorter      0.2467
+   6. PPR-Meta       0.2447
+   7. ViraLM         0.2244
+   8. DeepVirFinder  0.1913
+   9. MetaPhinder    0.1355
+  10. VirFinder      0.0771
+  11. HVSeeker       0.0699
+  12. Seeker         0.0207
+  13. Sourmash       0.0000
+  14. TransGINmer    -0.0619

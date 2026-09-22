@@ -1,0 +1,9 @@
+metric	n	pct_of_4263
+absent_metavr	307	7.2
+present_metavr_relative_only	3043	71.4
+present_metavr_species	913	21.4
+no_metavr_species_match (relative_only + absent)	3350	78.6
+no_refseq_protein_homolog	51	1.2
+refseq_protein_homolog	4212	98.8
+no_metavr_species_AND_no_refseq_protein	47	1.1
+absent_metavr(no>=90%hit)_AND_no_refseq_protein	18	0.4

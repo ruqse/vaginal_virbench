@@ -1,0 +1,23 @@
+# Python environment for the evaluation, statistics and table/SI builders.
+# The 2026-09 regeneration ran on Python 3.12.3 with the versions below
+# (numpy/scipy/pandas from one bundle; matplotlib and scikit-learn alongside).
+# The Supplementary Information build additionally uses pandoc 3.1.13 and
+# WeasyPrint 66.0; Figure S11/S15/S16 use matplotlib.
+name: vaginal-virbench
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.12
+  - numpy=1.26.4
+  - scipy=1.13.1
+  - pandas=2.2.2
+  - openpyxl=3.1.5
+  - matplotlib=3.9.2
+  - scikit-learn=1.5.2
+  - seaborn=0.13.2
+  - biopython=1.84
+  - pillow
+  - pypdf
+  - pandoc=3.1.13
+  - weasyprint=66.0

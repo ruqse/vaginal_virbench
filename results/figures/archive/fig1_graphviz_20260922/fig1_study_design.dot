@@ -1,0 +1,43 @@
+// Canonical, editable Figure 1. Render with Graphviz:
+// dot -Tsvg docs/figures/fig1_study_design.dot -o docs/figures/fig1.svg
+// dot -Tpng -Gdpi=180 docs/figures/fig1_study_design.dot -o docs/figures/fig1.png
+digraph study {
+  graph [rankdir=TB, bgcolor="white", pad=0.25, nodesep=0.24, ranksep=0.45,
+         fontname="DejaVu Sans", fontsize=16];
+  node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=12,
+        color="#294463", fontcolor="#19344f", penwidth=1.4, margin="0.17,0.13"];
+  edge [color="#748499", arrowsize=0.65, penwidth=1.2];
+
+  reference [label="Reference panels\n14 viral + 6 bacterial genomes\n15 additional ANI-novel phage genomes", fillcolor="#eaf0f6"];
+  backgrounds [label="Vaginal metagenomic backgrounds\n2 for the coverage sweep\n8 public samples for the CST contrast", fillcolor="#eaf0f6"];
+  uchoose [label="UChoose: 13 paired samples\n11 participant IDs; shotgun + RCA virome\nPRJNA767784 / PRJNA881266", fillcolor="#eaf0f6"];
+  mitch [label="MiTCH: 30 shotgun metagenomes\nIndependent Swedish cohort\nPRJEB108308", fillcolor="#eaf0f6"];
+  { rank=same; reference; backgrounds; uchoose; mitch; }
+
+  track_a [label="TRACK A\nControlled genome fragments\n500–10,000 bp\nLabels from known sequence origin", fillcolor="#fde8dc"];
+  track_b [label="TRACK B\nSimulated viral reads + real backgrounds\nCo-assembly at 0.1×–50× coverage\n4 CST-I vs 4 CST-IV-B at 10×", fillcolor="#fde8dc"];
+  multi [label="MULTI-EVIDENCE BENCHMARK\nReal shotgun contigs ≥ 1,500 bp\nFive evidence lines (E1–E5; Fig. S14)\n1,453 viral / 11,577 non-viral", fillcolor="#fde8dc"];
+  track_c [label="TRACK C: VLP ENRICHMENT\nShotgun + RCA co-assembly; ≥ 2,500 bp\nR = library-normalised RCA / shotgun depth\nTP: R > 10 + CheckV viral signal (n = 29)\nTN: 0.5 < R < 2 + bacterial/archaeal call\nand no viral signal (n = 931)\nDark matter: R > 10; no annotation (n = 48)", fillcolor="#fde8dc"];
+  validation [label="EXTERNAL VALIDATION\nReal shotgun contigs ≥ 1,500 bp\nFour evidence lines (E1–E4; no RCA)\nCompare with matched UChoose no-E5 set", fillcolor="#dce7f3"];
+  { rank=same; track_a; track_b; multi; track_c; validation; }
+
+  tools [label="14 VIRAL IDENTIFICATION TOOLS\nReference-based • Feature-based ML • Deep learning • Attention/transformer • DNN + markers",
+         fillcolor="#294463", fontcolor="white", fontsize=14];
+  evaluation [label="EVALUATION\nMCC • Precision • Recall (sensitivity) • AUPRC\nStratify by sequence length, viral category, novelty, and community state",
+              fillcolor="#eaf0f6", fontsize=13];
+  replication [label="VALIDATION OUTCOMES\nReplication of per-tool MCC ranking\nObservational community-diversity contrast", fillcolor="#eaf0f6"];
+
+  reference -> track_a;
+  reference -> track_b;
+  backgrounds -> track_b;
+  uchoose -> multi;
+  uchoose -> track_c;
+  mitch -> validation;
+  track_a -> tools;
+  track_b -> tools;
+  multi -> tools;
+  track_c -> tools;
+  validation -> tools;
+  tools -> evaluation;
+  evaluation -> replication;
+}

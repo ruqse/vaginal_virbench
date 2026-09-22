@@ -1,0 +1,46 @@
+host_phylum	n_vOTUs	n_no_metavr_species	pct_no_metavr_species	n_absent_no_hit	pct_absent_no_hit	n_no_refseq_protein	pct_no_refseq_protein
+Bacillota	701	474	67.6	18	2.6	7	1.0
+Actinomycetota	697	608	87.2	55	7.9	0	0.0
+Bacteroidota	520	424	81.5	22	4.2	18	3.5
+-	509	347	68.2	89	17.5	22	4.3
+Bacillota_A	472	406	86.0	28	5.9	0	0.0
+Actinomycetota, Bacteroidota	285	274	96.1	9	3.2	0	0.0
+Bacillota_C	246	218	88.6	18	7.3	2	0.8
+Pseudomonadota	165	64	38.8	0	0.0	0	0.0
+Eukaryote	70	16	22.9	11	15.7	0	0.0
+Bacillota, Bacillota_A	70	62	88.6	1	1.4	0	0.0
+Actinomycetota, Bacillota, Bacillota_A	67	52	77.6	4	6.0	0	0.0
+Bacillota_A, Fusobacteriota	64	59	92.2	0	0.0	0	0.0
+Actinomycetota, Bacillota_C	54	46	85.2	0	0.0	0	0.0
+Fusobacteriota	43	37	86.0	6	14.0	1	2.3
+Actinomycetota, Bacillota, Bacillota_A, Bacillota_C	38	31	81.6	0	0.0	0	0.0
+Bacillota, Bacteroidota	38	24	63.2	0	0.0	0	0.0
+Patescibacteria	37	37	100.0	21	56.8	0	0.0
+Bacillota_A, Bacillota_C	32	27	84.4	3	9.4	0	0.0
+Actinomycetota, Bacteroidota, Fusobacteriota	14	14	100.0	0	0.0	0	0.0
+Bacillota_B	14	13	92.9	1	7.1	0	0.0
+Campylobacterota	13	10	76.9	3	23.1	0	0.0
+Actinomycetota, Bacillota_A	13	12	92.3	0	0.0	0	0.0
+Actinomycetota, Bacillota_A, Bacillota_C	12	12	100.0	9	75.0	0	0.0
+Actinomycetota, Bacillota, Bacteroidota	10	10	100.0	0	0.0	0	0.0
+Actinomycetota, Bacillota	10	10	100.0	3	30.0	0	0.0
+Bacillota_A, Bacteroidota	10	8	80.0	1	10.0	0	0.0
+Bacillota_C, Bacteroidota	9	9	100.0	1	11.1	1	11.1
+Actinomycetota, Bacillota_C, Bacteroidota	9	8	88.9	0	0.0	0	0.0
+Actinomycetota, Bacillota_A, Bacteroidota	6	6	100.0	0	0.0	0	0.0
+Actinomycetota, Bacillota, Bacillota_A, Bacillota_C, Bacteroidota	6	6	100.0	0	0.0	0	0.0
+Bacillota, Fusobacteriota	4	3	75.0	0	0.0	0	0.0
+Actinomycetota, Bacillota_A, Bacillota_C, Bacteroidota	3	3	100.0	3	100.0	0	0.0
+Synergistota	3	3	100.0	1	33.3	0	0.0
+Actinomycetota, Bacillota, Bacillota_A, Bacteroidota	3	3	100.0	0	0.0	0	0.0
+Bacillota, Bacillota_C	3	3	100.0	0	0.0	0	0.0
+Bacillota, Bacillota_A, Bacillota_C	2	2	100.0	0	0.0	0	0.0
+Bacillota_A, Bacillota_B	2	2	100.0	0	0.0	0	0.0
+Bacteroidota, Pseudomonadota	2	1	50.0	0	0.0	0	0.0
+Bacillota, Bacillota_A, Fusobacteriota	1	1	100.0	0	0.0	0	0.0
+Bacillota, Bacillota_A, Bacillota_C, Fusobacteriota	1	1	100.0	0	0.0	0	0.0
+Bacillota, Bacillota_A, Bacteroidota, Fusobacteriota	1	1	100.0	0	0.0	0	0.0
+Spirochaetota	1	1	100.0	0	0.0	0	0.0
+Actinomycetota, Bacillota, Bacillota_C	1	1	100.0	0	0.0	0	0.0
+Actinomycetota, Patescibacteria	1	1	100.0	0	0.0	0	0.0
+Actinomycetota, Bacillota, Bacillota_A, Bacillota_C, Bacteroidota, Fusobacteriota	1	0	0.0	0	0.0	0	0.0

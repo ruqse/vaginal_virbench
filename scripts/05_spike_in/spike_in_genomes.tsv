@@ -1,0 +1,36 @@
+## Spike-In Genome Panel for Vaginal Metagenome Viral Detection Benchmark
+## Primary benchmark ground truth — absolute TP/FP/TN/FN labels
+##
+## Categories:
+##   lactobacillus_phage  — Core vaginal phages (dsDNA siphoviruses); host = CST-I/III species
+##   gardnerella_phage    — BV-associated phage; only complete Gardnerella phage genome
+##   megasphaera_phage    — BV-associated phage from MetaVR v5; host = CST-IV species
+##   fannyhessea_phage    — BV-associated phage from MetaVR v5; host = CST-IV species
+##   sneathia_phage       — BV-associated phage from MetaVR v5; host = CST-IV species
+##   hpv                  — Dominant eukaryotic virus (dsDNA, circular, ~8 kb)
+##   anellovirus          — ssDNA circular virus
+##   herpesvirus          — Large dsDNA linear virus (fragments expected)
+##   negative_control     — Bacterial genomes covering all dominant vaginal species (CST-I/III/IV)
+##
+## Columns: accession  organism  category  genome_size_bp  genome_type  source  notes
+#accession	organism	category	genome_size_bp	genome_type	source	notes
+NC_011801.1	Lactobacillus phage Lv-1	lactobacillus_phage	38934	dsDNA_linear	RefSeq	Siphovirus; host=L. jensenii (vaginal isolate; Kirsch et al. 2008)
+NC_007924.1	Lactobacillus phage KC5a	lactobacillus_phage	37349	dsDNA_linear	RefSeq	Siphovirus; host=L. crispatus (CST-I dominant species)
+MW387018.1	Gardnerella phage vB_Gva_AB1	gardnerella_phage	50268	dsDNA_linear	GenBank	Only complete Gardnerella phage; induced from BV clinical isolate; 0 Gardnerella phages in MetaVR v5
+IMGVR_UViG_3300045988_117760	Megasphaera phage MetaVR-Mega1	megasphaera_phage	48752	dsDNA_linear	MetaVR_v5	HQ 100% complete; host=Megasphaera (CST-IV BV-associated)
+IMGVR_UViG_3300045988_083571	Megasphaera phage MetaVR-Mega2	megasphaera_phage	40756	dsDNA_linear	MetaVR_v5	HQ 100% complete; host=Megasphaera; different vOTU from Mega1
+IMGVR_UViG_3300007272_000043	Fannyhessea phage MetaVR-Fanny1	fannyhessea_phage	40885	dsDNA_linear	MetaVR_v5	HQ 100% complete; host=Fannyhessea; only HQ Fannyhessea phage in MetaVR v5
+IMGVR_UViG_2636415511_000001	Sneathia phage MetaVR-Sneath1	sneathia_phage	39231	dsDNA_linear	MetaVR_v5	HQ 100% complete; host=Sneathia vaginalis (species-level match)
+NC_001526.4	Human papillomavirus type 16	hpv	7906	dsDNA_circular	RefSeq	High-risk HPV; Happel 2023 vaginal accessions: OP971046/62/70/80
+NC_001357.1	Human papillomavirus type 18	hpv	7857	dsDNA_circular	RefSeq	High-risk HPV; Happel 2023 vaginal accessions: OP971042/48/83
+NC_001592.1	Human papillomavirus type 52	hpv	7942	dsDNA_circular	RefSeq	High-risk HPV; Happel 2023 vaginal accessions: OP971002/12/36/39/41
+NC_001443.1	Human papillomavirus type 58	hpv	7824	dsDNA_circular	RefSeq	High-risk HPV; Happel 2023 vaginal accessions: OP971016/37/40
+NC_002076.2	Torque teno virus 1	anellovirus	3853	ssDNA_circular	RefSeq	Canonical human TTV-1 (Alphatorquevirus); ubiquitous in vaginal samples
+NC_001806.2	Human alphaherpesvirus 1	herpesvirus	152261	dsDNA_linear	RefSeq	HSV-1; large genome, expect fragmented assembly
+NC_001798.2	Human alphaherpesvirus 2	herpesvirus	154746	dsDNA_linear	RefSeq	HSV-2; large genome, expect fragmented assembly
+GCF_009769205.1	Lactobacillus crispatus JCM 1185	negative_control	2100437	bacterial	RefSeq	Type strain; CST-I dominant species; prophages may confound tools
+GCF_011058775.1	Lactobacillus iners LactinV09V1-d	negative_control	1271218	bacterial	RefSeq	Vaginal isolate; CST-III dominant species
+GCF_001042655.1	Gardnerella vaginalis ATCC 14019	negative_control	1617951	bacterial	RefSeq	Type strain; BV-associated (CST-IV); prophage carrier
+GCF_016026575.1	Fannyhessea vaginae CCUG 44116	negative_control	1564956	bacterial	RefSeq	Type strain; BV-associated (CST-IV); formerly Atopobium vaginae
+GCF_000214495.1	Megasphaera lornae DSM 2286	negative_control	2474718	bacterial	RefSeq	Type strain; BV-associated (CST-IV); vaginal anaerobe
+GCF_000973085.1	Sneathia vaginalis SN35	negative_control	1603188	bacterial	RefSeq	Vaginal isolate; BV-associated (CST-IV); Fusobacteriales

@@ -1,0 +1,14 @@
+hypothesis	length_bin	test	statistic	p_value	significant	note	detail	lm_tool	marker_tools	lm_mean_AUPRC	marker_mean_AUPRC	point_delta	ci_lo	ci_hi	n_eukaryotic_viral	n_bacterial	phage_only_euk_recall	all_scope_euk_recall	b_phage_correct_scope_wrong	c_phage_wrong_scope_correct	n_discordant	method
+H2	all	deferred	NA	NA	False	deferred_to_secondary_benchmark	Track A has no prophage fragments. All viral genomes are free phages or eukaryotic viruses. H2 requires prophage-category contigs which are only available in the secondary real-metagenome benchmark.															
+H3	L500_fragments	bootstrap_paired_AUPRC			True	ok	ViraLM=0.3970 vs VirSorter2=0.0720 geNomad=0.2524	ViraLM	VirSorter2, geNomad	0.397	0.1622	0.2348	0.2094	0.264								
+H4	L500_fragments	mcnemar_eukaryotic	3342.9181	0.0	True	ok									680	18866	0.6529	0.9059	1621	6986	8607	chi2_cc
+H3	L1000_fragments	bootstrap_paired_AUPRC			True	ok	ViraLM=0.7181 vs VIBRANT=0.0706 VirSorter2=0.1401 geNomad=0.4234	ViraLM	VIBRANT, VirSorter2, geNomad	0.7181	0.2114	0.5067	0.474	0.5395								
+H4	L1000_fragments	mcnemar_eukaryotic	2826.7464	0.0	True	ok									337	9419	0.7181	0.9941	584	4301	4885	chi2_cc
+H3	L1500_fragments	bootstrap_paired_AUPRC			True	ok	ViraLM=0.8109 vs VIBRANT=0.0935 VirSorter2=0.1904 geNomad=0.4843	ViraLM	VIBRANT, VirSorter2, geNomad	0.8109	0.256	0.5548	0.5139	0.59								
+H4	L1500_fragments	mcnemar_eukaryotic	1699.7839	0.0	True	ok									226	6268	0.6504	1.0	415	2727	3142	chi2_cc
+H3	L3000_fragments	bootstrap_paired_AUPRC			True	ok	ViraLM=0.8517 vs VIBRANT=0.1893 VirSorter2=0.4413 geNomad=0.7569	ViraLM	VIBRANT, VirSorter2, geNomad	0.8517	0.4625	0.3892	0.323	0.4467								
+H4	L3000_fragments	mcnemar_eukaryotic	988.4987	0.0	True	ok									110	3123	0.5455	1.0	158	1400	1558	chi2_cc
+H3	L5000_fragments	bootstrap_paired_AUPRC			True	ok	ViraLM=0.9106 vs VIBRANT=0.2694 VirSorter2=0.5497 geNomad=0.7957	ViraLM	VIBRANT, VirSorter2, geNomad	0.9106	0.5383	0.3724	0.2919	0.4486								
+H4	L5000_fragments	mcnemar_eukaryotic	608.0385	0.0	True	ok									64	1868	0.3594	1.0	90	845	935	chi2_cc
+H3	L10000_fragments	bootstrap_paired_AUPRC			True	ok	ViraLM=0.9455 vs VIBRANT=0.3433 VirSorter2=0.6098 geNomad=0.8286	ViraLM	VIBRANT, VirSorter2, geNomad	0.9455	0.5939	0.3516	0.248	0.4526								
+H4	L10000_fragments	mcnemar_eukaryotic	342.6283	0.0	True	ok									30	927	0.2	1.0	31	429	460	chi2_cc

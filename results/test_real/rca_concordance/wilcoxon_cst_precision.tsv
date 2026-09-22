@@ -1,0 +1,15 @@
+tool	tool_family	cst_a	cst_b	n_cst_a	n_cst_b	mean_precision_cst_a	mean_precision_cst_b	median_precision_cst_a	median_precision_cst_b	delta_median	U_statistic	p_value	significant	note
+DeepVirFinder	Deep learning	CST-I	CST-IV	5	4	0.0137	0.069	0.005	0.0115	-0.0065	7.0	0.5555555555555556	False	ok
+VirSorter	Feature-based ML	CST-I	CST-IV	5	4	0.2857	0.4608	0.0	0.3661	-0.3661	6.5	0.45286218341877027	False	ok
+VirSorter2	Feature-based ML	CST-I	CST-IV	5	4	0.0808	0.1619	0.0909	0.077	0.0139	9.0	0.9047619047619049	False	ok
+VirFinder	Feature-based ML	CST-I	CST-IV	5	4	0.0124	0.0328	0.007	0.0039	0.0032	11.0	0.9047619047619049	False	ok
+PPR-Meta	Deep learning	CST-I	CST-IV	5	4	0.0121	0.0204	0.0078	0.0047	0.0032	10.0	1.0	False	ok
+VIBRANT	Feature-based ML	CST-I	CST-IV	5	4	0.1927	0.45	0.0	0.3	-0.3	6.0	0.38116022651163173	False	ok
+Seeker	Deep learning	CST-I	CST-IV	5	4	0.0544	0.2673	0.011	0.0887	-0.0777	5.0	0.2857142857142857	False	ok
+MetaPhinder	Reference-based	CST-I	CST-IV	5	4	0.0142	0.0472	0.0082	0.0131	-0.0049	8.0	0.7301587301587302	False	ok
+Sourmash	Reference-based	CST-I	CST-IV	0	0	NA	NA	nan	nan	NA	nan	nan	False	insufficient_samples
+geNomad	DNN + markers	CST-I	CST-IV	5	4	0.0522	0.152	0.0333	0.0578	-0.0244	7.0	0.5555555555555556	False	ok
+HVSeeker	Deep learning	CST-I	CST-IV	5	4	0.0184	0.0849	0.0054	0.0202	-0.0148	6.0	0.4126984126984127	False	ok
+Jaeger	Deep learning	CST-I	CST-IV	0	0	NA	NA	nan	nan	NA	nan	nan	False	insufficient_samples
+TransGINmer	Attention/transformer	CST-I	CST-IV	5	4	0.0072	0.0289	0.0044	0.0048	-0.0004	10.0	1.0	False	ok
+ViraLM	Attention/transformer	CST-I	CST-IV	5	4	0.0162	0.0561	0.0109	0.0173	-0.0064	7.0	0.5555555555555556	False	ok

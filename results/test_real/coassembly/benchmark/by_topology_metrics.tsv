@@ -1,0 +1,15 @@
+tool	topology	TP	FP	TN	FN	precision	recall	FDR	F1	MCC	n_viral_gt	n_negative_gt
+DeepVirFinder	low_undetermined	5	322	609	1	0.0153	0.8333	0.9847	0.03	0.0816	6	931
+HVSeeker	low_undetermined	5	498	433	1	0.0099	0.8333	0.9901	0.0196	0.0477	6	931
+Jaeger	low_undetermined	4	151	780	2	0.0258	0.6667	0.9742	0.0497	0.1083	6	931
+MetaPhinder	low_undetermined	0	164	767	6	0.0	0.0	1.0	0.0	-0.037	6	931
+PPR-Meta	low_undetermined	5	83	848	1	0.0568	0.8333	0.9432	0.1064	0.2035	6	931
+Seeker	low_undetermined	5	622	309	1	0.008	0.8333	0.992	0.0158	0.028	6	931
+Sourmash	low_undetermined	0	0	931	6	0.0	0.0	1.0	0.0	0.0	6	931
+TransGINmer	low_undetermined	6	264	667	0	0.0222	1.0	0.9778	0.0435	0.1262	6	931
+VIBRANT	low_undetermined	1	7	924	5	0.125	0.1667	0.875	0.1429	0.138	6	931
+VirFinder	low_undetermined	1	116	815	5	0.0085	0.1667	0.9915	0.0163	0.0102	6	931
+VirSorter	low_undetermined	0	4	927	6	0.0	0.0	1.0	0.0	-0.0053	6	931
+VirSorter2	low_undetermined	5	32	899	1	0.1351	0.8333	0.8649	0.2326	0.3272	6	931
+ViraLM	low_undetermined	5	74	857	1	0.0633	0.8333	0.9367	0.1176	0.2164	6	931
+geNomad	low_undetermined	5	39	892	1	0.1136	0.8333	0.8864	0.2	0.2984	6	931

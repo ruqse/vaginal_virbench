@@ -1,0 +1,83 @@
+Bootstrap: docker
+From: nvidia/cuda:12.1.0-devel-ubuntu22.04
+
+%labels
+    Author viral_bench
+    Version 1.2
+    Description Jaeger - Deep-learning tool to detect bacteriophage sequences
+
+%post
+    # Prevent interactive prompts
+    export DEBIAN_FRONTEND=noninteractive
+
+    # Install system dependencies
+    apt-get update && apt-get install -y --no-install-recommends \
+        python3.11 \
+        python3-pip \
+        python3.11-venv \
+        wget \
+        curl \
+        bzip2 \
+        ca-certificates \
+        git \
+        seqtk
+
+    ln -sf /usr/bin/python3.11 /usr/bin/python3
+    ln -sf /usr/bin/python3 /usr/bin/python
+
+    rm -rf /var/lib/apt/lists/*
+
+    # Create virtual environment for Jaeger
+    python3 -m venv /opt/jaeger-env
+
+    # Install Jaeger with GPU support
+    /opt/jaeger-env/bin/pip install --upgrade pip
+    /opt/jaeger-env/bin/pip install jaeger-bio[gpu]
+
+    # Create directory for models
+    mkdir -p /opt/jaeger/models
+
+    # Download the default model
+    /opt/jaeger-env/bin/jaeger download --model default --path /opt/jaeger/models || true
+
+%environment
+    export PATH="/opt/jaeger-env/bin:$PATH"
+    export JAEGER_MODELS=/opt/jaeger/models
+
+%runscript
+    exec jaeger "$@"
+
+%test
+    jaeger --help
+
+%help
+    Jaeger container for bacteriophage sequence detection.
+
+    Jaeger is a deep-learning tool that utilizes homology-free machine learning
+    to identify phage genome sequences in metagenomes.
+
+    Usage:
+        # Run prediction
+        singularity exec --nv jaeger.sif jaeger predict \
+            -i input.fasta \
+            -o output_dir \
+            --batch 96 \
+            --workers 4
+
+        # Test installation
+        singularity exec --nv jaeger.sif jaeger test
+
+        # List available models
+        singularity exec jaeger.sif jaeger download --list
+
+    Options:
+        --batch     Parallel batch size (default: 96, reduce if GPU OOM)
+        --workers   Number of CPU threads (default: 4)
+        --cpu       Force CPU mode (no GPU)
+
+    Output:
+        Predictions are written to: <output_dir>/<input_basename>_default.jaeger.tsv
+
+    References:
+        - GitHub: https://github.com/Yasas1994/Jaeger
+        - Paper: https://www.biorxiv.org/content/early/2024/09/24/2024.09.24.612722

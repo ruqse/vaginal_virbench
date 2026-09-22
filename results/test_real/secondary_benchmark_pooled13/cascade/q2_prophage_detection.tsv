@@ -1,0 +1,15 @@
+tool	type	prophage_tp	prophage_total	prophage_recall	freephage_pos	freephage_total	freephage_rate	included_in_group_mean
+VIBRANT	marker	48	49	0.9796	269	1342	0.2004	yes
+VirSorter2	marker	47	49	0.9592	392	1342	0.2921	yes
+geNomad	marker	47	49	0.9592	371	1342	0.2765	yes
+HVSeeker	sequence	45	49	0.9184	852	1342	0.6349	yes
+DeepVirFinder	sequence	44	49	0.898	693	1342	0.5164	yes
+Jaeger	sequence	44	49	0.898	446	1342	0.3323	no
+ViraLM	sequence	43	49	0.8776	440	1342	0.3279	yes
+PPR-Meta	sequence	42	49	0.8571	387	1342	0.2884	yes
+MetaPhinder	sequence	40	49	0.8163	400	1342	0.2981	yes
+VirSorter	marker	37	49	0.7551	138	1342	0.1028	yes
+Seeker	sequence	37	49	0.7551	907	1342	0.6759	no
+TransGINmer	sequence	31	49	0.6327	461	1342	0.3435	yes
+VirFinder	sequence	19	49	0.3878	245	1342	0.1826	yes
+Sourmash	sequence	0	49	0.0	0	1342	0.0	no

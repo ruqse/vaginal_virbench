@@ -1,0 +1,49 @@
+# Table S16. Per-tool runtime and peak memory.
+# Conditions: Track A 1500-bp fragment panel; Track B 10x co-assembly on
+#   CST-I (UC115_V2) and CST-IV-B (UC093_V3) backgrounds. wall_time_sec and
+#   peak_rss_mb are measured; gpu_mem_peak_mb is peak VRAM for GPU tools.
+# NOTE: Jaeger has exit_code=1 at 1500 bp (below its 2048-bp window); that
+#   row is a no-op and is excluded from runtime min/max statements.
+tool	condition	gpu_required	wall_time_sec	peak_rss_mb	gpu_mem_peak_mb	exit_code
+DeepVirFinder	TrackA_L1500	no	5139	322.2	0	0
+VirSorter	TrackA_L1500	no	196	61.1	0	0
+VirSorter2	TrackA_L1500	no	1561	338.7	0	0
+VirFinder	TrackA_L1500	no	98	242.1	0	0
+PPR-Meta	TrackA_L1500	no	56	1236.4	0	0
+VIBRANT	TrackA_L1500	no	98	133.1	0	0
+Seeker	TrackA_L1500	no	216	380.7	0	0
+MetaPhinder	TrackA_L1500	no	47	102.8	0	0
+Sourmash	TrackA_L1500	no	5756	93.7	0	0
+geNomad	TrackA_L1500	no	187	18956.5	0	0
+HVSeeker	TrackA_L1500	yes	42	2149.8	1549	0
+Jaeger	TrackA_L1500	yes	5	542.9	0	1
+TransGINmer	TrackA_L1500	yes	28	1132.3	555	0
+ViraLM	TrackA_L1500	yes	43	1512.3	2113	0
+DeepVirFinder	TrackB_CST-I_10x	no	483	905.6	0	0
+VirSorter	TrackB_CST-I_10x	no	472	211.4	0	0
+VirSorter2	TrackB_CST-I_10x	no	779	341.3	0	0
+VirFinder	TrackB_CST-I_10x	no	13	239.9	0	0
+PPR-Meta	TrackB_CST-I_10x	no	30	915.6	0	0
+VIBRANT	TrackB_CST-I_10x	no	151	162.5	0	0
+Seeker	TrackB_CST-I_10x	no	31	370.4	0	0
+MetaPhinder	TrackB_CST-I_10x	no	22	87.3	0	0
+Sourmash	TrackB_CST-I_10x	no	721	96.2	0	0
+geNomad	TrackB_CST-I_10x	no	99	18939.3	0	0
+HVSeeker	TrackB_CST-I_10x	yes	20	1481.8	1337	0
+Jaeger	TrackB_CST-I_10x	yes	24	1597.2	4545	0
+TransGINmer	TrackB_CST-I_10x	yes	18	1084.1	555	0
+ViraLM	TrackB_CST-I_10x	yes	24	1511.4	3045	0
+DeepVirFinder	TrackB_CST-IV-B_10x	no	2450	3665.1	0	0
+VirSorter	TrackB_CST-IV-B_10x	no	2713	888.0	0	0
+VirSorter2	TrackB_CST-IV-B_10x	no	4698	336.6	0	0
+VirFinder	TrackB_CST-IV-B_10x	no	79	243.3	0	0
+PPR-Meta	TrackB_CST-IV-B_10x	no	193	2115.3	0	0
+VIBRANT	TrackB_CST-IV-B_10x	no	667	274.0	0	0
+Seeker	TrackB_CST-IV-B_10x	no	187	452.2	0	0
+MetaPhinder	TrackB_CST-IV-B_10x	no	173	101.1	0	0
+Sourmash	TrackB_CST-IV-B_10x	no	4766	99.7	0	0
+geNomad	TrackB_CST-IV-B_10x	no	229	18951.8	0	0
+HVSeeker	TrackB_CST-IV-B_10x	yes	110	6394.2	2893	0
+Jaeger	TrackB_CST-IV-B_10x	yes	22	1860.3	4555	0
+TransGINmer	TrackB_CST-IV-B_10x	yes	26	1358.7	555	0
+ViraLM	TrackB_CST-IV-B_10x	yes	122	1852.5	2777	0

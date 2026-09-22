@@ -1,0 +1,15 @@
+tool	tool_family	tool_scope	total_A	total_B	total_D	total_E	agg_rca_recall	agg_rca_precision	agg_f1	agg_mcc	calling_rate	enrichment_ratio	n_samples
+DeepVirFinder	Deep learning	all_virus	937	59284	2178	338010	0.3008	0.0156	0.0296	0.0373	0.1504	2.0	13
+VirSorter	Feature-based ML	phage_only	26	206	3089	397088	0.0083	0.1121	0.0155	0.0286	0.0006	14.41	13
+VirSorter2	Feature-based ML	all_virus	107	3746	3008	393548	0.0343	0.0278	0.0307	0.0224	0.0096	3.57	13
+VirFinder	Feature-based ML	phage_only	761	68573	2354	328721	0.2443	0.011	0.021	0.0166	0.1732	1.41	13
+PPR-Meta	Deep learning	phage_and_plasmid	759	86782	2356	310512	0.2437	0.0087	0.0167	0.0054	0.2186	1.11	13
+VIBRANT	Feature-based ML	all_virus	35	162	3080	397132	0.0112	0.1777	0.0211	0.0429	0.0005	22.84	13
+Seeker	Deep learning	phage_only	871	7467	2244	389827	0.2796	0.1045	0.1521	0.1605	0.0208	13.43	13
+MetaPhinder	Reference-based	phage_only	352	23193	2763	374101	0.113	0.015	0.0264	0.0204	0.0588	1.92	13
+Sourmash	Reference-based	db_dependent	0	0	3115	397294	0.0	NA	NA	0.0	0.0	NA	13
+geNomad	DNN + markers	all_virus	86	1688	3029	395606	0.0276	0.0485	0.0352	0.0309	0.0044	6.23	13
+HVSeeker	Deep learning	phage_only	1221	45110	1894	352184	0.392	0.0264	0.0494	0.0765	0.1157	3.39	13
+Jaeger	Deep learning	phage_only	0	0	3115	397294	0.0	NA	NA	0.0	0.0	NA	13
+TransGINmer	Attention/transformer	all_virus	1721	177764	1394	219530	0.5525	0.0096	0.0188	0.0186	0.4483	1.23	13
+ViraLM	Attention/transformer	all_virus	270	15069	2845	382225	0.0867	0.0176	0.0293	0.0223	0.0383	2.26	13

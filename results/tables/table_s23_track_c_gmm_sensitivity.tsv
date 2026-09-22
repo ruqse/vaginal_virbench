@@ -1,0 +1,48 @@
+# Table S23. Track C performance under Gaussian-mixture relabelling.
+# Final reported viral calls are mapped to known parent contigs.
+# GMM fitting inputs and label rules are unchanged by the parser correction.
+# fit n_components = 3
+# fit n_contigs_fit = 8164
+# fit n_contigs_R0 = 4041
+# fit n_contigs_Rinf = 35
+# fit BIC = 21078.882617186115
+# fit converged = True
+# fit log_likelihood = -10503.41135049734
+# fit low_mean_log10R = -1.9086893369323332
+# fit low_std_log10R = 0.45821077265412047
+# fit low_weight = 0.6433109256708077
+# fit low_R_mean = 0.01233987223387868
+# fit high_mean_log10R = 2.1108486009922376
+# fit high_std_log10R = 1.1658027470981867
+# fit high_weight = 0.016959883799831103
+# fit high_R_mean = 129.07692212774919
+# fit middle_mean_log10R = -0.22942237647973746
+# fit middle_std_log10R = 0.48613248722018043
+# fit middle_weight = 0.3397291905293612
+# fit middle_R_mean = 0.5896273545519731
+# fit p_high = 0.95
+# fit p_baseline = 0.95
+# fit R_at_p_high = 37.94464989084466
+# fit default_TP_R = 10.0
+# fit default_TN_low = 0.5
+# fit default_TN_high = 2.0
+# counts TP = 20
+# counts TN = 1573
+# counts dark_matter = 47
+# counts excluded = 10600
+# counts n_changed_vs_default = 652
+tool	MCC_default	MCC_gmm	rank_default	rank_gmm	delta_MCC	spearman_rho_overall
+VirSorter2	0.5995	0.44	1	1	-0.15950000000000003	0.9384615384615385
+geNomad	0.4192	0.2145	2	5	-0.20470000000000002	0.9384615384615385
+ViraLM	0.4053	0.2656	3	2	-0.1397	0.9384615384615385
+PPR-Meta	0.3844	0.2606	4	3	-0.12380000000000002	0.9384615384615385
+Jaeger	0.2656	0.1864	5	6	-0.07919999999999999	0.9384615384615385
+VIBRANT	0.2097	0.231	6	4	0.021300000000000013	0.9384615384615385
+TransGINmer	0.1905	0.1032	7	7	-0.0873	0.9384615384615385
+DeepVirFinder	0.1351	0.0816	8	8	-0.05349999999999999	0.9384615384615385
+VirFinder	0.1287	0.0465	9	9	-0.08220000000000001	0.9384615384615385
+HVSeeker	0.1006	0.0417	10	10	-0.058899999999999994	0.9384615384615385
+Seeker	0.0204	-0.0261	11	14	-0.0465	0.9384615384615385
+Sourmash	0.0	0.0	12	11	0.0	0.9384615384615385
+VirSorter	-0.0114	-0.0075	13	12	0.0039000000000000007	0.9384615384615385
+MetaPhinder	-0.0485	-0.0186	14	13	0.029900000000000003	0.9384615384615385

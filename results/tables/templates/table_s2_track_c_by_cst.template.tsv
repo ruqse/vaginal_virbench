@@ -1,0 +1,46 @@
+# Template for table_s2_track_c_by_cst.tsv: row order, keys (cst, tool) and author-owned columns.
+# Blank cells are filled by scripts/07_evaluation/publish_parser_revision_tables.py
+# from results/test_real/rca_concordance and Table S21; the published table is never read back.
+cst	mgCSTs	n_samples	tool	method_approach	A	B	D	E	rca_recall	rca_precision
+CST-I	1, 3		DeepVirFinder							
+CST-I	1, 3		VirSorter							
+CST-I	1, 3		VirSorter2							
+CST-I	1, 3		VirFinder							
+CST-I	1, 3		PPR-Meta							
+CST-I	1, 3		VIBRANT							
+CST-I	1, 3		Seeker							
+CST-I	1, 3		MetaPhinder							
+CST-I	1, 3		Sourmash							
+CST-I	1, 3		geNomad							
+CST-I	1, 3		HVSeeker							
+CST-I	1, 3		Jaeger							
+CST-I	1, 3		TransGINmer							
+CST-I	1, 3		ViraLM							
+CST-III	9, 10, 11		DeepVirFinder							
+CST-III	9, 10, 11		VirSorter							
+CST-III	9, 10, 11		VirSorter2							
+CST-III	9, 10, 11		VirFinder							
+CST-III	9, 10, 11		PPR-Meta							
+CST-III	9, 10, 11		VIBRANT							
+CST-III	9, 10, 11		Seeker							
+CST-III	9, 10, 11		MetaPhinder							
+CST-III	9, 10, 11		Sourmash							
+CST-III	9, 10, 11		geNomad							
+CST-III	9, 10, 11		HVSeeker							
+CST-III	9, 10, 11		Jaeger							
+CST-III	9, 10, 11		TransGINmer							
+CST-III	9, 10, 11		ViraLM							
+CST-IV	16, 21, 22		DeepVirFinder							
+CST-IV	16, 21, 22		VirSorter							
+CST-IV	16, 21, 22		VirSorter2							
+CST-IV	16, 21, 22		VirFinder							
+CST-IV	16, 21, 22		PPR-Meta							
+CST-IV	16, 21, 22		VIBRANT							
+CST-IV	16, 21, 22		Seeker							
+CST-IV	16, 21, 22		MetaPhinder							
+CST-IV	16, 21, 22		Sourmash							
+CST-IV	16, 21, 22		geNomad							
+CST-IV	16, 21, 22		HVSeeker							
+CST-IV	16, 21, 22		Jaeger							
+CST-IV	16, 21, 22		TransGINmer							
+CST-IV	16, 21, 22		ViraLM							

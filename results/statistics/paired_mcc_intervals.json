@@ -1,0 +1,338 @@
+{
+  "multi_evidence": [
+    {
+      "tool_a": "geNomad",
+      "tool_b": "ViraLM",
+      "delta_a_minus_b": 0.215624669699471,
+      "ci_low": 0.19327418362073814,
+      "ci_high": 0.23676347945047738,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "geNomad",
+      "tool_b": "VirSorter2",
+      "delta_a_minus_b": 0.05836447501320435,
+      "ci_low": 0.03408849412395661,
+      "ci_high": 0.08112329506849836,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "geNomad",
+      "tool_b": "VIBRANT",
+      "delta_a_minus_b": 0.0010370660965893785,
+      "ci_low": -0.023509932438636548,
+      "ci_high": 0.025708562703302257,
+      "ci_excludes_zero": false,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "geNomad",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": 0.14820706504850117,
+      "ci_low": 0.12426287051062085,
+      "ci_high": 0.1723541012725485,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "ViraLM",
+      "tool_b": "VirSorter2",
+      "delta_a_minus_b": -0.15726019468626665,
+      "ci_low": -0.17960182351806744,
+      "ci_high": -0.1351831113883279,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "ViraLM",
+      "tool_b": "VIBRANT",
+      "delta_a_minus_b": -0.21458760360288162,
+      "ci_low": -0.2374129148561224,
+      "ci_high": -0.19144023224177756,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "ViraLM",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": -0.06741760465096983,
+      "ci_low": -0.08912367277645601,
+      "ci_high": -0.04506430169146939,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "VirSorter2",
+      "tool_b": "VIBRANT",
+      "delta_a_minus_b": -0.057327408916614975,
+      "ci_low": -0.08006973692764581,
+      "ci_high": -0.03362763263629519,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "VirSorter2",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": 0.08984259003529682,
+      "ci_low": 0.06559282898225959,
+      "ci_high": 0.11467345063159078,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "VIBRANT",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": 0.1471699989519118,
+      "ci_low": 0.12292058532106316,
+      "ci_high": 0.17003804738926528,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    }
+  ],
+  "track_c": [
+    {
+      "tool_a": "geNomad",
+      "tool_b": "ViraLM",
+      "delta_a_minus_b": 0.013924990310640262,
+      "ci_low": -0.09333595634492667,
+      "ci_high": 0.11023211293164918,
+      "ci_excludes_zero": false,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "geNomad",
+      "tool_b": "VirSorter2",
+      "delta_a_minus_b": -0.18026612806332648,
+      "ci_low": -0.3053509758992381,
+      "ci_high": -0.0687840502236671,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "geNomad",
+      "tool_b": "VIBRANT",
+      "delta_a_minus_b": 0.20946817093196862,
+      "ci_low": -0.04915010386568501,
+      "ci_high": 0.44879640596636466,
+      "ci_excludes_zero": false,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "geNomad",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": 0.15360260866575642,
+      "ci_low": 0.010179666029078768,
+      "ci_high": 0.292703228550024,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "ViraLM",
+      "tool_b": "VirSorter2",
+      "delta_a_minus_b": -0.19419111837396674,
+      "ci_low": -0.3095134848040174,
+      "ci_high": -0.08818762294056227,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "ViraLM",
+      "tool_b": "VIBRANT",
+      "delta_a_minus_b": 0.19554318062132836,
+      "ci_low": -0.04027937409659289,
+      "ci_high": 0.40944415549522156,
+      "ci_excludes_zero": false,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "ViraLM",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": 0.13967761835511616,
+      "ci_low": 0.014239773468513446,
+      "ci_high": 0.2648788991076809,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "VirSorter2",
+      "tool_b": "VIBRANT",
+      "delta_a_minus_b": 0.3897342989952951,
+      "ci_low": 0.1744250689219312,
+      "ci_high": 0.5924013714113282,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "VirSorter2",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": 0.3338687367290829,
+      "ci_low": 0.207495184151319,
+      "ci_high": 0.4584818350354998,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    },
+    {
+      "tool_a": "VIBRANT",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": -0.0558655622662122,
+      "ci_low": -0.2379697690351361,
+      "ci_high": 0.1282051165164795,
+      "ci_excludes_zero": false,
+      "bootstrap_draws": 2000,
+      "unit": "contig",
+      "seed": 42
+    }
+  ],
+  "mitch": [
+    {
+      "tool_a": "geNomad",
+      "tool_b": "ViraLM",
+      "delta_a_minus_b": 0.2319794764752066,
+      "ci_low": 0.18179140368498053,
+      "ci_high": 0.2665024289019402,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "sample",
+      "seed": 12345
+    },
+    {
+      "tool_a": "geNomad",
+      "tool_b": "VirSorter2",
+      "delta_a_minus_b": 0.1489512366936538,
+      "ci_low": 0.13024834194255375,
+      "ci_high": 0.16632622772983416,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "sample",
+      "seed": 12345
+    },
+    {
+      "tool_a": "geNomad",
+      "tool_b": "VIBRANT",
+      "delta_a_minus_b": -0.11068876334651184,
+      "ci_low": -0.1661964253423364,
+      "ci_high": -0.07033288760756558,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "sample",
+      "seed": 12345
+    },
+    {
+      "tool_a": "geNomad",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": 0.10692182183343896,
+      "ci_low": 0.04416882964479947,
+      "ci_high": 0.15336348363672078,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "sample",
+      "seed": 12345
+    },
+    {
+      "tool_a": "ViraLM",
+      "tool_b": "VirSorter2",
+      "delta_a_minus_b": -0.0830282397815528,
+      "ci_low": -0.12877853564938338,
+      "ci_high": -0.0198070828084012,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "sample",
+      "seed": 12345
+    },
+    {
+      "tool_a": "ViraLM",
+      "tool_b": "VIBRANT",
+      "delta_a_minus_b": -0.34266823982171846,
+      "ci_low": -0.3897973908596412,
+      "ci_high": -0.2954958865853639,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "sample",
+      "seed": 12345
+    },
+    {
+      "tool_a": "ViraLM",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": -0.12505765464176763,
+      "ci_low": -0.18040831491597636,
+      "ci_high": -0.0676650891515809,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "sample",
+      "seed": 12345
+    },
+    {
+      "tool_a": "VirSorter2",
+      "tool_b": "VIBRANT",
+      "delta_a_minus_b": -0.25964000004016563,
+      "ci_low": -0.3215182194261779,
+      "ci_high": -0.2046047971893487,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "sample",
+      "seed": 12345
+    },
+    {
+      "tool_a": "VirSorter2",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": -0.04202941486021483,
+      "ci_low": -0.10921771939322121,
+      "ci_high": 0.01567783706020799,
+      "ci_excludes_zero": false,
+      "bootstrap_draws": 2000,
+      "unit": "sample",
+      "seed": 12345
+    },
+    {
+      "tool_a": "VIBRANT",
+      "tool_b": "Jaeger",
+      "delta_a_minus_b": 0.2176105851799508,
+      "ci_low": 0.1928088781617955,
+      "ci_high": 0.24368510815180058,
+      "ci_excludes_zero": true,
+      "bootstrap_draws": 2000,
+      "unit": "sample",
+      "seed": 12345
+    }
+  ]
+}

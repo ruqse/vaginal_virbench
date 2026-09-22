@@ -1,0 +1,7 @@
+length_bin	length_bp	n_fragments	n_tools	Q_statistic	df	p_value
+L500_fragments	500	20136	14	53571.8853	13	0.0
+L1000_fragments	1000	10049	14	29479.6658	13	0.0
+L1500_fragments	1500	6689	14	18962.2288	13	0.0
+L3000_fragments	3000	3328	14	9624.1404	13	0.0
+L5000_fragments	5000	1988	14	6833.3538	13	0.0
+L10000_fragments	10000	983	14	3935.2779	13	0.0

@@ -1,0 +1,15 @@
+tool	family	scope	TP	FP	TN	FN	precision	recall	FDR	F1	MCC	AUPRC	n_predicted	n_total
+DeepVirFinder	Deep Learning	all_virus	21	322	609	8	0.0612	0.7241	0.9388	0.1129	0.1351	0.0689	343	960
+HVSeeker	Deep Learning	phage_only	24	498	433	5	0.046	0.8276	0.954	0.0871	0.1006	0.082	522	960
+Jaeger	Deep Learning	phage_only	22	151	780	7	0.1272	0.7586	0.8728	0.2178	0.2656	0.1349	173	960
+MetaPhinder	Alignment	phage_only	2	164	767	27	0.012	0.069	0.988	0.0205	-0.0485	0.029	166	960
+PPR-Meta	Deep Learning	all_virus	23	83	848	6	0.217	0.7931	0.783	0.3407	0.3844	0.3711	106	960
+Seeker	Deep Learning	phage_only	21	622	309	8	0.0327	0.7241	0.9673	0.0625	0.0204	0.0441	643	960
+Sourmash	Alignment	db_dependent	0	0	931	29	0.0	0.0	1.0	0.0	0.0	NA	0	960
+TransGINmer	Language Model	all_virus	23	264	667	6	0.0801	0.7931	0.9199	0.1456	0.1905	0.4162	287	960
+VIBRANT	HMM-based	all_virus	4	7	924	25	0.3636	0.1379	0.6364	0.2	0.2097	0.0762	11	960
+VirFinder	k-mer ML	phage_only	11	116	815	18	0.0866	0.3793	0.9134	0.141	0.1287	0.1065	127	960
+VirSorter	HMM-based	phage_only	0	4	927	29	0.0	0.0	1.0	0.0	-0.0114	0.0302	4	960
+VirSorter2	HMM-based	all_virus	25	32	899	4	0.4386	0.8621	0.5614	0.5814	0.5995	0.5038	57	960
+ViraLM	Language Model	all_virus	23	74	857	6	0.2371	0.7931	0.7629	0.3651	0.4053	0.537	97	960
+geNomad	DNN+Markers	all_virus	18	39	892	11	0.3158	0.6207	0.6842	0.4186	0.4192	0.5918	57	960

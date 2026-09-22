@@ -1,0 +1,10 @@
+r_tp_min	r_bg_low	r_bg_high	n_TP	n_TN	is_default	rank_1	rank_2	rank_3	rank_4	rank_5
+5.0	0.33	3.0	32	1360	0	VirSorter2 (0.5614)	geNomad (0.3640)	ViraLM (0.3576)	PPR-Meta (0.3542)	Jaeger (0.2430)
+5.0	0.5	2.0	32	931	0	VirSorter2 (0.5862)	geNomad (0.4158)	ViraLM (0.3975)	PPR-Meta (0.3769)	Jaeger (0.2732)
+5.0	0.8	1.25	32	296	0	VirSorter2 (0.6939)	PPR-Meta (0.5694)	ViraLM (0.5540)	geNomad (0.4999)	Jaeger (0.4082)
+10.0	0.33	3.0	29	1360	0	VirSorter2 (0.5731)	geNomad (0.3661)	ViraLM (0.3638)	PPR-Meta (0.3604)	Jaeger (0.2358)
+10.0	0.5	2.0	29	931	1	VirSorter2 (0.5995)	geNomad (0.4192)	ViraLM (0.4053)	PPR-Meta (0.3844)	Jaeger (0.2656)
+10.0	0.8	1.25	29	296	0	VirSorter2 (0.7148)	PPR-Meta (0.5851)	ViraLM (0.5694)	geNomad (0.5086)	Jaeger (0.4005)
+20.0	0.33	3.0	24	1360	0	VirSorter2 (0.5247)	ViraLM (0.3178)	PPR-Meta (0.3147)	geNomad (0.2977)	VIBRANT (0.2264)
+20.0	0.5	2.0	24	931	0	VirSorter2 (0.5511)	ViraLM (0.3557)	geNomad (0.3448)	PPR-Meta (0.3364)	Jaeger (0.2411)
+20.0	0.8	1.25	24	296	0	VirSorter2 (0.6718)	PPR-Meta (0.5298)	ViraLM (0.5140)	geNomad (0.4282)	Jaeger (0.3700)

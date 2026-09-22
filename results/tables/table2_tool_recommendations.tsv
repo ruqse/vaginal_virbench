@@ -1,0 +1,8 @@
+Tier	Tool	Best for	Key evidence	Requirements
+Recommended	geNomad	Balanced identification across evaluated designs	Highest Track A MCC at 1,500 bp; primary-assembly MCC difference from VIBRANT unresolved	CPU (18.5 GB RAM)
+Recommended	ViraLM	Novel and eukaryote-infecting virus detection	100% recall in all three eukaryote-infecting virus categories at 1,500 bp; 65/65 homology-free fragments	GPU (2.1 GB); min 500 bp
+Recommended	Jaeger	Candidate dark-matter discovery	Recovered 41/48 candidate dark-matter contigs; fastest where it runs (>= 2,048 bp)	GPU (4.6 GB); min 2,048 bp
+Recommended	VirSorter2	Long-contig identification	Highest Track C MCC (0.60); Track A MCC 0.501 at 3,000 bp	CPU
+Recommended	VIBRANT	High-precision phage identification on real assemblies	Highest MiTCH MCC; high precision at lower recall on primary assemblies; 98.0% prophage recall	CPU; min 1,000 bp; ≥4 predicted ORFs
+Complementary	PPR-Meta	Phage detection on long contigs	Ranked 4th on Track C; three-class phage/chromosome/plasmid model	CPU
+Complementary	DeepVirFinder	Broad phage screening	58% dark-matter detection; high Lactobacillus-phage recall	CPU

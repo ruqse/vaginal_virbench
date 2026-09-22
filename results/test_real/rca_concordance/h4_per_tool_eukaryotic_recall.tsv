@@ -1,0 +1,13 @@
+tool	scope	euk_A	euk_D	euk_recall
+HVSeeker	phage_only	14	13	0.5185
+Jaeger	phage_only	0	27	0.0
+MetaPhinder	phage_only	0	27	0.0
+Seeker	phage_only	12	15	0.4444
+VirFinder	phage_only	10	17	0.3704
+VirSorter	phage_only	0	27	0.0
+DeepVirFinder	all_virus	11	16	0.4074
+TransGINmer	all_virus	26	1	0.963
+VIBRANT	all_virus	0	27	0.0
+VirSorter2	all_virus	11	16	0.4074
+ViraLM	all_virus	13	14	0.4815
+geNomad	all_virus	16	11	0.5926

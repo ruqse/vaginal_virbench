@@ -1,0 +1,11 @@
+context_1	context_2	n_tools	spearman_rho	spearman_p	spearman_p_dup	spearman_p_BH
+Track A (L1500 MCC)	Track A (L3000 MCC)	14	0.906	8e-06	8e-06	0.0
+Track A (L1500 MCC)	Track B (10x coverage, CST-I MCC)	14	0.733	0.002878	0.002878	0.0048
+Track A (L1500 MCC)	Multi-evidence benchmark (MCC)	14	0.506	0.064846	0.064846	0.0648
+Track A (L1500 MCC)	Track C (MCC)	14	0.607	0.021269	0.021269	0.0266
+Track A (L3000 MCC)	Track B (10x coverage, CST-I MCC)	14	0.903	1e-05	1e-05	0.0
+Track A (L3000 MCC)	Multi-evidence benchmark (MCC)	14	0.644	0.012942	0.012942	0.0185
+Track A (L3000 MCC)	Track C (MCC)	14	0.749	0.00203	0.00203	0.0041
+Track B (10x coverage, CST-I MCC)	Multi-evidence benchmark (MCC)	14	0.815	0.000379	0.000379	0.0009
+Track B (10x coverage, CST-I MCC)	Track C (MCC)	14	0.815	0.000379	0.000379	0.0009
+Multi-evidence benchmark (MCC)	Track C (MCC)	14	0.596	0.024613	0.024613	0.0273

@@ -1,0 +1,15 @@
+tool	method_approach	contigs_reported_by_tool	human_n	human_fp	human_fpr_pct	bact_arch_n	bact_arch_fp	bact_arch_fpr_pct	checkv_host_n	checkv_host_fp	checkv_host_fpr_pct	human_minus_bact_arch_pp	trackc_human_n	trackc_human_fp	trackc_human_fpr_pct
+TransGINmer	Attention/transformer architectures	11577	2833	2706	95.5	964	375	38.9	7780	2461	31.6	+56.6	80	80	100.0
+Seeker	Convolutional and recurrent neural networks	11577	2833	2499	88.2	964	743	77.1	7780	4390	56.4	+11.1	80	76	95.0
+HVSeeker	Convolutional and recurrent neural networks	11577	2833	2048	72.3	964	632	65.6	7780	3653	47.0	+6.7	80	60	75.0
+DeepVirFinder	Convolutional and recurrent neural networks	11577	2833	802	28.3	964	393	40.8	7780	1743	22.4	-12.5	80	28	35.0
+ViraLM	Attention/transformer architectures	11577	2833	524	18.5	964	175	18.2	7780	693	8.9	+0.3	80	13	16.2
+VirFinder	Feature-based machine learning	11577	2833	414	14.6	964	169	17.5	7780	721	9.3	-2.9	80	12	15.0
+PPR-Meta	Convolutional and recurrent neural networks	11577	2833	259	9.1	964	114	11.8	7780	519	6.7	-2.7	80	3	3.8
+MetaPhinder	Reference-based	11577	2833	248	8.8	964	257	26.7	7780	1171	15.1	-17.9	80	2	2.5
+VirSorter2	Feature-based machine learning	387	2833	211	7.4	964	51	5.3	7780	123	1.6	+2.2	80	5	6.2
+geNomad	Hybrid deep-learning-plus-marker approaches	201	2833	91	3.2	964	44	4.6	7780	66	0.8	-1.4	80	9	11.2
+VirSorter	Feature-based machine learning	98	2833	87	3.1	964	6	0.6	7780	4	0.1	+2.4	80	7	8.8
+Jaeger	Convolutional and recurrent neural networks	6742	2833	26	0.9	964	194	20.1	7780	604	7.8	-19.2	80	1	1.2
+VIBRANT	Feature-based machine learning	8	2833	0	0.0	964	3	0.3	7780	5	0.1	-0.3	80	0	0.0
+Sourmash	Reference-based	0	2833	0	0.0	964	0	0.0	7780	0	0.0	+0.0	80	0	0.0

@@ -1,0 +1,406 @@
+Bootstrap: docker
+From: nvidia/cuda:12.1.0-devel-ubuntu22.04
+
+%setup
+    # Create mount point for ViraLM model bind-mount during build
+    # This must exist before %post runs so the --bind option works
+    mkdir -p ${APPTAINER_ROOTFS}/mnt/ViraLM_model
+
+%labels
+    Author viral_bench
+    Version 1.0
+    Description ViraLM - Large Language Model for virus identification using DNABERT-2
+    GitHub https://github.com/ChengPENG-wolf/ViraLM
+
+%post
+    # Prevent interactive prompts
+    export DEBIAN_FRONTEND=noninteractive
+
+    # Install system dependencies
+    apt-get update && apt-get install -y --no-install-recommends \
+        python3.10 \
+        python3-pip \
+        wget \
+        curl \
+        bzip2 \
+        ca-certificates \
+        git \
+        seqtk \
+        && ln -sf /usr/bin/python3.10 /usr/bin/python3 \
+        && ln -sf /usr/bin/python3 /usr/bin/python \
+        && rm -rf /var/lib/apt/lists/*
+
+    # Download and install Miniconda
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
+    bash /tmp/miniconda.sh -b -p /opt/conda
+    rm /tmp/miniconda.sh
+
+    # Add conda to path for build
+    export PATH="/opt/conda/bin:$PATH"
+
+    # Configure conda
+    /opt/conda/bin/conda config --set auto_activate_base false
+    /opt/conda/bin/conda config --add channels conda-forge
+    /opt/conda/bin/conda config --set channel_priority strict
+
+    # Accept conda TOS (ignore errors)
+    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main || true
+    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r || true
+
+    # Create conda environment with Python 3.8 (ViraLM requirement)
+    /opt/conda/bin/conda create -n viralm python=3.8 -c conda-forge --override-channels -y
+
+    # Install libstdcxx-ng for C++ runtime compatibility
+    /opt/conda/bin/conda install -n viralm -c conda-forge \
+        libstdcxx-ng \
+        --override-channels -y
+
+    # Install dependencies via conda
+    /opt/conda/bin/conda install -n viralm -c conda-forge \
+        pandas \
+        biopython \
+        tqdm \
+        --override-channels -y
+
+    # Install PyTorch with CUDA 12.1 support
+    /opt/conda/bin/conda run -n viralm pip install --upgrade pip
+    /opt/conda/bin/conda run -n viralm pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+    # Install transformers and einops (required for DNABERT-2)
+    # Pin transformers to 4.29.2 - newer versions have stricter config class validation
+    # that breaks DNABERT-2's custom BertConfig
+    /opt/conda/bin/conda run -n viralm pip install transformers==4.29.2 einops datasets
+
+    # Install gdown for model download
+    /opt/conda/bin/conda run -n viralm pip install gdown
+
+    # Clone ViraLM repository
+    git clone https://github.com/ChengPENG-wolf/ViraLM.git /opt/viralm
+    # Commit used for the published runs (the CLI reports "ViraLM version 1.0")
+    git -C /opt/viralm checkout b7a6f4ed7f6dd92ca6fe5dcf8d64905be65f7680
+
+    # Copy pre-downloaded ViraLM model (gdown is unreliable for large Google Drive files)
+    # Download the model first, as in the upstream README:
+    #   gdown --id 1EQVPmFbpLGrBLU0xCtZBpwvXrtrRxic1 && tar -xzvf model.tar.gz
+    # (model/pytorch_model.bin sha256 df9188fbb569849ff17d5e19c9b149e8e28c1a1867e087bcdb2d822cc6162093)
+    # and place the model files at ./ViraLM_model/ before building
+    mkdir -p /opt/viralm/models
+    if [ -d /mnt/ViraLM_model ]; then
+        cp -r /mnt/ViraLM_model /opt/viralm/models/
+        echo "Model copied successfully from /mnt/ViraLM_model"
+        ls -la /opt/viralm/models/ViraLM_model/
+    else
+        echo "ERROR: Model not found at /mnt/ViraLM_model"
+        echo "Download the model with:"
+        echo "  gdown --id 1EQVPmFbpLGrBLU0xCtZBpwvXrtrRxic1 && tar -xzvf model.tar.gz"
+        echo "Save to: ./ViraLM_model/"
+        echo "Then build with: apptainer build --bind ./ViraLM_model:/mnt/ViraLM_model viralm.sif Singularity.def"
+        exit 1
+    fi
+
+    # Clean up conda cache
+    /opt/conda/bin/conda clean -afy
+
+    # Create wrapper script directory
+    mkdir -p /opt/bin
+
+    # Create the viralm wrapper script
+    cat > /opt/bin/viralm <<'WRAPPER_EOF'
+#!/bin/bash
+# ViraLM wrapper script
+# Provides CLI interface expected by the Nextflow module
+
+set -e
+
+VERSION="1.0"
+VIRALM_HOME="${VIRALM_HOME:-/opt/viralm}"
+VIRALM_MODEL="${VIRALM_MODEL:-/opt/viralm/models/ViraLM_model}"
+
+show_help() {
+    cat << EOF
+ViraLM - Large Language Model for virus identification
+
+Usage:
+    viralm predict --input FILE --output FILE [OPTIONS]
+    viralm --version
+    viralm --help
+
+Commands:
+    predict     Run virus prediction on input FASTA
+
+Options for predict:
+    --input, -i FILE        Input FASTA file (required)
+    --output, -o FILE       Output TSV file (required)
+    --threads, -t INT       Number of threads (default: 1, not used by ViraLM)
+    --threshold FLOAT       Score threshold for viral prediction (default: 0.5)
+    --model_path PATH       Path to ViraLM model directory
+    --len INT               Sequence length for prediction (default: 500)
+
+Output format:
+    TSV with columns: contig_id, length, score, prediction
+EOF
+}
+
+show_version() {
+    echo "ViraLM version ${VERSION}"
+}
+
+# Parse command
+if [ $# -eq 0 ]; then
+    show_help
+    exit 0
+fi
+
+case "$1" in
+    --version|-v)
+        show_version
+        exit 0
+        ;;
+    --help|-h)
+        show_help
+        exit 0
+        ;;
+    predict)
+        shift
+        ;;
+    *)
+        echo "Error: Unknown command '$1'"
+        show_help
+        exit 1
+        ;;
+esac
+
+# Default values
+INPUT=""
+OUTPUT=""
+THREADS=1
+THRESHOLD=0.5
+MODEL_PATH="${VIRALM_MODEL}"
+SEQ_LEN=500
+
+# Parse predict arguments
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --input|-i)
+            INPUT="$2"
+            shift 2
+            ;;
+        --output|-o)
+            OUTPUT="$2"
+            shift 2
+            ;;
+        --threads|-t)
+            THREADS="$2"
+            shift 2
+            ;;
+        --threshold)
+            THRESHOLD="$2"
+            shift 2
+            ;;
+        --model_path)
+            MODEL_PATH="$2"
+            shift 2
+            ;;
+        --len)
+            SEQ_LEN="$2"
+            shift 2
+            ;;
+        *)
+            echo "Error: Unknown option '$1'"
+            show_help
+            exit 1
+            ;;
+    esac
+done
+
+# Validate required arguments
+if [ -z "$INPUT" ]; then
+    echo "Error: --input is required"
+    exit 1
+fi
+
+if [ -z "$OUTPUT" ]; then
+    echo "Error: --output is required"
+    exit 1
+fi
+
+if [ ! -f "$INPUT" ]; then
+    echo "Error: Input file not found: $INPUT"
+    exit 1
+fi
+
+# Create temporary working directory
+WORK_DIR=$(mktemp -d)
+trap "rm -rf $WORK_DIR" EXIT
+
+# Activate conda environment
+source /opt/conda/etc/profile.d/conda.sh
+conda activate viralm
+
+# Copy input to work directory (ViraLM expects specific structure)
+cp "$INPUT" "$WORK_DIR/input.fasta"
+
+# Run ViraLM prediction
+cd "$VIRALM_HOME"
+python viralm.py \
+    --input "$WORK_DIR/input.fasta" \
+    --output "$WORK_DIR/output" \
+    --database "$MODEL_PATH" \
+    --len "$SEQ_LEN" \
+    --threshold "$THRESHOLD"
+
+# Convert ViraLM output to standardized TSV format
+# ViraLM outputs a CSV with columns: seq_name,prediction,virus_score
+# We convert to: contig_id, length, score, prediction
+
+# Debug: Show output directory contents
+echo "DEBUG: Contents of output directory:"
+ls -la "$WORK_DIR/output/" 2>/dev/null || echo "Output directory not found"
+
+# Find the actual result file (ViraLM outputs result_{filename}.csv)
+OUTPUT_CSV=$(find "$WORK_DIR/output" -name "result_*.csv" -type f 2>/dev/null | head -1)
+
+if [ -n "$OUTPUT_CSV" ] && [ -f "$OUTPUT_CSV" ]; then
+    echo "DEBUG: Found output file: $OUTPUT_CSV"
+    echo "DEBUG: First few lines of output:"
+    head -5 "$OUTPUT_CSV"
+
+    # Create header
+    echo -e "contig_id\tlength\tscore\tprediction" > "$OUTPUT"
+
+    # Process predictions - extract lengths from input FASTA
+    python3 << PYTHON_EOF
+import csv
+from Bio import SeqIO
+
+# Read sequence lengths
+seq_lengths = {}
+for record in SeqIO.parse("$WORK_DIR/input.fasta", "fasta"):
+    seq_lengths[record.id] = len(record.seq)
+
+# Process predictions
+# ViraLM output columns: seq_name, prediction, virus_score
+with open("$OUTPUT_CSV", "r") as infile, open("$OUTPUT", "a") as outfile:
+    reader = csv.DictReader(infile)
+    for row in reader:
+        # ViraLM uses seq_name for sequence ID
+        seq_id = row.get("seq_name", row.get("sequence_id", ""))
+        # ViraLM uses virus_score for the score
+        score = float(row.get("virus_score", row.get("score", 0)))
+        # ViraLM uses "virus" or "non-virus" for prediction
+        pred_raw = row.get("prediction", "")
+        # Convert to standardized format: "viral" or "non-viral"
+        if pred_raw == "virus":
+            pred = "viral"
+        elif pred_raw == "non-virus":
+            pred = "non-viral"
+        else:
+            # Fallback based on threshold
+            pred = "viral" if score >= $THRESHOLD else "non-viral"
+        length = seq_lengths.get(seq_id, 0)
+        outfile.write(f"{seq_id}\t{length}\t{score:.6f}\t{pred}\n")
+        print(f"Processed: {seq_id} -> {pred} (score: {score:.4f})")
+PYTHON_EOF
+else
+    echo "Warning: ViraLM did not produce expected output file"
+    echo "Expected: result_*.csv in $WORK_DIR/output/"
+    echo "DEBUG: Checking if any files exist in work directory:"
+    find "$WORK_DIR" -type f -name "*.csv" 2>/dev/null || echo "No CSV files found"
+    echo -e "contig_id\tlength\tscore\tprediction" > "$OUTPUT"
+fi
+
+echo "ViraLM prediction complete: $OUTPUT"
+WRAPPER_EOF
+
+    chmod +x /opt/bin/viralm
+
+%environment
+    export PATH="/opt/bin:/opt/conda/bin:$PATH"
+    export VIRALM_HOME=/opt/viralm
+    export VIRALM_MODEL=/opt/viralm/models/ViraLM_model
+    export CONDA_DEFAULT_ENV=viralm
+    export CONDA_PREFIX="/opt/conda/envs/viralm"
+    export PATH="/opt/conda/envs/viralm/bin:$PATH"
+    export LD_LIBRARY_PATH="/opt/conda/envs/viralm/lib:$LD_LIBRARY_PATH"
+
+%runscript
+    exec /opt/bin/viralm "$@"
+
+%test
+    # Test wrapper script
+    /opt/bin/viralm --version
+    /opt/bin/viralm --help
+
+    # Test Python environment
+    export LD_LIBRARY_PATH="/opt/conda/envs/viralm/lib:$LD_LIBRARY_PATH"
+    /opt/conda/envs/viralm/bin/python -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA available: {torch.cuda.is_available()}')"
+    /opt/conda/envs/viralm/bin/python -c "import transformers; print(f'Transformers: {transformers.__version__}')"
+    /opt/conda/envs/viralm/bin/python -c "from Bio import SeqIO; print('BioPython OK')"
+
+    # Check model directory exists and contains required files
+    if [ -d /opt/viralm/models/ViraLM_model ]; then
+        echo "Model directory exists"
+        ls -la /opt/viralm/models/ViraLM_model/ | head -10
+        # Check for essential model files
+        if [ -f /opt/viralm/models/ViraLM_model/config.json ]; then
+            echo "Model files verified: config.json found"
+        else
+            echo "ERROR: Model incomplete - config.json missing"
+            exit 1
+        fi
+    else
+        echo "ERROR: Model directory not found at /opt/viralm/models/ViraLM_model"
+        exit 1
+    fi
+
+%help
+    ViraLM Container for Virus Identification
+    ==========================================
+
+    ViraLM is a Large Language Model based on DNABERT-2 for identifying
+    viral sequences in metagenomic data.
+
+    USAGE:
+    ------
+    # Run prediction with GPU
+    singularity exec --nv viralm.sif viralm predict \
+        --input contigs.fasta \
+        --output results.tsv \
+        --threshold 0.5
+
+    # Run prediction with CPU (slower)
+    singularity exec viralm.sif viralm predict \
+        --input contigs.fasta \
+        --output results.tsv
+
+    # Check version
+    singularity exec viralm.sif viralm --version
+
+    OPTIONS:
+    --------
+    --input, -i FILE        Input FASTA file (required)
+    --output, -o FILE       Output TSV file (required)
+    --threads, -t INT       Number of threads (passed but not used)
+    --threshold FLOAT       Score threshold (default: 0.5)
+    --len INT               Sequence length (default: 500)
+    --model_path PATH       Custom model path
+
+    OUTPUT FORMAT:
+    --------------
+    TSV file with columns:
+        contig_id   - Sequence identifier from input FASTA
+        length      - Sequence length in bp
+        score       - Viral prediction score (0-1)
+        prediction  - Classification: "viral" or "non-viral"
+
+    NOTES:
+    ------
+    - GPU strongly recommended (CPU mode is very slow)
+    - Use --nv flag with Singularity for GPU support
+    - Container includes pre-downloaded DNABERT-2 model (~2GB)
+    - Minimum sequence length: 500bp
+
+    REFERENCES:
+    -----------
+    - GitHub: https://github.com/ChengPENG-wolf/ViraLM
+    - DNABERT-2: https://github.com/MAGICS-LAB/DNABERT_2

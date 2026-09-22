@@ -1,0 +1,15 @@
+tool	method_approach	scope	TP	FP	TN	FN	precision	recall	FDR	F1	MCC	MCC_CI_low	MCC_CI_high	AUPRC	AUPRC_CI_low	AUPRC_CI_high	n_predicted	n_total
+VirSorter2	Feature-based ML	all-virus	25	32	899	4	0.4386	0.8621	0.5614	0.5814	0.5995	0.478	0.7064	0.5038	0.3368	0.7097	57	960
+geNomad	DNN + markers	all-virus	18	39	892	11	0.3158	0.6207	0.6842	0.4186	0.4192	0.2873	0.5401	0.5918	0.4144	0.7652	57	960
+ViraLM	Attention/transformer	all-virus	23	74	857	6	0.2371	0.7931	0.7629	0.3651	0.4053	0.3003	0.4998	0.537	0.3601	0.7291	97	960
+PPR-Meta	Deep learning	phage+plasmid	23	83	848	6	0.217	0.7931	0.783	0.3407	0.3844	0.2792	0.4785	0.3711	0.2154	0.5671	106	960
+Jaeger	Deep learning	phage-only	22	151	780	7	0.1272	0.7586	0.8728	0.2178	0.2656	0.1766	0.3461	0.1349	0.0873	0.2288	173	960
+VIBRANT	Feature-based ML	prokaryotic viruses	4	7	924	25	0.3636	0.1379	0.6364	0.2	0.2097	-0.0097	0.3875	0.0762	0.0271	0.1831	11	960
+TransGINmer	Attention/transformer	all-virus	23	264	667	6	0.0801	0.7931	0.9199	0.1456	0.1905	0.1205	0.2475	0.4162	0.2301	0.6305	287	960
+DeepVirFinder	Deep learning	prokaryotic-virus-focused	21	322	609	8	0.0612	0.7241	0.9388	0.1129	0.1351	0.0677	0.1952	0.0689	0.0422	0.1305	343	960
+VirFinder	Feature-based ML	phage-only	11	116	815	18	0.0866	0.3793	0.9134	0.141	0.1287	0.0389	0.2241	0.1065	0.0429	0.2171	127	960
+HVSeeker	Deep learning	phage-only	24	498	433	5	0.046	0.8276	0.954	0.0871	0.1006	0.0467	0.1471	0.082	0.046	0.16	522	960
+Seeker	Deep learning	phage-only	21	622	309	8	0.0327	0.7241	0.9673	0.0625	0.0204	-0.0408	0.0765	0.0441	0.0262	0.0805	643	960
+Sourmash	Reference-based	database-dependent	0	0	931	29	0.0	0.0	1.0	0.0	0.0	0.0	0.0	NA	NA	NA	0	960
+VirSorter	Feature-based ML	phage-only	0	4	927	29	0.0	0.0	1.0	0.0	-0.0114	-0.017	-0.0052	0.0302	0.0198	0.0406	4	960
+MetaPhinder	Reference-based	phage-only	2	164	767	27	0.012	0.069	0.988	0.0205	-0.0485	-0.0854	0.0023	0.029	0.0191	0.0396	166	960

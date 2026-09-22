@@ -1,0 +1,6 @@
+CST	n_samples	top1	top2	top3
+IV-B	18	VIBRANT:0.559	geNomad:0.504	VirSorter2:0.366
+I	6	VIBRANT:0.618	Jaeger:0.424	geNomad:0.332
+III	4	VIBRANT:0.614	Jaeger:0.376	geNomad:0.326
+V	1	MetaPhinder:0.406	VIBRANT:0.317	Jaeger:0.261
+IV-C	1	VIBRANT:0.246	Jaeger:0.083	DeepVirFinder:0.059

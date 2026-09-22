@@ -1,0 +1,69 @@
+{
+  "script": "scripts/10_vmgc_crosscheck/mitch_prevalence_diversity.py",
+  "bootstrap": {
+    "B": 2000,
+    "seed": 12345,
+    "unit": "sample block, within arm",
+    "draw_order": "replays scaleup_diversity_contrast.py (Table S31)"
+  },
+  "permutation": {
+    "n": 10000,
+    "seed": 20260915
+  },
+  "richness_min_relative_abundance": 0.001,
+  "arms": {
+    "low_CST-I/III/V": [
+      "MITCH01",
+      "MITCH03",
+      "MITCH05",
+      "MITCH06",
+      "MITCH07",
+      "MITCH08",
+      "MITCH09",
+      "MITCH11",
+      "MITCH15",
+      "MITCH16",
+      "MITCH30"
+    ],
+    "high_CST-IV": [
+      "MITCH02",
+      "MITCH04",
+      "MITCH10",
+      "MITCH12",
+      "MITCH13",
+      "MITCH14",
+      "MITCH17",
+      "MITCH18",
+      "MITCH19",
+      "MITCH20",
+      "MITCH21",
+      "MITCH22",
+      "MITCH23",
+      "MITCH24",
+      "MITCH25",
+      "MITCH26",
+      "MITCH27",
+      "MITCH28",
+      "MITCH29"
+    ]
+  },
+  "checks": [
+    "pooled estimand reproduces Table S31 point estimates and CIs",
+    "per-sample MCC reproduces Table S30",
+    "prevalence standardisation reduces to MCC at native prevalence",
+    "label totals match frozen benchmark"
+  ],
+  "inputs_sha256": {
+    "results/test_real/viralm_investigation/mitch_scaleup30/pooled_tool_predictions.tsv.gz": "09961ad47a7c7bb3ed47c12eb4392921e13279b638559f7c07581d14a6d8a5fc",
+    "results/test_real/viralm_investigation/mitch_scaleup30/pooled_benchmark_ready_ground_truth.tsv": "423ba1334f550fbb3c924958f4f43bdf4838a4d7bd7dcc85e3c78e558e9e8038",
+    "results/mgcst_mitch30/mgCSTs_with_CSTs_mitch30.csv": "50fff4f4a6c55eeb44f0b036a778f866962c86ec272cd7f3559f51251a021e63",
+    "results/mgcst_mitch30/norm_counts_taxa.csv": "aa17fbe333e30e2468a711fbac4a25456cdc174e3670257e125bf5a4f68820b3",
+    "results/tables/table_s30_mitch_per_sample_mcc.tsv": "7ea065821d5eeaf7b4979cedff504e2c3ae6bf96ce5ba570734d76c60228ba42",
+    "results/tables/table_s31_mitch_diversity_contrast.tsv": "5dcd69c3151108fbe494c96217786f9d972a978eb4f9ef2fde50deaf323a7c25"
+  },
+  "outputs_sha256": {
+    "contrast_estimands.tsv": "8027f6b5426e9b30fdc740cbd6a33e3e13cd10faedba904adf87198ac4d0f29f",
+    "per_sample_diversity.tsv": "ae4e3dede8c599da0e51eeb5c1b349ecd29cbfa47e3ed6b3e8273b735ae9bd4b",
+    "diversity_correlations.tsv": "447b15a6c891c1ef59c7e5831f3f7490be71789cd3f0d7c3c9b9c8a8fb9d4778"
+  }
+}

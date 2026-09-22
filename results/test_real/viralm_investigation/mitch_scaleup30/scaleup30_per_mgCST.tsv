@@ -1,0 +1,16 @@
+mgCST	n_samples	top1	top2	top3
+mgCST 22	5	VIBRANT:0.554	geNomad:0.468	VirSorter2:0.313
+mgCST 1	4	VIBRANT:0.535	Jaeger:0.288	geNomad:0.190
+mgCST 20	4	VIBRANT:0.566	geNomad:0.551	VirSorter2:0.453
+mgCST 18	3	VIBRANT:0.504	geNomad:0.389	Jaeger:0.383
+mgCST 10	2	VIBRANT:0.592	ViraLM:0.385	Jaeger:0.381
+mgCST 2	2	VIBRANT:0.669	Jaeger:0.473	geNomad:0.432
+mgCST 23	2	VIBRANT:0.484	geNomad:0.419	Jaeger:0.271
+mgCST 5	1	VIBRANT:0.679	Jaeger:0.631	geNomad:0.587
+mgCST 19	1	VIBRANT:0.558	geNomad:0.465	VirSorter2:0.342
+mgCST 11	1	VIBRANT:0.474	geNomad:0.380	Jaeger:0.280
+mgCST 15	1	MetaPhinder:0.406	VIBRANT:0.317	Jaeger:0.261
+mgCST 16	1	geNomad:0.608	VIBRANT:0.595	VirSorter2:0.540
+mgCST 21	1	geNomad:0.623	VIBRANT:0.601	VirSorter2:0.513
+mgCST 24	1	VIBRANT:0.246	Jaeger:0.083	DeepVirFinder:0.059
+mgCST 9	1	VIBRANT:0.493	Jaeger:0.210	geNomad:0.188

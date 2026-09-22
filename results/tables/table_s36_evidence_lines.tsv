@@ -1,0 +1,8 @@
+evidence_line	role	biological_signal	method_tool	threshold_or_criterion	reference
+E1a	Viral evidence	Protein homology	DIAMOND v2.1.11 BLASTx vs NCBI RefSeq viral proteins	e-value ≤ 1e-10, ≥ 30% amino-acid identity, ≥ 50 aa alignment length	Buchfink et al., 2021
+E1b	Viral evidence	Nucleotide homology	BLAST+ v2.17.0 BLASTn vs MetaVR	≥ 90% average nucleotide identity, ≥ 75% aligned fraction	Camacho et al., 2009; Fiamenghi et al., 2025
+E2	Viral evidence	Structural signatures	CheckV v1.0.1	Medium-quality or higher, ≥ 1 viral hallmark gene, or detected provirus boundary	Nayfach et al., 2021
+E3	Viral evidence	Prophage integration	Phigaro v2.2.6 (default sensitivity)	Integrase genes and attachment sites	Starikova et al., 2020
+E4	Viral evidence	CRISPR spacer targeting	CRISPRCasFinder v4.2.20	Evidence level ≥ 2, spacers ≥ 25 bp, matched by BLASTn-short at ≥ 95% identity over ≥ 95% of spacer length	Couvin et al., 2018
+E5	Viral evidence	RCA cross-validation	minimap2 v2.29 (-x sr) + SAMtools v1.21	≥ 10 RCA read pairs at ≥ 95% mean identity and ≥ 70% breadth of coverage on the shotgun contig	Li, 2018; Danecek et al., 2021
+Non-viral	Negative grounding	Explicit non-viral signal	Kraken2 v2.17.1 (Standard-16) or CheckV v1.0.1	Kraken2 assignment to a non-viral taxon (in this cohort human or bacterial/archaeal), or CheckV host genes ≥ 1 with viral genes = 0	Wood et al., 2019; Nayfach et al., 2021

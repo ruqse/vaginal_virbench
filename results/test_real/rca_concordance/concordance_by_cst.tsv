@@ -1,0 +1,43 @@
+cst	n_samples	tool	tool_family	A	B	D	E	rca_recall	rca_precision
+CST-I	5	DeepVirFinder	Deep learning	162	24057	433	143210	0.2723	0.0067
+CST-I	5	VirSorter	Feature-based ML	5	37	590	167230	0.0084	0.119
+CST-I	5	VirSorter2	Feature-based ML	21	593	574	166674	0.0353	0.0342
+CST-I	5	VirFinder	Feature-based ML	169	26533	426	140734	0.284	0.0063
+CST-I	5	PPR-Meta	Deep learning	218	39207	377	128060	0.3664	0.0055
+CST-I	5	VIBRANT	Feature-based ML	7	69	588	167198	0.0118	0.0921
+CST-I	5	Seeker	Deep learning	99	2818	496	164449	0.1664	0.0339
+CST-I	5	MetaPhinder	Reference-based	57	8613	538	158654	0.0958	0.0066
+CST-I	5	Sourmash	Reference-based	0	0	595	167267	0.0	NA
+CST-I	5	geNomad	DNN + markers	13	668	582	166599	0.0218	0.0191
+CST-I	5	HVSeeker	Deep learning	182	18009	413	149258	0.3059	0.01
+CST-I	5	Jaeger	Deep learning	0	0	595	167267	0.0	NA
+CST-I	5	TransGINmer	Attention/transformer	281	82848	314	84419	0.4723	0.0034
+CST-I	5	ViraLM	Attention/transformer	38	6869	557	160398	0.0639	0.0055
+CST-III	4	DeepVirFinder	Deep learning	273	19471	675	108687	0.288	0.0138
+CST-III	4	VirSorter	Feature-based ML	2	137	946	128021	0.0021	0.0144
+CST-III	4	VirSorter2	Feature-based ML	20	2556	928	125602	0.0211	0.0078
+CST-III	4	VirFinder	Feature-based ML	353	25095	595	103063	0.3724	0.0139
+CST-III	4	PPR-Meta	Deep learning	295	23617	653	104541	0.3112	0.0123
+CST-III	4	VIBRANT	Feature-based ML	3	40	945	128118	0.0032	0.0698
+CST-III	4	Seeker	Deep learning	147	2369	801	125789	0.1551	0.0584
+CST-III	4	MetaPhinder	Reference-based	79	5588	869	122570	0.0833	0.0139
+CST-III	4	Sourmash	Reference-based	0	0	948	128158	0.0	NA
+CST-III	4	geNomad	DNN + markers	20	472	928	127686	0.0211	0.0407
+CST-III	4	HVSeeker	Deep learning	302	11920	646	116238	0.3186	0.0247
+CST-III	4	Jaeger	Deep learning	0	0	948	128158	0.0	NA
+CST-III	4	TransGINmer	Attention/transformer	702	45325	246	82833	0.7405	0.0153
+CST-III	4	ViraLM	Attention/transformer	62	2174	886	125984	0.0654	0.0277
+CST-IV	4	DeepVirFinder	Deep learning	502	15756	1070	86113	0.3193	0.0309
+CST-IV	4	VirSorter	Feature-based ML	19	32	1553	101837	0.0121	0.3725
+CST-IV	4	VirSorter2	Feature-based ML	66	597	1506	101272	0.042	0.0995
+CST-IV	4	VirFinder	Feature-based ML	239	16945	1333	84924	0.152	0.0139
+CST-IV	4	PPR-Meta	Deep learning	246	23958	1326	77911	0.1565	0.0102
+CST-IV	4	VIBRANT	Feature-based ML	25	53	1547	101816	0.0159	0.3205
+CST-IV	4	Seeker	Deep learning	625	2280	947	99589	0.3976	0.2151
+CST-IV	4	MetaPhinder	Reference-based	216	8992	1356	92877	0.1374	0.0235
+CST-IV	4	Sourmash	Reference-based	0	0	1572	101869	0.0	NA
+CST-IV	4	geNomad	DNN + markers	53	548	1519	101321	0.0337	0.0882
+CST-IV	4	HVSeeker	Deep learning	737	15181	835	86688	0.4688	0.0463
+CST-IV	4	Jaeger	Deep learning	0	0	1572	101869	0.0	NA
+CST-IV	4	TransGINmer	Attention/transformer	738	49591	834	52278	0.4695	0.0147
+CST-IV	4	ViraLM	Attention/transformer	170	6026	1402	95843	0.1081	0.0274

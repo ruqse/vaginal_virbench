@@ -1,0 +1,28 @@
+# Local configuration
+config/paths.sh
+
+# Large inputs and tool outputs are not part of the repository
+databases/
+What_the_Phage/
+containers/*/models/
+containers/*/model/
+*.sif
+work/
+.nextflow*
+
+# Regeneration logs and render status
+results/regeneration_logs/
+results/secondary_tables/
+results/figures/render_all_status.tsv
+results/supplementary/_si_build/
+results/figures/*.pdf
+results/figures/fig_s14.png
+results/figures/fig_s14_source_data.tsv
+results/figures/fig_s14.png.bak-20260922-202904
+results/test_real/viralm_investigation/analysis/
+
+# Python / R byproducts
+__pycache__/
+*.pyc
+.Rhistory
+Rplots.pdf

@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this code or the derived data, please cite the associated article."
+title: "vaginal_virbench: code and derived data for benchmarking virus identification tools on vaginal metagenomes"
+type: software
+license: MIT
+repository-code: "https://github.com/ruqse/vaginal_virbench"
+authors:
+  - family-names: Dube
+    given-names: Faruk
+  - family-names: Happel
+    given-names: Anna-Ursula
+  - family-names: Jaspan
+    given-names: Heather B.
+  - family-names: Hugerth
+    given-names: Luisa Warchavchik
+keywords:
+  - vaginal virome
+  - bacteriophage
+  - virus identification
+  - benchmarking
+  - metagenomics
+  - community state type
+preferred-citation:
+  type: article
+  title: "Benchmarking virus identification tools on vaginal metagenomes"
+  authors:
+    - family-names: Dube
+      given-names: Faruk
+    - family-names: Happel
+      given-names: Anna-Ursula
+    - family-names: Jaspan
+      given-names: Heather B.
+    - family-names: Hugerth
+      given-names: Luisa Warchavchik

@@ -1,0 +1,127 @@
+Bootstrap: docker
+From: nvidia/cuda:12.1.0-devel-ubuntu22.04
+
+%labels
+    Author viral_bench
+    Version 1.0
+    Description TransGINmer - Transformer + GIN for viral sequence detection
+
+%post
+    # Prevent interactive prompts
+    export DEBIAN_FRONTEND=noninteractive
+
+    # Install system dependencies
+    apt-get update && apt-get install -y --no-install-recommends \
+        python3.11 \
+        python3-pip \
+        python3.11-venv \
+        python3.11-dev \
+        wget \
+        curl \
+        bzip2 \
+        ca-certificates \
+        git \
+        build-essential \
+        seqtk
+
+    # Set Python 3.11 as default
+    ln -sf /usr/bin/python3.11 /usr/bin/python3
+    ln -sf /usr/bin/python3 /usr/bin/python
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1
+
+    rm -rf /var/lib/apt/lists/*
+
+    # Create virtual environment
+    python3 -m venv /opt/transginmer-env
+
+    # Upgrade pip
+    /opt/transginmer-env/bin/pip install --upgrade pip setuptools wheel
+
+    # Install PyTorch with CUDA support
+    /opt/transginmer-env/bin/pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+    # Install torch_geometric and dependencies
+    # These must match the PyTorch and CUDA versions
+    /opt/transginmer-env/bin/pip install torch-scatter torch-sparse torch-cluster torch-spline-conv \
+        -f https://data.pyg.org/whl/torch-2.1.0+cu121.html
+    /opt/transginmer-env/bin/pip install torch-geometric
+
+    # Install other dependencies
+    /opt/transginmer-env/bin/pip install \
+        numpy \
+        pandas \
+        scikit-learn \
+        biopython \
+        tqdm \
+        networkx
+
+    # Clone TransGINmer repository
+    git clone https://github.com/xizhilangcc/TransGINmer.git /opt/transginmer
+
+    # Verify model checkpoint exists
+    if [ ! -f /opt/transginmer/model.ckpt ]; then
+        echo "Warning: model.ckpt not found in repository"
+        # Create placeholder (will need to be replaced with actual model)
+        touch /opt/transginmer/model.ckpt
+    fi
+
+    # Copy wrapper script (will be added from pipeline bin/)
+    # The wrapper will be mounted or installed separately
+
+    # Create a symlink for convenience
+    mkdir -p /opt/bin
+    cat > /opt/bin/transginmer <<'EOF'
+#!/bin/bash
+# TransGINmer wrapper entry point
+source /opt/transginmer-env/bin/activate
+cd /opt/transginmer
+python predict.py "$@"
+EOF
+    chmod +x /opt/bin/transginmer
+
+%environment
+    export PATH="/opt/transginmer-env/bin:/opt/bin:$PATH"
+    export TRANSGINMER_HOME=/opt/transginmer
+    export PYTHONPATH="/opt/transginmer:$PYTHONPATH"
+
+%runscript
+    exec python /opt/transginmer/predict.py "$@"
+
+%test
+    # Test that Python environment works
+    /opt/transginmer-env/bin/python -c "import torch; print(f'PyTorch version: {torch.__version__}')"
+    /opt/transginmer-env/bin/python -c "import torch_geometric; print(f'PyG version: {torch_geometric.__version__}')"
+    /opt/transginmer-env/bin/python -c "from Bio import SeqIO; print('Biopython OK')"
+
+%help
+    TransGINmer container for viral sequence detection.
+
+    TransGINmer combines Transformer and Graph Isomorphism Network (GIN)
+    architectures to identify viral sequences in metagenomic data.
+
+    Usage with wrapper script (recommended):
+        singularity exec --nv transginmer.sif python /path/to/transginmer_wrapper.py \
+            --input contigs.fasta \
+            --output results.tsv \
+            --threshold 0.5
+
+    Direct usage (requires specific input filename):
+        # Input MUST be named 'contig.fasta' in TransGINmer directory
+        singularity exec --nv transginmer.sif \
+            python /opt/transginmer/predict.py --dataset contig.fasta
+
+    Environment variables:
+        TRANSGINMER_HOME  Path to TransGINmer installation (/opt/transginmer)
+
+    Output:
+        Direct: predictions.txt (in TransGINmer directory)
+        Wrapper: TSV file with columns: contig_id, length, viral_score, prediction
+
+    Note:
+        - Requires GPU for reasonable performance
+        - Use --nv flag with Singularity for GPU support
+        - Input sequences can be as short as 100bp
+
+    References:
+        - GitHub: https://github.com/xizhilangcc/TransGINmer
+        - Paper: TransGINmer: Transformer-based Graph Isomorphism Network

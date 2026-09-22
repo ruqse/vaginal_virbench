@@ -1,0 +1,6 @@
+Tool	Track A MCC (1,500 bp)	Track A MCC (1,500 bp) 95% CI	Track C MCC	Track C MCC 95% CI	Multi-evidence MCC	Multi-evidence MCC 95% CI	MiTCH MCC	MiTCH MCC 95% CI
+geNomad	0.651	0.613 to 0.690	0.419	0.287 to 0.540	0.440	0.414 to 0.464	0.457	0.394 to 0.503
+ViraLM	0.536	0.508 to 0.563	0.405	0.300 to 0.500	0.224	0.203 to 0.246	0.225	0.176 to 0.273
+VirSorter2	0.283	0.237 to 0.326	0.599	0.478 to 0.706	0.382	0.353 to 0.407	0.308	0.239 to 0.368
+VIBRANT	0.172	0.112 to 0.223	0.210	-0.010 to 0.388	0.439	0.417 to 0.461	0.568	0.546 to 0.587
+Jaeger	N/A (min 2,048 bp)	N/A	0.266	0.177 to 0.346	0.292	0.265 to 0.316	0.350	0.317 to 0.381

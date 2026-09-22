@@ -1,0 +1,2 @@
+test	scope_a	scope_b	A_phage_only	D_phage_only	A_all_virus	D_all_virus	recall_phage_only	recall_all_virus	odds_ratio	p_value	significant	note
+H4_eukaryotic_rca	phage_only	all_virus	36	126	77	85	0.2222	0.4753	0.3154	1.3054353348734495e-06	True	ok

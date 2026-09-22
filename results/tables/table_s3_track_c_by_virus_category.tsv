@@ -1,0 +1,365 @@
+sample	cst	tool	method_approach	tool_scope	virus_category	cell_A	cell_B	cell_D	cell_E	n_rca_positive	rca_validated_recall	rca_validated_precision
+UC084_V2	CST-I	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC084_V2	CST-I	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	5	0	63	0	68	0.0735	1.0
+UC084_V2	CST-I	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC084_V2	CST-I	VirSorter	Feature-based ML	phage-only	phage	0	0	68	0	68	0.0	NA
+UC084_V2	CST-I	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC084_V2	CST-I	VirSorter2	Feature-based ML	all-virus	phage	1	0	67	0	68	0.0147	1.0
+UC084_V2	CST-I	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC084_V2	CST-I	VirFinder	Feature-based ML	phage-only	phage	10	0	58	0	68	0.1471	1.0
+UC084_V2	CST-I	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC084_V2	CST-I	PPR-Meta	Deep learning	phage+plasmid	phage	17	0	51	0	68	0.25	1.0
+UC084_V2	CST-I	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC084_V2	CST-I	VIBRANT	Feature-based ML	prokaryotic viruses	phage	0	0	68	0	68	0.0	NA
+UC084_V2	CST-I	Seeker	Deep learning	phage-only	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC084_V2	CST-I	Seeker	Deep learning	phage-only	phage	0	0	68	0	68	0.0	NA
+UC084_V2	CST-I	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC084_V2	CST-I	MetaPhinder	Reference-based	phage-only	phage	3	0	65	0	68	0.0441	1.0
+UC084_V2	CST-I	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC084_V2	CST-I	Sourmash	Reference-based	database-dependent	phage	0	0	68	0	68	0.0	NA
+UC084_V2	CST-I	geNomad	DNN + markers	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC084_V2	CST-I	geNomad	DNN + markers	all-virus	phage	0	0	68	0	68	0.0	NA
+UC084_V2	CST-I	HVSeeker	Deep learning	phage-only	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC084_V2	CST-I	HVSeeker	Deep learning	phage-only	phage	6	0	62	0	68	0.0882	1.0
+UC084_V2	CST-I	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC084_V2	CST-I	Jaeger	Deep learning	phage-only	phage	0	0	68	0	68	0.0	NA
+UC084_V2	CST-I	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC084_V2	CST-I	TransGINmer	Attention/transformer	all-virus	phage	19	0	49	0	68	0.2794	1.0
+UC084_V2	CST-I	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC084_V2	CST-I	ViraLM	Attention/transformer	all-virus	phage	2	0	66	0	68	0.0294	1.0
+UC115_V2	CST-I	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	53	0	123	0	176	0.3011	1.0
+UC115_V2	CST-I	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	VirSorter	Feature-based ML	phage-only	phage	2	0	174	0	176	0.0114	1.0
+UC115_V2	CST-I	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	VirSorter2	Feature-based ML	all-virus	phage	5	0	171	0	176	0.0284	1.0
+UC115_V2	CST-I	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	VirFinder	Feature-based ML	phage-only	phage	63	0	113	0	176	0.358	1.0
+UC115_V2	CST-I	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	PPR-Meta	Deep learning	phage+plasmid	phage	79	0	97	0	176	0.4489	1.0
+UC115_V2	CST-I	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	VIBRANT	Feature-based ML	prokaryotic viruses	phage	3	0	173	0	176	0.017	1.0
+UC115_V2	CST-I	Seeker	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	Seeker	Deep learning	phage-only	phage	24	0	152	0	176	0.1364	1.0
+UC115_V2	CST-I	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	MetaPhinder	Reference-based	phage-only	phage	16	0	160	0	176	0.0909	1.0
+UC115_V2	CST-I	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	Sourmash	Reference-based	database-dependent	phage	0	0	176	0	176	0.0	NA
+UC115_V2	CST-I	geNomad	DNN + markers	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	geNomad	DNN + markers	all-virus	phage	3	0	173	0	176	0.017	1.0
+UC115_V2	CST-I	HVSeeker	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	HVSeeker	Deep learning	phage-only	phage	52	0	124	0	176	0.2955	1.0
+UC115_V2	CST-I	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	Jaeger	Deep learning	phage-only	phage	0	0	176	0	176	0.0	NA
+UC115_V2	CST-I	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	TransGINmer	Attention/transformer	all-virus	phage	91	0	85	0	176	0.517	1.0
+UC115_V2	CST-I	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC115_V2	CST-I	ViraLM	Attention/transformer	all-virus	phage	8	0	168	0	176	0.0455	1.0
+UC164_V2	CST-I	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	4	0	18	0	22	0.1818	1.0
+UC164_V2	CST-I	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	VirSorter	Feature-based ML	phage-only	phage	0	0	22	0	22	0.0	NA
+UC164_V2	CST-I	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	VirSorter2	Feature-based ML	all-virus	phage	1	0	21	0	22	0.0455	1.0
+UC164_V2	CST-I	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	VirFinder	Feature-based ML	phage-only	phage	3	0	19	0	22	0.1364	1.0
+UC164_V2	CST-I	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	PPR-Meta	Deep learning	phage+plasmid	phage	4	0	18	0	22	0.1818	1.0
+UC164_V2	CST-I	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	VIBRANT	Feature-based ML	prokaryotic viruses	phage	0	0	22	0	22	0.0	NA
+UC164_V2	CST-I	Seeker	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	Seeker	Deep learning	phage-only	phage	0	0	22	0	22	0.0	NA
+UC164_V2	CST-I	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	MetaPhinder	Reference-based	phage-only	phage	6	0	16	0	22	0.2727	1.0
+UC164_V2	CST-I	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	Sourmash	Reference-based	database-dependent	phage	0	0	22	0	22	0.0	NA
+UC164_V2	CST-I	geNomad	DNN + markers	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	geNomad	DNN + markers	all-virus	phage	0	0	22	0	22	0.0	NA
+UC164_V2	CST-I	HVSeeker	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	HVSeeker	Deep learning	phage-only	phage	6	0	16	0	22	0.2727	1.0
+UC164_V2	CST-I	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	Jaeger	Deep learning	phage-only	phage	0	0	22	0	22	0.0	NA
+UC164_V2	CST-I	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	TransGINmer	Attention/transformer	all-virus	phage	9	0	13	0	22	0.4091	1.0
+UC164_V2	CST-I	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC164_V2	CST-I	ViraLM	Attention/transformer	all-virus	phage	1	0	21	0	22	0.0455	1.0
+UC093_V2	CST-I	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	30	0	151	0	181	0.1657	1.0
+UC093_V2	CST-I	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	VirSorter	Feature-based ML	phage-only	phage	3	0	178	0	181	0.0166	1.0
+UC093_V2	CST-I	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	VirSorter2	Feature-based ML	all-virus	phage	8	0	173	0	181	0.0442	1.0
+UC093_V2	CST-I	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	VirFinder	Feature-based ML	phage-only	phage	17	0	164	0	181	0.0939	1.0
+UC093_V2	CST-I	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	PPR-Meta	Deep learning	phage+plasmid	phage	30	0	151	0	181	0.1657	1.0
+UC093_V2	CST-I	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	VIBRANT	Feature-based ML	prokaryotic viruses	phage	4	0	177	0	181	0.0221	1.0
+UC093_V2	CST-I	Seeker	Deep learning	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	Seeker	Deep learning	phage-only	phage	63	0	118	0	181	0.3481	1.0
+UC093_V2	CST-I	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	MetaPhinder	Reference-based	phage-only	phage	29	0	152	0	181	0.1602	1.0
+UC093_V2	CST-I	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	Sourmash	Reference-based	database-dependent	phage	0	0	181	0	181	0.0	NA
+UC093_V2	CST-I	geNomad	DNN + markers	all-virus	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	geNomad	DNN + markers	all-virus	phage	8	0	173	0	181	0.0442	1.0
+UC093_V2	CST-I	HVSeeker	Deep learning	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	HVSeeker	Deep learning	phage-only	phage	83	0	98	0	181	0.4586	1.0
+UC093_V2	CST-I	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	Jaeger	Deep learning	phage-only	phage	0	0	181	0	181	0.0	NA
+UC093_V2	CST-I	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC093_V2	CST-I	TransGINmer	Attention/transformer	all-virus	phage	51	0	130	0	181	0.2818	1.0
+UC093_V2	CST-I	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V2	CST-I	ViraLM	Attention/transformer	all-virus	phage	15	0	166	0	181	0.0829	1.0
+UC139_V2	CST-I	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC139_V2	CST-I	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	68	0	77	0	145	0.469	1.0
+UC139_V2	CST-I	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC139_V2	CST-I	VirSorter	Feature-based ML	phage-only	phage	0	0	145	0	145	0.0	NA
+UC139_V2	CST-I	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC139_V2	CST-I	VirSorter2	Feature-based ML	all-virus	phage	4	0	141	0	145	0.0276	1.0
+UC139_V2	CST-I	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC139_V2	CST-I	VirFinder	Feature-based ML	phage-only	phage	75	0	70	0	145	0.5172	1.0
+UC139_V2	CST-I	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC139_V2	CST-I	PPR-Meta	Deep learning	phage+plasmid	phage	86	0	59	0	145	0.5931	1.0
+UC139_V2	CST-I	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC139_V2	CST-I	VIBRANT	Feature-based ML	prokaryotic viruses	phage	0	0	145	0	145	0.0	NA
+UC139_V2	CST-I	Seeker	Deep learning	phage-only	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC139_V2	CST-I	Seeker	Deep learning	phage-only	phage	10	0	135	0	145	0.069	1.0
+UC139_V2	CST-I	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC139_V2	CST-I	MetaPhinder	Reference-based	phage-only	phage	3	0	142	0	145	0.0207	1.0
+UC139_V2	CST-I	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC139_V2	CST-I	Sourmash	Reference-based	database-dependent	phage	0	0	145	0	145	0.0	NA
+UC139_V2	CST-I	geNomad	DNN + markers	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC139_V2	CST-I	geNomad	DNN + markers	all-virus	phage	0	0	145	0	145	0.0	NA
+UC139_V2	CST-I	HVSeeker	Deep learning	phage-only	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC139_V2	CST-I	HVSeeker	Deep learning	phage-only	phage	33	0	112	0	145	0.2276	1.0
+UC139_V2	CST-I	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC139_V2	CST-I	Jaeger	Deep learning	phage-only	phage	0	0	145	0	145	0.0	NA
+UC139_V2	CST-I	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC139_V2	CST-I	TransGINmer	Attention/transformer	all-virus	phage	108	0	37	0	145	0.7448	1.0
+UC139_V2	CST-I	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC139_V2	CST-I	ViraLM	Attention/transformer	all-virus	phage	10	0	135	0	145	0.069	1.0
+UC055_V1	CST-III	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	1	0	3	0	4	0.25	1.0
+UC055_V1	CST-III	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	25	0	67	0	92	0.2717	1.0
+UC055_V1	CST-III	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	4	0	4	0.0	NA
+UC055_V1	CST-III	VirSorter	Feature-based ML	phage-only	phage	1	0	91	0	92	0.0109	1.0
+UC055_V1	CST-III	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	2	0	2	0	4	0.5	1.0
+UC055_V1	CST-III	VirSorter2	Feature-based ML	all-virus	phage	1	0	91	0	92	0.0109	1.0
+UC055_V1	CST-III	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	0	0	4	0	4	0.0	NA
+UC055_V1	CST-III	VirFinder	Feature-based ML	phage-only	phage	9	0	83	0	92	0.0978	1.0
+UC055_V1	CST-III	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	3	0	1	0	4	0.75	1.0
+UC055_V1	CST-III	PPR-Meta	Deep learning	phage+plasmid	phage	19	0	73	0	92	0.2065	1.0
+UC055_V1	CST-III	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	4	0	4	0.0	NA
+UC055_V1	CST-III	VIBRANT	Feature-based ML	prokaryotic viruses	phage	2	0	90	0	92	0.0217	1.0
+UC055_V1	CST-III	Seeker	Deep learning	phage-only	eukaryotic_virus	2	0	2	0	4	0.5	1.0
+UC055_V1	CST-III	Seeker	Deep learning	phage-only	phage	30	0	62	0	92	0.3261	1.0
+UC055_V1	CST-III	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	4	0	4	0.0	NA
+UC055_V1	CST-III	MetaPhinder	Reference-based	phage-only	phage	16	0	76	0	92	0.1739	1.0
+UC055_V1	CST-III	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	4	0	4	0.0	NA
+UC055_V1	CST-III	Sourmash	Reference-based	database-dependent	phage	0	0	92	0	92	0.0	NA
+UC055_V1	CST-III	geNomad	DNN + markers	all-virus	eukaryotic_virus	4	0	0	0	4	1.0	1.0
+UC055_V1	CST-III	geNomad	DNN + markers	all-virus	phage	3	0	89	0	92	0.0326	1.0
+UC055_V1	CST-III	HVSeeker	Deep learning	phage-only	eukaryotic_virus	2	0	2	0	4	0.5	1.0
+UC055_V1	CST-III	HVSeeker	Deep learning	phage-only	phage	40	0	52	0	92	0.4348	1.0
+UC055_V1	CST-III	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	4	0	4	0.0	NA
+UC055_V1	CST-III	Jaeger	Deep learning	phage-only	phage	0	0	92	0	92	0.0	NA
+UC055_V1	CST-III	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	4	0	0	0	4	1.0	1.0
+UC055_V1	CST-III	TransGINmer	Attention/transformer	all-virus	phage	60	0	32	0	92	0.6522	1.0
+UC055_V1	CST-III	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	2	0	2	0	4	0.5	1.0
+UC055_V1	CST-III	ViraLM	Attention/transformer	all-virus	phage	8	0	84	0	92	0.087	1.0
+UC065_V2	CST-III	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	60	0	87	0	147	0.4082	1.0
+UC065_V2	CST-III	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	VirSorter	Feature-based ML	phage-only	phage	0	0	147	0	147	0.0	NA
+UC065_V2	CST-III	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	VirSorter2	Feature-based ML	all-virus	phage	1	0	146	0	147	0.0068	1.0
+UC065_V2	CST-III	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	VirFinder	Feature-based ML	phage-only	phage	55	0	92	0	147	0.3741	1.0
+UC065_V2	CST-III	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	PPR-Meta	Deep learning	phage+plasmid	phage	57	0	90	0	147	0.3878	1.0
+UC065_V2	CST-III	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	VIBRANT	Feature-based ML	prokaryotic viruses	phage	0	0	147	0	147	0.0	NA
+UC065_V2	CST-III	Seeker	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	Seeker	Deep learning	phage-only	phage	22	0	125	0	147	0.1497	1.0
+UC065_V2	CST-III	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	MetaPhinder	Reference-based	phage-only	phage	18	0	129	0	147	0.1224	1.0
+UC065_V2	CST-III	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	Sourmash	Reference-based	database-dependent	phage	0	0	147	0	147	0.0	NA
+UC065_V2	CST-III	geNomad	DNN + markers	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	geNomad	DNN + markers	all-virus	phage	2	0	145	0	147	0.0136	1.0
+UC065_V2	CST-III	HVSeeker	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	HVSeeker	Deep learning	phage-only	phage	63	0	84	0	147	0.4286	1.0
+UC065_V2	CST-III	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	Jaeger	Deep learning	phage-only	phage	0	0	147	0	147	0.0	NA
+UC065_V2	CST-III	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	TransGINmer	Attention/transformer	all-virus	phage	137	0	10	0	147	0.932	1.0
+UC065_V2	CST-III	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC065_V2	CST-III	ViraLM	Attention/transformer	all-virus	phage	8	0	139	0	147	0.0544	1.0
+UC096_V2	CST-III	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	7	0	8	0	15	0.4667	1.0
+UC096_V2	CST-III	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	98	0	248	0	346	0.2832	1.0
+UC096_V2	CST-III	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	15	0	15	0.0	NA
+UC096_V2	CST-III	VirSorter	Feature-based ML	phage-only	phage	1	0	345	0	346	0.0029	1.0
+UC096_V2	CST-III	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	6	0	9	0	15	0.4	1.0
+UC096_V2	CST-III	VirSorter2	Feature-based ML	all-virus	phage	5	0	341	0	346	0.0145	1.0
+UC096_V2	CST-III	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	8	0	7	0	15	0.5333	1.0
+UC096_V2	CST-III	VirFinder	Feature-based ML	phage-only	phage	74	0	272	0	346	0.2139	1.0
+UC096_V2	CST-III	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	10	0	5	0	15	0.6667	1.0
+UC096_V2	CST-III	PPR-Meta	Deep learning	phage+plasmid	phage	94	0	252	0	346	0.2717	1.0
+UC096_V2	CST-III	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	15	0	15	0.0	NA
+UC096_V2	CST-III	VIBRANT	Feature-based ML	prokaryotic viruses	phage	1	0	345	0	346	0.0029	1.0
+UC096_V2	CST-III	Seeker	Deep learning	phage-only	eukaryotic_virus	6	0	9	0	15	0.4	1.0
+UC096_V2	CST-III	Seeker	Deep learning	phage-only	phage	85	0	261	0	346	0.2457	1.0
+UC096_V2	CST-III	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	15	0	15	0.0	NA
+UC096_V2	CST-III	MetaPhinder	Reference-based	phage-only	phage	45	0	301	0	346	0.1301	1.0
+UC096_V2	CST-III	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	15	0	15	0.0	NA
+UC096_V2	CST-III	Sourmash	Reference-based	database-dependent	phage	0	0	346	0	346	0.0	NA
+UC096_V2	CST-III	geNomad	DNN + markers	all-virus	eukaryotic_virus	9	0	6	0	15	0.6	1.0
+UC096_V2	CST-III	geNomad	DNN + markers	all-virus	phage	2	0	344	0	346	0.0058	1.0
+UC096_V2	CST-III	HVSeeker	Deep learning	phage-only	eukaryotic_virus	8	0	7	0	15	0.5333	1.0
+UC096_V2	CST-III	HVSeeker	Deep learning	phage-only	phage	157	0	189	0	346	0.4538	1.0
+UC096_V2	CST-III	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	15	0	15	0.0	NA
+UC096_V2	CST-III	Jaeger	Deep learning	phage-only	phage	0	0	346	0	346	0.0	NA
+UC096_V2	CST-III	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	15	0	0	0	15	1.0	1.0
+UC096_V2	CST-III	TransGINmer	Attention/transformer	all-virus	phage	274	0	72	0	346	0.7919	1.0
+UC096_V2	CST-III	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	8	0	7	0	15	0.5333	1.0
+UC096_V2	CST-III	ViraLM	Attention/transformer	all-virus	phage	36	0	310	0	346	0.104	1.0
+UC028_V2	CST-III	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	82	0	262	0	344	0.2384	1.0
+UC028_V2	CST-III	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	VirSorter	Feature-based ML	phage-only	phage	0	0	344	0	344	0.0	NA
+UC028_V2	CST-III	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	VirSorter2	Feature-based ML	all-virus	phage	5	0	339	0	344	0.0145	1.0
+UC028_V2	CST-III	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	VirFinder	Feature-based ML	phage-only	phage	207	0	137	0	344	0.6017	1.0
+UC028_V2	CST-III	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	PPR-Meta	Deep learning	phage+plasmid	phage	112	0	232	0	344	0.3256	1.0
+UC028_V2	CST-III	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	VIBRANT	Feature-based ML	prokaryotic viruses	phage	0	0	344	0	344	0.0	NA
+UC028_V2	CST-III	Seeker	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	Seeker	Deep learning	phage-only	phage	2	0	342	0	344	0.0058	1.0
+UC028_V2	CST-III	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	MetaPhinder	Reference-based	phage-only	phage	0	0	344	0	344	0.0	NA
+UC028_V2	CST-III	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	Sourmash	Reference-based	database-dependent	phage	0	0	344	0	344	0.0	NA
+UC028_V2	CST-III	geNomad	DNN + markers	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	geNomad	DNN + markers	all-virus	phage	0	0	344	0	344	0.0	NA
+UC028_V2	CST-III	HVSeeker	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	HVSeeker	Deep learning	phage-only	phage	32	0	312	0	344	0.093	1.0
+UC028_V2	CST-III	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	Jaeger	Deep learning	phage-only	phage	0	0	344	0	344	0.0	NA
+UC028_V2	CST-III	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	TransGINmer	Attention/transformer	all-virus	phage	212	0	132	0	344	0.6163	1.0
+UC028_V2	CST-III	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC028_V2	CST-III	ViraLM	Attention/transformer	all-virus	phage	0	0	344	0	344	0.0	NA
+UC074_V2	CST-IV	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	337	0	508	0	845	0.3988	1.0
+UC074_V2	CST-IV	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	VirSorter	Feature-based ML	phage-only	phage	4	0	841	0	845	0.0047	1.0
+UC074_V2	CST-IV	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	VirSorter2	Feature-based ML	all-virus	phage	25	0	820	0	845	0.0296	1.0
+UC074_V2	CST-IV	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	VirFinder	Feature-based ML	phage-only	phage	176	0	669	0	845	0.2083	1.0
+UC074_V2	CST-IV	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	PPR-Meta	Deep learning	phage+plasmid	phage	154	0	691	0	845	0.1822	1.0
+UC074_V2	CST-IV	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	VIBRANT	Feature-based ML	prokaryotic viruses	phage	8	0	837	0	845	0.0095	1.0
+UC074_V2	CST-IV	Seeker	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	Seeker	Deep learning	phage-only	phage	409	0	436	0	845	0.484	1.0
+UC074_V2	CST-IV	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	MetaPhinder	Reference-based	phage-only	phage	112	0	733	0	845	0.1325	1.0
+UC074_V2	CST-IV	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	Sourmash	Reference-based	database-dependent	phage	0	0	845	0	845	0.0	NA
+UC074_V2	CST-IV	geNomad	DNN + markers	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	geNomad	DNN + markers	all-virus	phage	25	0	820	0	845	0.0296	1.0
+UC074_V2	CST-IV	HVSeeker	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	HVSeeker	Deep learning	phage-only	phage	447	0	398	0	845	0.529	1.0
+UC074_V2	CST-IV	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	Jaeger	Deep learning	phage-only	phage	0	0	845	0	845	0.0	NA
+UC074_V2	CST-IV	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	TransGINmer	Attention/transformer	all-virus	phage	514	0	331	0	845	0.6083	1.0
+UC074_V2	CST-IV	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	0	0	0	0	0	NA	NA
+UC074_V2	CST-IV	ViraLM	Attention/transformer	all-virus	phage	84	0	761	0	845	0.0994	1.0
+UC093_V3	CST-IV	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	131	0	465	0	596	0.2198	1.0
+UC093_V3	CST-IV	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	VirSorter	Feature-based ML	phage-only	phage	9	0	587	0	596	0.0151	1.0
+UC093_V3	CST-IV	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	VirSorter2	Feature-based ML	all-virus	phage	24	0	572	0	596	0.0403	1.0
+UC093_V3	CST-IV	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	VirFinder	Feature-based ML	phage-only	phage	47	0	549	0	596	0.0789	1.0
+UC093_V3	CST-IV	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	PPR-Meta	Deep learning	phage+plasmid	phage	64	0	532	0	596	0.1074	1.0
+UC093_V3	CST-IV	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	VIBRANT	Feature-based ML	prokaryotic viruses	phage	8	0	588	0	596	0.0134	1.0
+UC093_V3	CST-IV	Seeker	Deep learning	phage-only	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC093_V3	CST-IV	Seeker	Deep learning	phage-only	phage	174	0	422	0	596	0.2919	1.0
+UC093_V3	CST-IV	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	MetaPhinder	Reference-based	phage-only	phage	86	0	510	0	596	0.1443	1.0
+UC093_V3	CST-IV	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	Sourmash	Reference-based	database-dependent	phage	0	0	596	0	596	0.0	NA
+UC093_V3	CST-IV	geNomad	DNN + markers	all-virus	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	geNomad	DNN + markers	all-virus	phage	20	0	576	0	596	0.0336	1.0
+UC093_V3	CST-IV	HVSeeker	Deep learning	phage-only	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC093_V3	CST-IV	HVSeeker	Deep learning	phage-only	phage	235	0	361	0	596	0.3943	1.0
+UC093_V3	CST-IV	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	Jaeger	Deep learning	phage-only	phage	0	0	596	0	596	0.0	NA
+UC093_V3	CST-IV	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	TransGINmer	Attention/transformer	all-virus	phage	186	0	410	0	596	0.3121	1.0
+UC093_V3	CST-IV	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC093_V3	CST-IV	ViraLM	Attention/transformer	all-virus	phage	63	0	533	0	596	0.1057	1.0
+UC055_V2	CST-IV	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC055_V2	CST-IV	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	15	0	32	0	47	0.3191	1.0
+UC055_V2	CST-IV	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC055_V2	CST-IV	VirSorter	Feature-based ML	phage-only	phage	5	0	42	0	47	0.1064	1.0
+UC055_V2	CST-IV	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC055_V2	CST-IV	VirSorter2	Feature-based ML	all-virus	phage	10	0	37	0	47	0.2128	1.0
+UC055_V2	CST-IV	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC055_V2	CST-IV	VirFinder	Feature-based ML	phage-only	phage	5	0	42	0	47	0.1064	1.0
+UC055_V2	CST-IV	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC055_V2	CST-IV	PPR-Meta	Deep learning	phage+plasmid	phage	14	0	33	0	47	0.2979	1.0
+UC055_V2	CST-IV	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC055_V2	CST-IV	VIBRANT	Feature-based ML	prokaryotic viruses	phage	6	0	41	0	47	0.1277	1.0
+UC055_V2	CST-IV	Seeker	Deep learning	phage-only	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC055_V2	CST-IV	Seeker	Deep learning	phage-only	phage	18	0	29	0	47	0.383	1.0
+UC055_V2	CST-IV	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC055_V2	CST-IV	MetaPhinder	Reference-based	phage-only	phage	9	0	38	0	47	0.1915	1.0
+UC055_V2	CST-IV	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC055_V2	CST-IV	Sourmash	Reference-based	database-dependent	phage	0	0	47	0	47	0.0	NA
+UC055_V2	CST-IV	geNomad	DNN + markers	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC055_V2	CST-IV	geNomad	DNN + markers	all-virus	phage	4	0	43	0	47	0.0851	1.0
+UC055_V2	CST-IV	HVSeeker	Deep learning	phage-only	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC055_V2	CST-IV	HVSeeker	Deep learning	phage-only	phage	20	0	27	0	47	0.4255	1.0
+UC055_V2	CST-IV	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	1	0	1	0.0	NA
+UC055_V2	CST-IV	Jaeger	Deep learning	phage-only	phage	0	0	47	0	47	0.0	NA
+UC055_V2	CST-IV	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC055_V2	CST-IV	TransGINmer	Attention/transformer	all-virus	phage	10	0	37	0	47	0.2128	1.0
+UC055_V2	CST-IV	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	1	0	0	0	1	1.0	1.0
+UC055_V2	CST-IV	ViraLM	Attention/transformer	all-virus	phage	12	0	35	0	47	0.2553	1.0
+UC062_V2	CST-IV	DeepVirFinder	Deep learning	prokaryotic-virus-focused	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	DeepVirFinder	Deep learning	prokaryotic-virus-focused	phage	18	0	61	0	79	0.2278	1.0
+UC062_V2	CST-IV	VirSorter	Feature-based ML	phage-only	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	VirSorter	Feature-based ML	phage-only	phage	1	0	78	0	79	0.0127	1.0
+UC062_V2	CST-IV	VirSorter2	Feature-based ML	all-virus	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	VirSorter2	Feature-based ML	all-virus	phage	6	0	73	0	79	0.0759	1.0
+UC062_V2	CST-IV	VirFinder	Feature-based ML	phage-only	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	VirFinder	Feature-based ML	phage-only	phage	10	0	69	0	79	0.1266	1.0
+UC062_V2	CST-IV	PPR-Meta	Deep learning	phage+plasmid	eukaryotic_virus	1	0	2	0	3	0.3333	1.0
+UC062_V2	CST-IV	PPR-Meta	Deep learning	phage+plasmid	phage	12	0	67	0	79	0.1519	1.0
+UC062_V2	CST-IV	VIBRANT	Feature-based ML	prokaryotic viruses	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	VIBRANT	Feature-based ML	prokaryotic viruses	phage	3	0	76	0	79	0.038	1.0
+UC062_V2	CST-IV	Seeker	Deep learning	phage-only	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	Seeker	Deep learning	phage-only	phage	22	0	57	0	79	0.2785	1.0
+UC062_V2	CST-IV	MetaPhinder	Reference-based	phage-only	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	MetaPhinder	Reference-based	phage-only	phage	9	0	70	0	79	0.1139	1.0
+UC062_V2	CST-IV	Sourmash	Reference-based	database-dependent	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	Sourmash	Reference-based	database-dependent	phage	0	0	79	0	79	0.0	NA
+UC062_V2	CST-IV	geNomad	DNN + markers	all-virus	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	geNomad	DNN + markers	all-virus	phage	3	0	76	0	79	0.038	1.0
+UC062_V2	CST-IV	HVSeeker	Deep learning	phage-only	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	HVSeeker	Deep learning	phage-only	phage	33	0	46	0	79	0.4177	1.0
+UC062_V2	CST-IV	Jaeger	Deep learning	phage-only	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	Jaeger	Deep learning	phage-only	phage	0	0	79	0	79	0.0	NA
+UC062_V2	CST-IV	TransGINmer	Attention/transformer	all-virus	eukaryotic_virus	3	0	0	0	3	1.0	1.0
+UC062_V2	CST-IV	TransGINmer	Attention/transformer	all-virus	phage	24	0	55	0	79	0.3038	1.0
+UC062_V2	CST-IV	ViraLM	Attention/transformer	all-virus	eukaryotic_virus	0	0	3	0	3	0.0	NA
+UC062_V2	CST-IV	ViraLM	Attention/transformer	all-virus	phage	10	0	69	0	79	0.1266	1.0

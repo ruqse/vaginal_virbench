@@ -1,0 +1,19 @@
+# Novel ANI panel: short genome ID and best MetaVR v5 nucleotide identity
+# (no_hit = no MetaVR match; 'dark' stratum). Sanitised from the private
+# id_mapping.tsv: internal assembly and sample identifiers are omitted.
+short_id	metavr_best_pident
+novel_Bac_phage_01	93.3
+novel_Cory_phage_02	93.6
+novel_Faec_phage_03	94.8
+novel_Faec_phage_04	94.9
+novel_Clos_phage_05	87.8
+novel_Cory_phage_06	93.1
+novel_Cory_phage_07	91.4
+novel_Cory_phage_08	93.7
+novel_Lcoc_phage_09	84.3
+novel_Clos_phage_10	92.6
+novel_Gord_phage_11	94.0
+novel_Riem_phage_12	94.7
+novel_Arth_phage_13	93.1
+novel_Lcoc_phage_14	no_hit
+novel_Lcoc_phage_15	no_hit

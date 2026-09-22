@@ -1,0 +1,57 @@
+tool	method_approach	homology_dependence	stratum	stratum_label	fragment_length_bp	n_genomes	n_fragments	TP	FN	recall	recall_delta_vs_homology_detectable	evaluable
+VIBRANT	Feature-based machine learning	marker/reference-dependent	dark	homology-free	1500	2	65	2	63	0.0308	-0.0816	yes
+VIBRANT	Feature-based machine learning	marker/reference-dependent	has_relatives	homology-detectable	1500	13	427	48	379	0.1124	0.0816	yes
+VIBRANT	Feature-based machine learning	marker/reference-dependent	dark	homology-free	3000	2	32	8	24	0.25	-0.2357	yes
+VIBRANT	Feature-based machine learning	marker/reference-dependent	has_relatives	homology-detectable	3000	13	210	102	108	0.4857	0.2357	yes
+VirSorter	Feature-based machine learning	marker/reference-dependent	dark	homology-free	1500	2	65	0	65	0.0	-0.0281	yes
+VirSorter	Feature-based machine learning	marker/reference-dependent	has_relatives	homology-detectable	1500	13	427	12	415	0.0281	0.0281	yes
+VirSorter	Feature-based machine learning	marker/reference-dependent	dark	homology-free	3000	2	32	1	31	0.0312	-0.1735	yes
+VirSorter	Feature-based machine learning	marker/reference-dependent	has_relatives	homology-detectable	3000	13	210	43	167	0.2048	0.1735	yes
+VirSorter2	Feature-based machine learning	marker/reference-dependent	dark	homology-free	1500	2	65	20	45	0.3077	-0.1396	yes
+VirSorter2	Feature-based machine learning	marker/reference-dependent	has_relatives	homology-detectable	1500	13	427	191	236	0.4473	0.1396	yes
+VirSorter2	Feature-based machine learning	marker/reference-dependent	dark	homology-free	3000	2	32	16	16	0.5	-0.2857	yes
+VirSorter2	Feature-based machine learning	marker/reference-dependent	has_relatives	homology-detectable	3000	13	210	165	45	0.7857	0.2857	yes
+geNomad	Hybrid deep-learning-plus-marker approaches	marker/reference-dependent	dark	homology-free	1500	2	65	4	61	0.0615	-0.2523	yes
+geNomad	Hybrid deep-learning-plus-marker approaches	marker/reference-dependent	has_relatives	homology-detectable	1500	13	427	134	293	0.3138	0.2523	yes
+geNomad	Hybrid deep-learning-plus-marker approaches	marker/reference-dependent	dark	homology-free	3000	2	32	25	7	0.7812	-0.0997	yes
+geNomad	Hybrid deep-learning-plus-marker approaches	marker/reference-dependent	has_relatives	homology-detectable	3000	13	210	185	25	0.881	0.0997	yes
+MetaPhinder	Reference-based	marker/reference-dependent	dark	homology-free	1500	2	65	14	51	0.2154	-0.2741	yes
+MetaPhinder	Reference-based	marker/reference-dependent	has_relatives	homology-detectable	1500	13	427	209	218	0.4895	0.2741	yes
+MetaPhinder	Reference-based	marker/reference-dependent	dark	homology-free	3000	2	32	5	27	0.1562	-0.3676	yes
+MetaPhinder	Reference-based	marker/reference-dependent	has_relatives	homology-detectable	3000	13	210	110	100	0.5238	0.3676	yes
+Sourmash	Reference-based	marker/reference-dependent	dark	homology-free	1500	2	65	0	65	0.0	0.0	yes
+Sourmash	Reference-based	marker/reference-dependent	has_relatives	homology-detectable	1500	13	427	0	427	0.0	0.0	yes
+Sourmash	Reference-based	marker/reference-dependent	dark	homology-free	3000	2	32	0	32	0.0	0.0	yes
+Sourmash	Reference-based	marker/reference-dependent	has_relatives	homology-detectable	3000	13	210	0	210	0.0	0.0	yes
+TransGINmer	Attention/transformer architectures	composition-based	dark	homology-free	1500	2	65	48	17	0.7385	0.1483	yes
+TransGINmer	Attention/transformer architectures	composition-based	has_relatives	homology-detectable	1500	13	427	252	175	0.5902	-0.1483	yes
+TransGINmer	Attention/transformer architectures	composition-based	dark	homology-free	3000	2	32	21	11	0.6562	0.0801	yes
+TransGINmer	Attention/transformer architectures	composition-based	has_relatives	homology-detectable	3000	13	210	121	89	0.5762	-0.0801	yes
+ViraLM	Attention/transformer architectures	composition-based	dark	homology-free	1500	2	65	65	0	1.0	0.1803	yes
+ViraLM	Attention/transformer architectures	composition-based	has_relatives	homology-detectable	1500	13	427	350	77	0.8197	-0.1803	yes
+ViraLM	Attention/transformer architectures	composition-based	dark	homology-free	3000	2	32	32	0	1.0	0.181	yes
+ViraLM	Attention/transformer architectures	composition-based	has_relatives	homology-detectable	3000	13	210	172	38	0.819	-0.181	yes
+DeepVirFinder	Convolutional and recurrent neural networks	composition-based	dark	homology-free	1500	2	65	63	2	0.9692	0.372	yes
+DeepVirFinder	Convolutional and recurrent neural networks	composition-based	has_relatives	homology-detectable	1500	13	427	255	172	0.5972	-0.372	yes
+DeepVirFinder	Convolutional and recurrent neural networks	composition-based	dark	homology-free	3000	2	32	32	0	1.0	0.2762	yes
+DeepVirFinder	Convolutional and recurrent neural networks	composition-based	has_relatives	homology-detectable	3000	13	210	152	58	0.7238	-0.2762	yes
+HVSeeker	Convolutional and recurrent neural networks	composition-based	dark	homology-free	1500	2	65	65	0	1.0	0.3396	yes
+HVSeeker	Convolutional and recurrent neural networks	composition-based	has_relatives	homology-detectable	1500	13	427	282	145	0.6604	-0.3396	yes
+HVSeeker	Convolutional and recurrent neural networks	composition-based	dark	homology-free	3000	2	32	32	0	1.0	0.3381	yes
+HVSeeker	Convolutional and recurrent neural networks	composition-based	has_relatives	homology-detectable	3000	13	210	139	71	0.6619	-0.3381	yes
+Jaeger	Convolutional and recurrent neural networks	composition-based	dark	homology-free	1500	2	65	0	65	0.0	0.0	no
+Jaeger	Convolutional and recurrent neural networks	composition-based	has_relatives	homology-detectable	1500	13	427	0	427	0.0	0.0	no
+Jaeger	Convolutional and recurrent neural networks	composition-based	dark	homology-free	3000	2	32	31	1	0.9688	0.0116	yes
+Jaeger	Convolutional and recurrent neural networks	composition-based	has_relatives	homology-detectable	3000	13	210	201	9	0.9571	-0.0116	yes
+PPR-Meta	Convolutional and recurrent neural networks	composition-based	dark	homology-free	1500	2	65	59	6	0.9077	0.1559	yes
+PPR-Meta	Convolutional and recurrent neural networks	composition-based	has_relatives	homology-detectable	1500	13	427	321	106	0.7518	-0.1559	yes
+PPR-Meta	Convolutional and recurrent neural networks	composition-based	dark	homology-free	3000	2	32	31	1	0.9688	0.1687	yes
+PPR-Meta	Convolutional and recurrent neural networks	composition-based	has_relatives	homology-detectable	3000	13	210	168	42	0.8	-0.1687	yes
+Seeker	Convolutional and recurrent neural networks	composition-based	dark	homology-free	1500	2	65	64	1	0.9846	0.3289	yes
+Seeker	Convolutional and recurrent neural networks	composition-based	has_relatives	homology-detectable	1500	13	427	280	147	0.6557	-0.3289	yes
+Seeker	Convolutional and recurrent neural networks	composition-based	dark	homology-free	3000	2	32	32	0	1.0	0.3714	yes
+Seeker	Convolutional and recurrent neural networks	composition-based	has_relatives	homology-detectable	3000	13	210	132	78	0.6286	-0.3714	yes
+VirFinder	Feature-based machine learning	composition-based	dark	homology-free	1500	2	65	56	9	0.8615	0.5688	yes
+VirFinder	Feature-based machine learning	composition-based	has_relatives	homology-detectable	1500	13	427	125	302	0.2927	-0.5688	yes
+VirFinder	Feature-based machine learning	composition-based	dark	homology-free	3000	2	32	26	6	0.8125	0.3411	yes
+VirFinder	Feature-based machine learning	composition-based	has_relatives	homology-detectable	3000	13	210	99	111	0.4714	-0.3411	yes

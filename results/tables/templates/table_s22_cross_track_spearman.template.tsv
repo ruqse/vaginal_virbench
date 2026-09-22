@@ -1,0 +1,23 @@
+# Supplementary Table S22. Cross-track Spearman rank correlations.
+# Panel A: per-tool MCC at each context (n = 14 tools). The multi-evidence
+#   column is the 13-sample pooled benchmark (>=1500 bp; Gate 0).
+# Panel B: pairwise Spearman (rho) with BH-adjusted p across 10 comparisons.
+# Panel C: restricted to the five top Track A L1500 tools.
+# Track B uses 10x CST-I (UC115_V2) MCC.
+
+## Panel A: per-tool MCC by context
+tool	Track A (L1500 MCC)	Track A (L3000 MCC)	Track B (10x coverage, CST-I MCC)	Multi-evidence benchmark (MCC)	Track C (MCC)
+DeepVirFinder
+VirSorter
+VirSorter2
+VirFinder
+PPR-Meta
+VIBRANT
+Seeker
+MetaPhinder
+Sourmash
+geNomad
+HVSeeker
+Jaeger
+TransGINmer
+ViraLM

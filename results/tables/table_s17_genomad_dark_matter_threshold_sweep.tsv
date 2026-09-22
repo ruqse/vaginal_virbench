@@ -1,0 +1,7 @@
+virus_score_threshold	n_detected	detection_rate	is_default	detected_contig_ids
+0.30	3	0.0625	0	UC055_V1__NODE_56_length_4159_cov_54.061244;UC096_V2__NODE_260_length_3362_cov_23.163775;UC139_V2__NODE_510_length_4331_cov_7.309356
+0.50	1	0.0208	0	UC096_V2__NODE_260_length_3362_cov_23.163775
+0.60	1	0.0208	0	UC096_V2__NODE_260_length_3362_cov_23.163775
+0.70	1	0.0208	1	UC096_V2__NODE_260_length_3362_cov_23.163775
+0.80	1	0.0208	0	UC096_V2__NODE_260_length_3362_cov_23.163775
+0.90	1	0.0208	0	UC096_V2__NODE_260_length_3362_cov_23.163775

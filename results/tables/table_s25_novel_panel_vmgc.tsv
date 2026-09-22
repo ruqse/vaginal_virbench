@@ -1,0 +1,16 @@
+genome_id	homology_free	vmgc_status	best_match_member	best_vOTU	skani_ani	skani_af_shorter	blast_weighted_identity	blast_af_shorter	metavr_best_pident	vmgc_family	vmgc_host_phylum	vmgc_host_species
+novel_Faec_phage_04	False	vmgc_species_match	MG326.k121_26078	v0444	97.00	99.99	95.15	98.61	94.9	Siphoviridae	-	-
+novel_Arth_phage_13	False	vmgc_species_match	MG141.k121_16321	v0183	97.67	97.45	95.15	85.08	93.1	Siphoviridae	Actinomycetota	Bifidobacterium piotii, Bifidobacterium swidsinskii, Bifidobacterium unknown, Bifidobacterium vaginale, Bifidobacterium vaginale_A, Bifidobacterium vaginale_C, Bifidobacterium vaginale_D, Bifidobacterium vaginale_F, Bifidobacterium vaginale_H
+novel_Clos_phage_10	False	vmgc_species_match	MG1248.k121_90917_1	v09d3	98.88	75.95	95.88	87.18	92.6	Siphoviridae	Bacillota_C	Dialister sp001553355
+novel_Bac_phage_01	False	vmgc_relative	MG222.k121_91071	v04cd	93.89	91.82	91.85	93.07	93.3	Siphoviridae	Bacillota_A	Mageeibacillus indolicus
+novel_Cory_phage_02	False	vmgc_species_match	MG1326.k121_41776	v044d	97.82	95.35	94.15	91.90	93.6	Unclassified	Actinomycetota	Mobiluncus curtisii
+novel_Cory_phage_08	False	vmgc_species_match	MG676.k121_5580_1	v0cb1	99.89	26.96	99.01	100.00	93.7	Siphoviridae	Bacillota_A	Parvimonas sp001552895, Peptoniphilus_A vaginalis
+novel_Clos_phage_05	False	vmgc_species_match	MG610.k121_10464_1	v008c	99.95	100.00	99.79	95.70	87.8	Myoviridae	Bacillota_C	Megasphaera lornae
+novel_Lcoc_phage_15	True	vmgc_species_match	SRR12830919.k121_20387	v072f	95.10	95.31	92.90	95.15	no_hit	Unclassified	-	-
+novel_Faec_phage_03	False	vmgc_species_match	MG113.k121_12726	v0444	97.06	99.20	95.54	99.09	94.8	Siphoviridae	-	-
+novel_Cory_phage_06	False	vmgc_relative	MG17.k121_64863_1	v0ce1	99.99	66.80	99.97	72.03	93.1	Siphoviridae	Bacillota_A	Parvimonas sp001552895, Peptoniphilus_A vaginalis
+novel_Lcoc_phage_14	True	vmgc_species_match	SRR16916864.k121_3938	v0577	95.43	92.92	92.55	95.71	no_hit	Unclassified	Bacillota_C	Megasphaera lornae
+novel_Cory_phage_07	False	vmgc_species_match	MG1158.k121_44990_1	v0ce1	98.29	80.21	97.13	98.31	91.4	Siphoviridae	Bacillota_A	Parvimonas sp001552895, Peptoniphilus_A vaginalis
+novel_Lcoc_phage_09	False	vmgc_relative	MG734.k121_17954_1	v0d30			75.26	11.18	84.3	Siphoviridae	Bacillota, Bacillota_A	Gemella asaccharolytica, Parvimonas sp001552895
+novel_Gord_phage_11	False	vmgc_species_match	SRR17635798.k121_14334	v02c6	96.10	95.56	90.29	90.97	94.0	Siphoviridae	Actinomycetota	Bifidobacterium vaginale_C
+novel_Riem_phage_12	False	vmgc_species_match	SRR17635647.k121_12729	v01f1	97.77	89.14	97.04	89.23	94.7	Unclassified	Bacteroidota	Prevotella timonensis_A

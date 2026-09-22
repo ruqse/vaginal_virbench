@@ -1,0 +1,57 @@
+category	tool	stratum	length	n_genomes	n_fragments	TP	FN	recall	recall_delta_vs_relatives
+A: Reference	MetaPhinder	dark	L1500	2	65	14	51	0.2154	-0.2741
+A: Reference	MetaPhinder	dark	L3000	2	32	5	27	0.1562	-0.3676
+A: Reference	MetaPhinder	has_relatives	L1500	13	427	209	218	0.4895	0.2741
+A: Reference	MetaPhinder	has_relatives	L3000	13	210	110	100	0.5238	0.3676
+A: Reference	Sourmash	dark	L1500	2	65	0	65	0.0	0.0
+A: Reference	Sourmash	dark	L3000	2	32	0	32	0.0	0.0
+A: Reference	Sourmash	has_relatives	L1500	13	427	0	427	0.0	0.0
+A: Reference	Sourmash	has_relatives	L3000	13	210	0	210	0.0	0.0
+B: ML+HMM	VIBRANT	dark	L1500	2	65	2	63	0.0308	-0.0816
+B: ML+HMM	VIBRANT	dark	L3000	2	32	8	24	0.25	-0.2357
+B: ML+HMM	VIBRANT	has_relatives	L1500	13	427	48	379	0.1124	0.0816
+B: ML+HMM	VIBRANT	has_relatives	L3000	13	210	102	108	0.4857	0.2357
+B: ML+HMM	VirFinder	dark	L1500	2	65	56	9	0.8615	0.5688
+B: ML+HMM	VirFinder	dark	L3000	2	32	26	6	0.8125	0.3411
+B: ML+HMM	VirFinder	has_relatives	L1500	13	427	125	302	0.2927	-0.5688
+B: ML+HMM	VirFinder	has_relatives	L3000	13	210	99	111	0.4714	-0.3411
+B: ML+HMM	VirSorter	dark	L1500	2	65	0	65	0.0	-0.0281
+B: ML+HMM	VirSorter	dark	L3000	2	32	1	31	0.0312	-0.1735
+B: ML+HMM	VirSorter	has_relatives	L1500	13	427	12	415	0.0281	0.0281
+B: ML+HMM	VirSorter	has_relatives	L3000	13	210	43	167	0.2048	0.1735
+B: ML+HMM	VirSorter2	dark	L1500	2	65	20	45	0.3077	-0.1396
+B: ML+HMM	VirSorter2	dark	L3000	2	32	16	16	0.5	-0.2857
+B: ML+HMM	VirSorter2	has_relatives	L1500	13	427	191	236	0.4473	0.1396
+B: ML+HMM	VirSorter2	has_relatives	L3000	13	210	165	45	0.7857	0.2857
+C: Deep Learning	DeepVirFinder	dark	L1500	2	65	63	2	0.9692	0.372
+C: Deep Learning	DeepVirFinder	dark	L3000	2	32	32	0	1.0	0.2762
+C: Deep Learning	DeepVirFinder	has_relatives	L1500	13	427	255	172	0.5972	-0.372
+C: Deep Learning	DeepVirFinder	has_relatives	L3000	13	210	152	58	0.7238	-0.2762
+C: Deep Learning	Jaeger	dark	L1500	2	65	0	65	0.0	0.0
+C: Deep Learning	Jaeger	dark	L3000	2	32	31	1	0.9688	0.0116
+C: Deep Learning	Jaeger	has_relatives	L1500	13	427	0	427	0.0	0.0
+C: Deep Learning	Jaeger	has_relatives	L3000	13	210	201	9	0.9571	-0.0116
+C: Deep Learning	PPR-Meta	dark	L1500	2	65	59	6	0.9077	0.1559
+C: Deep Learning	PPR-Meta	dark	L3000	2	32	31	1	0.9688	0.1687
+C: Deep Learning	PPR-Meta	has_relatives	L1500	13	427	321	106	0.7518	-0.1559
+C: Deep Learning	PPR-Meta	has_relatives	L3000	13	210	168	42	0.8	-0.1687
+C: Deep Learning	Seeker	dark	L1500	2	65	64	1	0.9846	0.3289
+C: Deep Learning	Seeker	dark	L3000	2	32	32	0	1.0	0.3714
+C: Deep Learning	Seeker	has_relatives	L1500	13	427	280	147	0.6557	-0.3289
+C: Deep Learning	Seeker	has_relatives	L3000	13	210	132	78	0.6286	-0.3714
+D: LM/Transformer	HVSeeker	dark	L1500	2	65	65	0	1.0	0.3396
+D: LM/Transformer	HVSeeker	dark	L3000	2	32	32	0	1.0	0.3381
+D: LM/Transformer	HVSeeker	has_relatives	L1500	13	427	282	145	0.6604	-0.3396
+D: LM/Transformer	HVSeeker	has_relatives	L3000	13	210	139	71	0.6619	-0.3381
+D: LM/Transformer	TransGINmer	dark	L1500	2	65	48	17	0.7385	0.1483
+D: LM/Transformer	TransGINmer	dark	L3000	2	32	21	11	0.6562	0.0801
+D: LM/Transformer	TransGINmer	has_relatives	L1500	13	427	252	175	0.5902	-0.1483
+D: LM/Transformer	TransGINmer	has_relatives	L3000	13	210	121	89	0.5762	-0.0801
+D: LM/Transformer	ViraLM	dark	L1500	2	65	65	0	1.0	0.1803
+D: LM/Transformer	ViraLM	dark	L3000	2	32	32	0	1.0	0.181
+D: LM/Transformer	ViraLM	has_relatives	L1500	13	427	350	77	0.8197	-0.1803
+D: LM/Transformer	ViraLM	has_relatives	L3000	13	210	172	38	0.819	-0.181
+E: DNN+Markers	geNomad	dark	L1500	2	65	4	61	0.0615	-0.2523
+E: DNN+Markers	geNomad	dark	L3000	2	32	25	7	0.7812	-0.0997
+E: DNN+Markers	geNomad	has_relatives	L1500	13	427	134	293	0.3138	0.2523
+E: DNN+Markers	geNomad	has_relatives	L3000	13	210	185	25	0.881	0.0997

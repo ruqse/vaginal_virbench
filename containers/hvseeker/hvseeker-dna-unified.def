@@ -1,0 +1,129 @@
+Bootstrap: docker
+From: nvidia/cuda:12.1.0-devel-ubuntu22.04
+
+%labels
+    Author BackofenLab
+    Version 1.0
+    Description HVSeeker-DNA for phage/bacteria classification (CPU + GPU unified)
+    GitHub https://github.com/BackofenLab/HVSeeker
+
+%files
+    HVSeeker-DNA/HVSeeker-DNA/docker/environment.yml /opt/environment.yml
+    HVSeeker-DNA/HVSeeker-DNA/*.py /opt/HVSeeker-DNA/
+
+%post
+    # Update and install system dependencies
+    apt-get update && apt-get install -y \
+        python3.10 \
+        python3-pip \
+        wget \
+        bzip2 \
+        ca-certificates \
+        git \
+        curl \
+        && ln -s /usr/bin/python3 /usr/bin/python \
+        && rm -rf /var/lib/apt/lists/*
+
+    # Download and install Miniconda
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh
+    bash /tmp/miniconda.sh -b -p /opt/conda
+    rm /tmp/miniconda.sh
+
+    # Add conda to path for build
+    export PATH="/opt/conda/bin:$PATH"
+
+    # Configure conda to use conda-forge
+    /opt/conda/bin/conda config --set auto_activate_base false
+    /opt/conda/bin/conda config --add channels conda-forge
+    /opt/conda/bin/conda config --add channels bioconda
+    /opt/conda/bin/conda config --set channel_priority strict
+
+    # Accept the TOS (ignore errors)
+    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main || true
+    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r || true
+
+    # Create conda environment
+    /opt/conda/bin/conda create -n HVSeekerDNA python=3.10 -c conda-forge --override-channels -y
+
+    # Install libstdcxx-ng for C++ runtime compatibility
+    /opt/conda/bin/conda install -n HVSeekerDNA -c conda-forge \
+        libstdcxx-ng \
+        --override-channels -y
+
+    # Install dependencies via conda-forge
+    /opt/conda/bin/conda install -n HVSeekerDNA -c conda-forge -c bioconda \
+        seaborn \
+        prodigal \
+        click \
+        pandas \
+        biopython \
+        scikit-learn \
+        scipy \
+        --override-channels -y
+
+    # Install TensorFlow (auto-detects GPU)
+    /opt/conda/bin/conda run -n HVSeekerDNA pip install tensorflow
+
+    # Install PyTorch with CUDA 12.1 support (works on CPU too when no GPU available)
+    /opt/conda/bin/conda run -n HVSeekerDNA pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+    # Clean up conda cache
+    /opt/conda/bin/conda clean -afy
+
+    # Create output directory
+    mkdir -p /output
+
+%environment
+    export PATH="/opt/conda/bin:$PATH"
+    export CONDA_DEFAULT_ENV=HVSeekerDNA
+    export CONDA_PREFIX="/opt/conda/envs/HVSeekerDNA"
+    export PATH="/opt/conda/envs/HVSeekerDNA/bin:$PATH"
+    export LD_LIBRARY_PATH="/opt/conda/envs/HVSeekerDNA/lib:$LD_LIBRARY_PATH"
+    export MPLCONFIGDIR="/tmp/matplotlib"
+
+%runscript
+    #!/bin/bash
+    source /opt/conda/etc/profile.d/conda.sh
+    conda activate HVSeekerDNA
+    cd /opt/HVSeeker-DNA
+    exec python -u "$@"
+
+%test
+    export LD_LIBRARY_PATH="/opt/conda/envs/HVSeekerDNA/lib:$LD_LIBRARY_PATH"
+    export MPLCONFIGDIR="/tmp/matplotlib"
+    mkdir -p /tmp/matplotlib
+    /opt/conda/envs/HVSeekerDNA/bin/python -c "import torch; print(f'PyTorch: {torch.__version__}'); print(f'CUDA available: {torch.cuda.is_available()}')"
+    /opt/conda/envs/HVSeekerDNA/bin/python -c "import tensorflow as tf; print(f'TensorFlow: {tf.__version__}'); print(f'GPUs: {len(tf.config.list_physical_devices(\"GPU\"))}')"
+    /opt/conda/envs/HVSeekerDNA/bin/python -c "from Bio import SeqIO; print('BioPython OK')"
+    /opt/conda/envs/HVSeekerDNA/bin/python -c "import sklearn; print(f'sklearn: {sklearn.__version__}')"
+
+%help
+    HVSeeker-DNA Container (Unified CPU + GPU)
+    ==========================================
+    A deep learning tool for distinguishing bacterial and phage sequences.
+
+    This container works with BOTH CPU and GPU:
+    - With --nv flag: Uses NVIDIA GPU acceleration
+    - Without --nv flag: Falls back to CPU mode
+
+    Repository: https://github.com/BackofenLab/HVSeeker
+
+    BUILD (on x86_64 Linux):
+    ------------------------
+    apptainer build hvseeker-dna.sif hvseeker-dna-unified.def
+
+    USAGE WITH GPU:
+    ---------------
+    apptainer run --nv --bind /path/to/data:/data hvseeker-dna.sif \
+        main.py -f /data/Phage /data/Bacteria -vts 10 10 -m 1 -l 1000 -o /data/output
+
+    USAGE WITH CPU:
+    ---------------
+    apptainer run --bind /path/to/data:/data hvseeker-dna.sif \
+        main.py -predict -o /data/output
+
+    NOTES:
+    ------
+    - Use --nv flag for GPU acceleration (requires NVIDIA drivers)
+    - Use --bind to mount data directories
+    - Pretrained models: https://drive.google.com/drive/folders/1wHWgxH3Y9YSNJXugtZZrLI4PWJ6SDkaK

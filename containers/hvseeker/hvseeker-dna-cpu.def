@@ -1,0 +1,142 @@
+Bootstrap: docker
+From: ubuntu:22.04
+
+%labels
+    Author BackofenLab
+    Version 1.0
+    Description HVSeeker-DNA for phage/bacteria classification (CPU version)
+    GitHub https://github.com/BackofenLab/HVSeeker
+
+%files
+    HVSeeker-DNA/docker/environment.yml /opt/environment.yml
+    HVSeeker-DNA/*.py /opt/HVSeeker-DNA/
+
+%post
+    # Update and install system dependencies
+    apt-get update && apt-get install -y \
+        python3.10 \
+        python3-pip \
+        wget \
+        bzip2 \
+        ca-certificates \
+        git \
+        curl \
+        && ln -s /usr/bin/python3 /usr/bin/python \
+        && rm -rf /var/lib/apt/lists/*
+
+    # Detect architecture
+    ARCH=$(uname -m)
+    if [ "$ARCH" = "aarch64" ]; then
+        MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh"
+    else
+        MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+    fi
+
+    # Download and install Miniconda (architecture-appropriate)
+    wget $MINICONDA_URL -O /tmp/miniconda.sh
+    bash /tmp/miniconda.sh -b -p /opt/conda
+    rm /tmp/miniconda.sh
+
+    # Add conda to path for build
+    export PATH="/opt/conda/bin:$PATH"
+
+    # Configure conda to use conda-forge (no TOS required)
+    /opt/conda/bin/conda config --set auto_activate_base false
+    /opt/conda/bin/conda config --add channels conda-forge
+    /opt/conda/bin/conda config --add channels bioconda
+    /opt/conda/bin/conda config --set channel_priority strict
+
+    # Accept the TOS (ignore errors)
+    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main || true
+    /opt/conda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r || true
+
+    # Create conda environment using only conda-forge (no TOS required)
+    /opt/conda/bin/conda create -n HVSeekerDNA python=3.10 -c conda-forge --override-channels -y
+
+    # Install libstdcxx-ng first to get updated C++ runtime library
+    /opt/conda/bin/conda install -n HVSeekerDNA -c conda-forge \
+        libstdcxx-ng \
+        --override-channels -y
+
+    # Install dependencies via conda-forge (use compatible versions)
+    /opt/conda/bin/conda install -n HVSeekerDNA -c conda-forge -c bioconda \
+        seaborn \
+        prodigal \
+        click \
+        pandas \
+        biopython \
+        scikit-learn \
+        scipy \
+        --override-channels -y
+
+    # Install TensorFlow CPU version via pip
+    /opt/conda/bin/conda run -n HVSeekerDNA pip install tensorflow
+
+    # Install PyTorch CPU version via pip
+    /opt/conda/bin/conda run -n HVSeekerDNA pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+    # Clean up conda cache to reduce image size
+    /opt/conda/bin/conda clean -afy
+
+    # Create output directory
+    mkdir -p /output
+
+%environment
+    export PATH="/opt/conda/bin:$PATH"
+    export CONDA_DEFAULT_ENV=HVSeekerDNA
+    export CONDA_PREFIX="/opt/conda/envs/HVSeekerDNA"
+    export PATH="/opt/conda/envs/HVSeekerDNA/bin:$PATH"
+    # Use conda's libstdc++ for compatibility
+    export LD_LIBRARY_PATH="/opt/conda/envs/HVSeekerDNA/lib:$LD_LIBRARY_PATH"
+    export MPLCONFIGDIR="/tmp/matplotlib"
+
+%runscript
+    #!/bin/bash
+    source /opt/conda/etc/profile.d/conda.sh
+    conda activate HVSeekerDNA
+    cd /opt/HVSeeker-DNA
+    exec python -u "$@"
+
+%test
+    # Basic sanity test
+    export LD_LIBRARY_PATH="/opt/conda/envs/HVSeekerDNA/lib:$LD_LIBRARY_PATH"
+    export MPLCONFIGDIR="/tmp/matplotlib"
+    mkdir -p /tmp/matplotlib
+    /opt/conda/envs/HVSeekerDNA/bin/python -c "import torch; print(f'PyTorch: {torch.__version__}')"
+    /opt/conda/envs/HVSeekerDNA/bin/python -c "import tensorflow; print(f'TensorFlow: {tensorflow.__version__}')"
+    /opt/conda/envs/HVSeekerDNA/bin/python -c "from Bio import SeqIO; print('BioPython OK')"
+    /opt/conda/envs/HVSeekerDNA/bin/python -c "import sklearn; print(f'sklearn: {sklearn.__version__}')"
+
+%help
+    HVSeeker-DNA Container (CPU Version)
+    =====================================
+    A deep learning tool for distinguishing bacterial and phage sequences.
+
+    This is a CPU-only version for local testing on ARM/x86 systems.
+    For GPU acceleration, build hvseeker-dna.def on an x86_64 system with NVIDIA support.
+
+    Repository: https://github.com/BackofenLab/HVSeeker
+
+    USAGE:
+    ------
+    # Training mode:
+    apptainer run --bind /path/to/data:/data hvseeker-dna-cpu.sif \
+        main.py -f /data/Phage /data/Bacteria -vts 10 10 -m 1 -l 1000 -o /data/output
+
+    # Prediction mode:
+    apptainer run --bind /path/to/data:/data hvseeker-dna-cpu.sif \
+        main.py -predict -o /data/output
+
+    EXEC MODE:
+    ----------
+    apptainer exec hvseeker-dna-cpu.sif python /opt/HVSeeker-DNA/main.py --help
+
+    SHELL MODE:
+    -----------
+    apptainer shell hvseeker-dna-cpu.sif
+
+    NOTES:
+    ------
+    - Use --bind to mount data directories
+    - Pretrained models: https://drive.google.com/drive/folders/1wHWgxH3Y9YSNJXugtZZrLI4PWJ6SDkaK
+    - For GPU support, use hvseeker-dna.def (requires x86_64 + NVIDIA)

@@ -1,0 +1,3 @@
+contrast	metric	n_marker	n_sequence	marker_mean	marker_min	marker_max	sequence_mean	sequence_min	sequence_max	U_marker	p_two_sided	p_one_sided_marker_greater	p_one_sided_marker_less	test
+Tier 1 prophage recall	prophage_recall	4	7	0.9133	0.7551	0.9796	0.7697	0.3878	0.9184	23.0	0.097	0.0485	0.9576	exact rank permutation with ties; unit = tool; two-sided = twice smaller inclusive tail
+free-phage positive rate	freephage_rate	4	7	0.218	0.1028	0.2921	0.3703	0.1826	0.6349	4.0	0.0727	0.9788	0.0364	exact rank permutation with ties; unit = tool; two-sided = twice smaller inclusive tail
