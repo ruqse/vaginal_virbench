@@ -137,7 +137,8 @@ modules and Apptainer/Singularity. To run them elsewhere:
 3. Reference databases go under `databases/` (see `scripts/04_ground_truth/download_databases.sh`
    and `scripts/06_tool_execution/setup_genomad.sh`).
 4. Every tool's container image and version is listed in `containers/containers.tsv`
-   (see `containers/README.md`). The nine CPU tools use public images;
+   (see `containers/README.md`). The nine CPU tools use public images from the
+   [What the Phage (WtP)](https://github.com/replikation/What_the_Phage) image set;
    `scripts/06_tool_execution/pull_tool_images.sh` downloads them to
    `What_the_Phage/singularity_images/`, where `scripts/06_tool_execution/run_cpu_tools.sh`
    expects them. geNomad is pulled by `scripts/06_tool_execution/setup_genomad.sh`, and
