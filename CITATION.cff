@@ -23,6 +23,12 @@ keywords:
 preferred-citation:
   type: article
   title: "Benchmarking virus identification tools on vaginal metagenomes"
+  journal: "bioRxiv"
+  year: 2026
+  month: 9
+  doi: "10.64898/2026.09.24.753817"
+  url: "https://www.biorxiv.org/content/10.64898/2026.09.24.753817v1"
+  status: preprint
   authors:
     - family-names: Dube
       given-names: Faruk

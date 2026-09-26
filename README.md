@@ -2,8 +2,11 @@
 
 ![Figure 1. Study design: data sources, the three benchmark tracks and external validation, the 14 tools by method family, and scoring](results/figures/fig1.png)
 
-Code, derived data, figures, tables and Supplementary Information for the
-manuscript by Dube, Happel, Jaspan and Warchavchik Hugerth.
+Code, derived data, figures, tables and Supplementary Information for:
+
+Dube F, Happel A-U, Jaspan HB, Warchavchik Hugerth L. Benchmarking virus
+identification tools on vaginal metagenomes. bioRxiv 2026.
+https://doi.org/10.64898/2026.09.24.753817
 
 We benchmarked 14 virus identification tools from five methodological
 approaches on vaginal metagenomes, in four evaluations plus an independent
@@ -174,4 +177,5 @@ Code is released under the MIT licence (`LICENSE`). Figures, tables and the
 Supplementary Information in `results/figures/`, `results/tables/` and
 `results/supplementary/` are released under the Creative Commons
 Attribution 4.0 licence (CC BY 4.0, https://creativecommons.org/licenses/by/4.0/).
-Citation information is in `CITATION.cff`.
+If you use this repository, please cite the preprint
+(https://doi.org/10.64898/2026.09.24.753817); citation information is in `CITATION.cff`.
