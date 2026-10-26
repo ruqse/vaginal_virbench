@@ -54,6 +54,16 @@ def write(path, rows, fields=None):
         w.writeheader(); w.writerows(rows)
 
 
+def with_fdr(rows):
+    """Insert FDR = FP/(TP+FP) after precision; NA when a tool made no positive call."""
+    def fdr(r):
+        called = int(r["TP"]) + int(r["FP"])
+        return str(round(int(r["FP"]) / called, 4)) if called else "NA"
+    fields = list(rows[0])
+    fields.insert(fields.index("precision") + 1, "FDR")
+    return [{**r, "FDR": fdr(r)} for r in rows], fields
+
+
 def tracka():
     base = ROOT / "results/spike_in_benchmark"
     manifest = "data/spike_in/fragments/fragment_manifest.tsv"
@@ -65,14 +75,16 @@ def tracka():
         rows = read(d / "benchmark_results.tsv")
         combined += [{"length_bin": f"L{length}", "length_bp": length, **r} for r in rows]
         if length == 1500:
-            write(TAB / "table_s34_track_a_overall_metrics_full.tsv", sorted(rows, key=lambda r: -float(r["MCC"])))
+            s34, s34_fields = with_fdr(rows)
+            write(TAB / "table_s34_track_a_overall_metrics_full.tsv",
+                  sorted(s34, key=lambda r: -float(r["MCC"])), s34_fields)
             write(TAB / "table2_track_a_overall_metrics_L1500.tsv", rows,
                   ["tool", "precision", "recall", "F1", "MCC", "AUPRC"])
             shutil.copy2(d / "benchmark_results_by_category.tsv", TAB / "table_s1_track_a_by_category_L1500.tsv")
             shutil.copy2(d / "benchmark_results_by_source_genome.tsv", TAB / "table_s20_track_a_by_source_genome_L1500.tsv")
         else:
             write(ROOT / f"results/secondary_tables/table_s_track_a_L{length}.tsv", rows)
-    write(TAB / "table_s7_track_a_overall_metrics_by_length.tsv", combined)
+    write(TAB / "table_s7_track_a_overall_metrics_by_length.tsv", *with_fdr(combined))
     run("scripts/07_evaluation/dump_pr_curve_scores.py", "--manifest", manifest,
         "--results-root", base, "--lengths", "L1500", "L3000",
         "--output", base / "pr_curve_scores.tsv.gz")

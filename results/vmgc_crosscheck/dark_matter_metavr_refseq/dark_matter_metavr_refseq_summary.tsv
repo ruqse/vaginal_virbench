@@ -1,0 +1,7 @@
+metavr_status	refseq_status	n_contigs
+metavr_absent	refseq_absent	12
+metavr_absent	refseq_homolog	5
+metavr_absent	refseq_weak	3
+metavr_relative	refseq_absent	24
+metavr_relative	refseq_homolog	1
+metavr_relative	refseq_weak	3

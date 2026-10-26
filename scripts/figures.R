@@ -17,7 +17,7 @@
 # the package versions listed there; other versions can shift pixels.
 #
 # Figure IDs (= output file names), in render order:
-#   fig2  fig3  fig4  fig5  fig6  fig7  fig8  fig9
+#   fig2  fig3  fig4  fig5  fig6  fig7  fig8
 #   fig_s1  fig_s2  fig_s3  fig_s4  fig_s5  fig_s6  fig_s7  fig_s8  fig_s9
 #   fig_s10  fig_s12  fig_s13  fig_s17  fig_s18  fig_s19  fig_s20  fig_s21
 #   fig_s22
@@ -103,7 +103,7 @@ ONLY    <- if (is.null(opt$only)) NULL else trimws(strsplit(opt$only, ",")[[1]])
 # B: available-score precision-recall curves for the top 6 tools by Table S7
 #    AUPRC, with implemented decision rules marked separately. Curves end where
 #    usable scores end; they are not a graphical integral of full-cohort AUPRC.
-# Rendered at print size (7.1 in, scale = 1), like fig3/fig4/fig5/fig9, so the
+# Rendered at print size (7.1 in, scale = 1), like fig3/fig4/fig5/fig8, so the
 # PT_MIN = 8 floor holds.
 
 fig2 <- function(out_dir) {
@@ -374,7 +374,10 @@ fig3 <- function(out_dir) {
       geom_line(linewidth = 0.6) +
       geom_point(aes(shape = tool), size = 1.4) +
       facet_wrap(~metric, scales = "free_y", ncol = 3) +
-      scale_x_log10(labels = scales::comma_format()) +
+      # Ticks at the six tested lengths, in kb: default log ticks (1k, 3k, 10k)
+      # left 500, 1,500 and 5,000 unlabelled, and bp labels overlap at print width.
+      scale_x_log10(breaks = c(500, 1000, 1500, 3000, 5000, 10000),
+                    labels = c("0.5", "1", "1.5", "3", "5", "10")) +
       # "Approach" (not "Family"/"Method") is the shared legend title for
       # FAMILY_PALETTE across fig3B, fig4A, fig6C/D and fig_s9. Renamed from
       # "Family" on 2026-09-02 to stop it reading as taxonomic family.
@@ -398,7 +401,7 @@ fig3 <- function(out_dir) {
         values = tool_shapes,
         name = "Tool", guide = tool_guide
       ) +
-      labs(x = "Fragment length (bp)", y = "Score") +
+      labs(x = "Fragment length (kb)", y = "Score") +
       theme_pub() +
       # Legend below the panel, not beside it: at print width the right-hand
       # legend cost ~17 % of the canvas and squeezed the three facets.
@@ -711,54 +714,14 @@ fig5 <- function(out_dir) {
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#   Fig. 6A-B  - Assembly-based benchmark (Track B)                 #
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# A: viral source genomes with >= 1 contig >= 1,500 bp by coverage.
-# B: CST-IV-B minus CST-I delta MCC at 10x, nine selected tools
-#    (build_fig5d_delta_ci() in functions.R, shared with Fig. S12).
-
-fig6 <- function(out_dir) {
-
-  # -- Panel A --
-  build_fig5a_assembly_dynamics <- function(root = ROOT) {
-    df_gt <- .load_trackB_assemblies(root)
-    if (nrow(df_gt) == 0) stop("No Track B assembly ground truth files found")
-    viral_counts <- df_gt %>%
-      filter(label == "viral", length >= 1500) %>%
-      group_by(background, CST, coverage) %>%
-      summarise(n_viral = n_distinct(source_genome), .groups = "drop")
-
-    ggplot(viral_counts, aes(x = factor(coverage), y = n_viral, fill = CST)) +
-      geom_col(position = position_dodge(width = 0.7), width = 0.6,
-               colour = "black", linewidth = 0.3) +
-      scale_y_continuous(breaks = seq(0, 14, 2),
-                         expand = expansion(mult = c(0, 0.05))) +
-      scale_fill_manual(values = CST_COLORS) +
-      labs(x = "Spike-in coverage (x)",
-           y = "Viral source genomes assembled\n(>= 1 contig >= 1,500 bp)",
-           fill = "Background") +
-      theme_pub()
-  }
-
-  # -- Assemble and save --
-  p <- build_fig5a_assembly_dynamics(ROOT) |
-       build_fig5d_delta_ci(ROOT)
-  p <- p + plot_annotation(tag_levels = "A") &
-    theme(plot.tag = element_text(face = "bold", size = 14))
-  save_fig(p, file.path(out_dir, "fig6.png"), w = 16, h = 7)
-}
-
-
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#   Fig. 7A-D  - Track C ground truth and ranking                   #
+#   Fig. 6A-C  - Track C ground truth and ranking                   #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # A: evidence-line co-occurrence heatmap.
 # B: Phi29 enrichment ratio distribution (Track C) with GMM components.
 # C: Track C MCC ranking with AUPRC.
-# D: dark-matter detection rate per tool.
+# (Former panel D, dark-matter detection rate, moved to Figure S23B.)
 
-fig7 <- function(out_dir) {
+fig6 <- function(out_dir) {
 
   # -- Panel A --
   EVIDENCE_LABELS <- c(
@@ -865,7 +828,9 @@ fig7 <- function(out_dir) {
                vjust = 1.5, hjust = 0, size = 4, colour = "#d62728") +
       annotate("text", x = 1.95, y = Inf, label = "GMM cutoff\nR = 37.9",
                vjust = 4.6, hjust = 0, size = 4, colour = "#54278f") +
-      labs(x = expression(log[10](R)), y = "Number of contigs") +
+      # sqrt y: the enriched component (weight 0.017) is flat on a linear axis.
+      scale_y_sqrt() +
+      labs(x = expression(log[10](R)), y = "Contigs (square-root scale)") +
       theme_pub() +
       theme(legend.position = "right",
             legend.direction = "vertical",
@@ -938,37 +903,9 @@ fig7 <- function(out_dir) {
     p
   }
 
-  # -- Panel D --
-  # Headline dark-matter detection-rate bars only (single panel, no inner tag).
-  # Used as a panel of the main multi-evidence figure (Fig. 6D); the per-contig
-  # high-consensus view lives in Table S14.
-  build_dark_matter_rates <- function(root = ROOT) {
-    rates_path <- file.path(TABLES_DIR, "table_s15_dark_matter_detection_rates.tsv")
-    if (!file.exists(rates_path)) stop("Missing table_s15_dark_matter_detection_rates.tsv")
-    df_rates <- read_tsv(rates_path, show_col_types = FALSE) %>%
-      arrange(detection_rate) %>%
-      mutate(
-        tool = factor(tool, levels = tool),
-        family = TOOL_FAMILY[as.character(tool)]
-      )
-    p <- ggplot(df_rates, aes(x = detection_rate, y = tool)) +
-      geom_col(aes(fill = family),
-               colour = "black", linewidth = 0.25, width = 0.7) +
-      geom_text(aes(label = paste0(n_detected, "/", n_dark_matter)),
-                hjust = -0.1, size = 3) +
-      geom_vline(xintercept = 0.5, linetype = "dotted", colour = "grey50") +
-      scale_fill_manual(values = FAMILY_PALETTE, name = "Approach") +
-      scale_x_continuous(limits = c(0, 1.1), labels = percent_format()) +
-      labs(x = "Dark-matter detection rate", y = NULL) +
-      theme_pub() +
-      theme(legend.position = "right",
-            legend.direction = "vertical",
-            legend.title = element_text(size = 11),
-            legend.text = element_text(size = 10),
-            legend.key.size = unit(0.55, "cm")) +
-      guides(fill = guide_legend(ncol = 1, title.position = "top"))
-    colour_axis_by_family(p, axis = "y")
-  }
+  # The former panel D (per-tool rate on the 48 unclassified-enriched contigs) was
+  # removed 2026-10-19: 45/48 carry plasmid evidence, so the rate is not recall
+  # (Table S42). Per-tool counts now appear in Figure S23B and Table S15.
 
   # -- Assemble and save --
   # 6B is wrapped so patchwork does not row-align it to 6A: 6A's rotated
@@ -976,28 +913,23 @@ fig7 <- function(out_dir) {
   # 6B's log10(R) title far below its own axis.
   top <- build_fig6a_evidence_cooccurrence(ROOT) |
          wrap_elements(full = build_fig6c_enrichment_ratio(ROOT))
-  # 6C and 6D are the same family-coloured tool bars; collect their
-  # identical Family legends into one shared vertical legend.
-  bottom <- (build_fig7a_track_c_mcc_ranking(ROOT) |
-             build_dark_matter_rates(ROOT)) +
-            plot_layout(guides = "collect")
-  p <- top / bottom
+  p <- top / build_fig7a_track_c_mcc_ranking(ROOT)
   p <- p + plot_annotation(tag_levels = "A") &
     theme(plot.tag = element_text(face = "bold", size = 14))
-  save_fig(p, file.path(out_dir, "fig7.png"), w = 15, h = 11)
+  save_fig(p, file.path(out_dir, "fig6.png"), w = 15, h = 10)
 }
 
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#   Fig. 8A-B  - External validation, 30-sample MiTCH cohort        #
+#   Fig. 7A-B  - External validation, 30-sample MiTCH cohort        #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # A: pooled per-tool MCC with sample-block bootstrap 95% CI, alongside the
 #    matched primary-cohort (no-E5) MCC; see Table S22 for rank correlations.
 # B: observational diversity contrast (high- vs low-diversity), delta MCC + CI.
 # Data: results/test_real/viralm_investigation/mitch_scaleup30/scaleup30_*.tsv
 
-fig8 <- function(out_dir) {
+fig7 <- function(out_dir) {
 
   # Tools shown in the main-figure ranking/diversity panels (top tier + mid tier);
   # the full 14-tool matrix is Fig. S13.
@@ -1056,13 +988,13 @@ fig8 <- function(out_dir) {
        build_fig8c_diversity(ROOT)
   p <- p + plot_annotation(tag_levels = "A") &
     theme(plot.tag = element_text(face = "bold", size = 14))
-  save_fig(p, file.path(out_dir, "fig8.png"), w = 15, h = 8)
+  save_fig(p, file.path(out_dir, "fig7.png"), w = 15, h = 8)
 }
 
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#   Fig. 9A-B  - Compute cost does not predict accuracy             #
+#   Fig. 8A-B  - Compute cost does not predict accuracy             #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # A: Track A 1,500 bp accuracy-vs-cost space. x = wall-clock runtime (log),
 #    y = MCC, point area = peak resident memory (log), colour = methodological
@@ -1091,7 +1023,7 @@ fig8 <- function(out_dir) {
 # count between the two co-assemblies, so it is input size, not community
 # complexity. Plotting per-contig cost is what makes that visible.
 
-fig9 <- function(out_dir) {
+fig8 <- function(out_dir) {
 
   # Track B 10x background identities (coverage sweep backgrounds; Methods).
   BG_CST_I    <- "UC115_V2"
@@ -1258,7 +1190,7 @@ fig9 <- function(out_dir) {
   p <- p + plot_layout(heights = c(1.25, 1)) +
     plot_annotation(tag_levels = "A") &
     theme_print()
-  save_fig(p, file.path(out_dir, "fig9.png"), w = 7.1, h = 7.4, scale = 1)
+  save_fig(p, file.path(out_dir, "fig8.png"), w = 7.1, h = 7.4, scale = 1)
 }
 
 
@@ -1722,7 +1654,7 @@ fig_s8 <- function(out_dir) {
                        levels = c("TP", "TN", "dark_matter", "excluded"),
                        labels = c("Viral TP (R>10)",
                                   "Bacterial TN",
-                                  "Dark matter",
+                                  "Unclassified-enriched",
                                   "Excluded"))
       ) %>%
       filter(!is.na(contig_length), contig_length > 0)
@@ -1733,7 +1665,7 @@ fig_s8 <- function(out_dir) {
 
     label_palette <- c("Viral TP (R>10)" = "#d62728",
                        "Bacterial TN"    = "#2980b9",
-                       "Dark matter"     = "#7f3b08",
+                       "Unclassified-enriched" = "#7f3b08",
                        "Excluded"        = "grey70")
 
     ggplot(df, aes(x = contig_length, fill = label)) +
@@ -1933,7 +1865,7 @@ fig_s10 <- function(out_dir) {
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #   Fig. S12  - Track B CST contrast, all 14 tools                  #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# Delta MCC with 95% CI for every tool (the Fig. 6B builder, all tools).
+# Delta false-positive rate with 95% CI for every tool.
 
 fig_s12 <- function(out_dir) {
 
@@ -2279,7 +2211,7 @@ fig_s22 <- function(out_dir) {
 
 FIGURES <- list(
   fig2    = fig2,    fig3    = fig3,    fig4    = fig4,    fig5    = fig5,
-  fig6    = fig6,    fig7    = fig7,    fig8    = fig8,    fig9    = fig9,
+  fig6    = fig6,    fig7    = fig7,    fig8    = fig8,
   fig_s1  = fig_s1,  fig_s2  = fig_s2,  fig_s3  = fig_s3,  fig_s4  = fig_s4,
   fig_s5  = fig_s5,  fig_s6  = fig_s6,  fig_s7  = fig_s7,  fig_s8  = fig_s8,
   fig_s9  = fig_s9,  fig_s10 = fig_s10, fig_s12 = fig_s12, fig_s13 = fig_s13,

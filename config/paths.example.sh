@@ -24,6 +24,7 @@ export VMGC_TARBALL="/path/to/VMGC_virus.tar.gz"                     # VMGC geno
 export COHORT_ROOT="/path/to/expansion_cohort_reads"                 # SRA downloads (Track B backgrounds)
 export MITCH_DATA="/path/to/mitch/data"                              # MiTCH reads (see Data availability)
 export MITCH_ASSEMBLY_TARBALL="/path/to/mitch/Assembly.tar.gz"      # MiTCH assemblies
+export BOWTIE2_INDEX="/path/to/hg19/bowtie2/index_prefix"         # human reference for host removal
 
 # Node-local temporary space (SNIC_TMP is honoured when set; TMPDIR otherwise)
 # export TMPDIR="/path/to/tmp"

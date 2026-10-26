@@ -1,0 +1,4 @@
+tool_set	n_tools	spearman_rho	S22D_published_CI_low	S22D_published_CI_high	MiTCH_only_CI_low	MiTCH_only_CI_high	primary_only_CI_low	primary_only_CI_high	two_cohort_CI_low	two_cohort_CI_high	two_cohort_CI_low_primary_sampleblocks	two_cohort_CI_high_primary_sampleblocks	n_degenerate_draws
+all 14 tools	14	0.952	0.921	0.96	0.921	0.96	0.877	0.982	0.859	0.982	0.864	0.978	0
+MiTCH MCC >= 0.10	8	0.929	0.81	0.952	0.81	0.952	0.762	0.952	0.714	0.976	0.714	0.976	0
+five decision-relevant tools	5	0.9	0.9	1.0	0.9	1.0	0.3	1.0	0.3	1.0	0.3	1.0	0

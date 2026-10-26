@@ -8,14 +8,26 @@ Dube F, Happel A-U, Jaspan HB, Warchavchik Hugerth L. Benchmarking virus
 identification tools on vaginal metagenomes. bioRxiv 2026.
 https://doi.org/10.64898/2026.09.24.753817
 
-We benchmarked 14 virus identification tools from five methodological
-approaches on vaginal metagenomes, in four evaluations plus an independent
-30-sample cohort for external validation. geNomad ranked first or second in
-all four evaluations, the tool ranking replicated between cohorts
-(Spearman ρ = 0.952), and Jaeger recovered 41 of 48 candidate viral dark-matter
-contigs, compared with one for geNomad. The manuscript recommends geNomad for
-high-confidence identification, VIBRANT where false-positive phage calls must
-be minimised, and ViraLM or Jaeger as sensitive complements for discovery.
+Virus identification tools decide which assembled DNA sequences (contigs) come
+from viruses. Vaginal viruses are rare in their reference data, and no benchmark
+had tested them on vaginal samples. We tested 14 tools in five evaluations,
+using 13 assemblies from South African adolescents and 30 Swedish metagenomes as
+an independent check.
+
+geNomad and VIBRANT led but made opposite errors. VIBRANT made 8 false viral
+calls and found 22% of viral contigs. geNomad made 201 and found 33%. Which one
+leads depends on how contigs are labelled viral. The ranking held in the Swedish
+cohort (Spearman ρ = 0.952). Tool choice also changed how many more viruses
+appeared in diverse (community state type IV) than in *Lactobacillus*-dominated
+samples. Only VIBRANT's calls reproduced the labelled 3.2-fold difference.
+
+Use geNomad when finding more viruses matters most, VIBRANT when false calls are
+costly, VirSorter2 for virus-enriched preparations, and ViraLM for short contigs,
+with its calls confirmed.
+
+Outputs here follow the October 2026 revision of the manuscript, not preprint
+version 1. Main figures were renumbered, and Figure S23 and Tables S42–S43 were
+added.
 
 | Evaluation | Scored on | Main code |
 |---|---|---|
@@ -23,7 +35,7 @@ be minimised, and ViraLM or Jaeger as sensitive complements for discovery.
 | Track B | Simulated viral reads co-assembled into vaginal metagenomes | `scripts/05_spike_in`, `scripts/09_expansion`, `scripts/07_evaluation/benchmark_track_b.py` |
 | Multi-evidence | Real shotgun assemblies, labelled by several lines of evidence | `scripts/04_ground_truth`, `scripts/07_evaluation/pooled_multievidence_benchmark.py` |
 | Track C | Virus-like-particle (RCA)-enriched co-assemblies | `scripts/03_assembly`, `scripts/07_evaluation/track_c_*.py` |
-| MiTCH | Independent 30-sample cohort (external validation) | `scripts/08_mgcst/mitch`, `scripts/10_vmgc_crosscheck` |
+| MiTCH | Independent 30-sample cohort (external validation and community state type contrast) | `scripts/08_mgcst/mitch`, `scripts/10_vmgc_crosscheck`, `scripts/07_evaluation/two_cohort_bootstrap.py` |
 
 Tool versions, settings, thresholds and references: Table S21 of the Supplementary Information.
 
@@ -42,13 +54,13 @@ scripts/
   07_evaluation/      parsing, scoring, statistics, sensitivity analyses, table publishing
   08_mgcst/           VIRGO2/VISTA/VALENCIA community state type assignment
   09_expansion/       Track B background cohorts and Track A novel-panel expansion
-  10_vmgc_crosscheck/ VMGC cross-check and the MiTCH external validation
+  10_vmgc_crosscheck/ VMGC cross-check, MiTCH external validation, unclassified-enriched contig searches
 results/
-  figures/            main and supplementary figures (PNG); archive/ holds the retired Graphviz Fig. 1
-  tables/             Tables 1–2 and S1–S41 (.tsv), supplementary_tables.xlsx
+  figures/            main and supplementary figures (PNG); archive/ holds retired figures
+  tables/             Tables 1–2 and S1–S43 (.tsv), supplementary_tables.xlsx
     templates/        fixed row order and author-written text for four tables
   supplementary/      Supplementary_Information.{pdf,docx,md}: Supplementary Methods,
-                      Figures S1–S22, Table legends S1–S41
+                      Figures S1–S23, Table legends S1–S43
   (other folders)     derived results read by the figure and table builders (no sequences)
 docs/
   supplementary_methods.md    SI source text
@@ -67,6 +79,8 @@ These steps use only files in this repository. Run them from the repository root
 # R figures (R 4.3.3; see envs/r-figures.yml)
 Rscript scripts/figures.R                    # all R figures -> results/figures
 Rscript scripts/figures.R --only fig_s1      # a single figure
+# Fig. S23 is written to docs/figures/fig_dark_matter_gene_maps.png; copy it to results/figures/fig_s23.png
+VBENCH_ROOT=$PWD Rscript scripts/10_vmgc_crosscheck/15_plot_dark_matter_gene_maps.R
 
 # Python-built supplementary figures
 python scripts/10_vmgc_crosscheck/05_plot_vmgc_overlap.py \
@@ -77,9 +91,12 @@ python scripts/07_evaluation/viralm_investigation/07_tier_evidence_breakdown.py 
 # Tables and workbook
 python scripts/tables/build_table_s37.py
 python scripts/tables/build_main_tables.py
+python scripts/10_vmgc_crosscheck/16_refresh_dark_matter_tables.py   # Tables S14, S15, S42, S43
+python scripts/07_evaluation/two_cohort_bootstrap.py                 # Table S27 rate sheets
+python scripts/07_evaluation/e1b_nonredundant_rescore.py             # Table S26 rescored sheets
 python scripts/tables/build_supplementary_workbook.py
 
-# Supplementary Information (pandoc 3.1.13, WeasyPrint)
+# Supplementary Information (pandoc 3.9, WeasyPrint)
 python scripts/build_supplementary_information.py
 
 # Regression tests for output parsing and metric display
@@ -89,7 +106,13 @@ python scripts/07_evaluation/test_benchmark_track_b.py
 ```
 
 Table S38 needs the per-tool Track C outputs, which are not redistributed; its
-published values are provided as a precomputed table.
+published values are provided as a precomputed table. The rate sheet of Table
+S39 needs per-sample MiTCH community state type assignments that carry participant
+identifiers. It is also provided precomputed, and Table S32 holds the shareable
+assignments.
+
+The published R figures were rendered with DejaVu Sans. With other fonts the
+text renders differently, but the plotted data are the same.
 
 ## Regenerating the derived results from tool outputs
 
@@ -107,7 +130,7 @@ This requires the saved per-tool outputs (the stages read about 1 GB of them), w
 are not redistributed because they include sequences from participant samples. No
 classifier or assembly is re-run by these stages.
 
-Before release this was checked end to end: every file the stages write was
+Before the first release (September 2026) this was checked end to end: every file the stages write was
 deleted and the ten stages were re-run from the saved tool outputs. All 170
 regenerated files were identical to the versions in this repository (two differ
 only in an embedded timestamp), and the figures and tables rebuilt from them

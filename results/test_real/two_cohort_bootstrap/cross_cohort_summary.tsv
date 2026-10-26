@@ -1,0 +1,12 @@
+quantity	value	CI_low	CI_high	note
+viral_fraction_primary_noE5	0.0672	0.0523	0.0808	participant blocks
+viral_fraction_MiTCH	0.0474	0.0318	0.0666	sample blocks
+rho_MCC	0.9516	0.8593	0.9824	both cohorts resampled
+rho_TPR_minus_FPR	0.9736	0.8813	0.978	does not depend on viral fraction
+rho_MCC_MiTCH_at_primary_fraction	0.9516	0.8593	0.9824	MiTCH TPR/FPR re-scored at the primary viral fraction
+n_tools_MiTCH_lower_observed	12			of 14
+n_tools_MiTCH_lower_at_primary_fraction	11			of 14
+median_delta_MCC_observed	-0.0912	-0.1143	-0.0437	MiTCH minus primary
+median_delta_MCC_at_primary_fraction	-0.0705	-0.1012	-0.0277	MiTCH re-scored at primary fraction minus primary
+crossover_fraction_geNomad_reaches_VIBRANT_primary_rates	0.0695	0.041	0.137	grid 0.001-0.5; draws without crossover: 0
+crossover_fraction_geNomad_reaches_VIBRANT_MiTCH_rates	0.139	0.104	0.208	grid 0.001-0.5; draws without crossover: 0

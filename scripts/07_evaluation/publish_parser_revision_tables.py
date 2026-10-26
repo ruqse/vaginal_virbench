@@ -121,14 +121,14 @@ for r in full:
     if t == "VIBRANT":
         pct = 100 * int(pro[t]["prophage_tp"]) / int(pro[t]["prophage_total"])
         r["Tier"] = "Recommended"
-        r["Research Goal"] = "High-precision phage identification on real assemblies"
+        r["Research Goal"] = "High-precision phage catalogues from assembled contigs"
         r["Min Contig Length"] = "1,000 bp; ≥4 predicted ORFs"
         r["Key Strength"] = (f"Highest MiTCH MCC; primary-assembly MCC difference from geNomad unresolved; "
                              f"{pct:.1f}% prophage recall; metabolic-gene annotation")
         r["Key Caveat"] = (f"Primary-assembly precision {float(me_by[t]['precision']):.3f} with recall {float(me_by[t]['recall']):.3f}; "
                             "targets prokaryotic viruses; zero eukaryote-infecting virus recall at 1,500 bp")
     elif t == "geNomad":
-        r["Research Goal"] = "Balanced identification across evaluated designs"
+        r["Research Goal"] = "Consistent identification across contig types, favouring recall over precision"
         r["Key Strength"] = "Highest Track A MCC at 1,500 bp; primary-assembly MCC difference from VIBRANT unresolved"
     elif t == "ViraLM":
         r["Key Caveat"] = ("Higher FDR than geNomad (~6x at 1500 bp); catalogue use requires independent false-positive assessment. "

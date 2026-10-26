@@ -49,6 +49,7 @@
   },
   "checks": [
     "pooled estimand reproduces Table S31 point estimates and CIs",
+    "rates sheet replays the S39 draws (pooled delta-MCC interval reproduced)",
     "per-sample MCC reproduces Table S30",
     "prevalence standardisation reduces to MCC at native prevalence",
     "label totals match frozen benchmark"
@@ -63,6 +64,7 @@
   },
   "outputs_sha256": {
     "contrast_estimands.tsv": "8027f6b5426e9b30fdc740cbd6a33e3e13cd10faedba904adf87198ac4d0f29f",
+    "contrast_rates.tsv": "d16456dc03dbd225ae055443d092bc5c0c6eb77e7873e408f3b9fb59b9703a17",
     "per_sample_diversity.tsv": "ae4e3dede8c599da0e51eeb5c1b349ecd29cbfa47e3ed6b3e8273b735ae9bd4b",
     "diversity_correlations.tsv": "447b15a6c891c1ef59c7e5831f3f7490be71789cd3f0d7c3c9b9c8a8fb9d4778"
   }

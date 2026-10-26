@@ -2,7 +2,7 @@
 """Build (and --check) the two compact main tables from their cited sources.
 
   Main Table 1 -> table1_cross_track_ranking.tsv    (curated 5 tools x 4 tracks, MCC)
-  Main Table 2 -> table2_tool_recommendations.tsv   (compact: 8 actionable tools)
+  Main Table 2 -> table2_tool_recommendations.tsv   (compact: 7 actionable tools)
 
 (The former data-source summary main table was removed -- redundant with Fig. 1,
  which now carries the data sources and per-track sample/ground-truth counts.
@@ -75,23 +75,45 @@ def build_cross_track_ranking():
     return [header] + rows
 
 
-# ---------- Main Table 2: compact recommendations (8 actionable tools) ----------
+# ---------- Main Table 2: compact recommendations (7 actionable tools) ----------
 # Compact, actionable view: Tier | Tool | Best for | Key evidence | Requirements.
 # Per-tool MCCs are in Table 1; the full 12-column matrix for all 14 tools (both
 # MCCs, 3-way eukaryotic recall, runtimes, strengths/caveats) lives in
 # table2_tool_recommendations_full.tsv -> supplementary workbook sheet Table2_full.
-# Key-evidence phrases are faithful one-line condensations of the "Key Strength"
-# column of that full table (this benchmark's own results, not external claims).
+# Key-evidence cells are the manuscript's Table 2 text (25 Oct 2026 version). Every
+# number and rank in them is asserted against its source table in _check_key_evidence.
 KEY_EVIDENCE = {
-    "geNomad": "Highest Track A MCC at 1,500 bp; primary-assembly MCC difference from VIBRANT unresolved",
-    "ViraLM": "100% recall in all three eukaryote-infecting virus categories at 1,500 bp; 65/65 homology-free fragments",
-    "Jaeger": "Recovered 41/48 candidate dark-matter contigs; fastest where it runs (>= 2,048 bp)",
-    "VirSorter2": "Highest Track C MCC (0.60); Track A MCC 0.501 at 3,000 bp",
-    "PPR-Meta": "Ranked 4th on Track C; three-class phage/chromosome/plasmid model",
-    "TransGINmer": "81% herpesvirus recall; beats feature-based ML on short contigs",
-    "VIBRANT": "Highest MiTCH MCC; high precision at lower recall on primary assemblies",
-    "DeepVirFinder": "58% dark-matter detection; high Lactobacillus-phage recall",
+    "geNomad": "Highest Track A MCC; first or second by MCC in every track",
+    "VIBRANT": "Highest MiTCH MCC; almost no false-positive calls on real assemblies",
+    "ViraLM": "Only tool with 100% eukaryotic recall; robust on novel genomes",
+    "VirSorter2": "Highest Track C MCC (0.599); on VLP-enriched co-assemblies",
+    "Jaeger": "Highest multi-evidence AUPRC (0.420); third in MiTCH (MCC 0.350); fastest on large inputs",
+    "PPR-Meta": "Ranked 4th on Track C; three-class model controls FPR",
+    "DeepVirFinder": "high Lactobacillus-phage recall",
 }
+
+
+def _rank(path, tool, col="MCC"):
+    rows = [r for r in _rows(path) if r.get(col) not in (None, "", "NA")]
+    order = sorted(rows, key=lambda r: -float(r[col]))
+    return [r["tool"] for r in order].index(tool) + 1, float(next(r[col] for r in rows if r["tool"] == tool))
+
+
+def _check_key_evidence(full):
+    """Assert the numbers and ranks quoted in KEY_EVIDENCE against their sources."""
+    ta, tc = HERE / "table_s34_track_a_overall_metrics_full.tsv", HERE / "table_s35_track_c_overall_metrics_full.tsv"
+    me, mitch = HERE / "table_s12_secondary_benchmark_overall.tsv", HERE / "table_s27_mitch_ranking_ci.tsv"
+    assert _rank(ta, "geNomad")[0] == 1
+    assert all(_rank(p, "geNomad")[0] <= 2 for p in (ta, tc, me, mitch))
+    assert _rank(mitch, "VIBRANT")[0] == 1
+    euk = "Eukaryote-infecting virus recall at 1,500 bp (HPV / herpes / anellovirus)"
+    assert [r["Tool"] for r in full if r[euk] == "100% / 100% / 100%"] == ["ViraLM"]
+    vs2 = next(r for r in full if r["Tool"] == "VirSorter2")
+    assert _rank(tc, "VirSorter2")[0] == 1 and vs2["Track C MCC (>=2500 bp)"] == "0.599"
+    assert _rank(me, "Jaeger", "AUPRC") == (1, 0.42)
+    rank, mcc = _rank(mitch, "Jaeger")
+    assert rank == 3 and f"{mcc:.3f}" == "0.350"
+    assert _rank(tc, "PPR-Meta")[0] == 4
 
 
 # Peak resident memory is a deployment constraint on a par with VRAM, but the
@@ -119,7 +141,7 @@ def _requirements(gpu, min_len, tool=None):
         base = "CPU"
         rss = _peak_rss_mb(tool) if tool else None
         if rss is not None and rss >= RSS_DECLARE_MB:
-            base = f"CPU ({rss / 1024:.1f} GB RAM)"
+            base = f"CPU ({rss / 1024:.1f} GB)"
     else:
         vram = gpu[gpu.find("(") + 1: gpu.find(")")].replace("VRAM", "").strip()
         base = f"GPU ({vram})"
@@ -127,6 +149,7 @@ def _requirements(gpu, min_len, tool=None):
     if ml and ml not in ("None", "-"):
         # thousands separator on the numeric part: "2048 bp" -> "2,048 bp"
         ml = re.sub(r"\d{4,}", lambda m: f"{int(m.group()):,}", ml)
+        ml = ml.replace("; ≥4 predicted ORFs", " and ≥ 4 ORFs")  # manuscript wording
         return f"{base}; min {ml}"
     return base
 
@@ -137,6 +160,7 @@ def build_tool_recommendations():
     header = ["Tier", "Tool", "Best for", "Key evidence", "Requirements"]
     rows = []
     prophage = {r["tool"]: r for r in _rows(HERE / "table_s13_q2_prophage_detection.tsv")}
+    _check_key_evidence(full)
     for r in sorted(full, key=lambda row: {"Recommended": 0, "Complementary": 1}.get(row["Tier"], 2)):
         if r["Tier"] not in keep:
             continue
@@ -150,7 +174,7 @@ def build_tool_recommendations():
         rows.append([r["Tier"], tool, r["Research Goal"],
                      evidence,
                      _requirements(r["GPU Required"], r["Min Contig Length"], tool)])
-    assert len(rows) == 8, f"expected 8 actionable rows, got {len(rows)}"
+    assert len(rows) == 7, f"expected 7 actionable rows, got {len(rows)}"
     return [header] + rows
 
 

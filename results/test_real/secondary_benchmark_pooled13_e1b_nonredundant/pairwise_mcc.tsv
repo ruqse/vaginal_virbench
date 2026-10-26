@@ -1,0 +1,11 @@
+context	tool_a	tool_b	delta_a_minus_b	ci_low	ci_high	ci_excludes_zero	bootstrap_draws	unit	seed
+multi_evidence_e1b_nonredundant	geNomad	ViraLM	0.21725299856859642	0.19401985287449044	0.2382807358943392	True	2000	contig	42
+multi_evidence_e1b_nonredundant	geNomad	VirSorter2	0.06509170460991309	0.04043662969982551	0.08877398037771232	True	2000	contig	42
+multi_evidence_e1b_nonredundant	geNomad	VIBRANT	-0.007736689819871023	-0.03304362957698172	0.01674079374873599	False	2000	contig	42
+multi_evidence_e1b_nonredundant	geNomad	Jaeger	0.16258211955389884	0.13842619997190436	0.18632453131754798	True	2000	contig	42
+multi_evidence_e1b_nonredundant	ViraLM	VirSorter2	-0.15216129395868333	-0.17506524250289834	-0.1301142031620597	True	2000	contig	42
+multi_evidence_e1b_nonredundant	ViraLM	VIBRANT	-0.22498968838846745	-0.24921715060248092	-0.20203933167502708	True	2000	contig	42
+multi_evidence_e1b_nonredundant	ViraLM	Jaeger	-0.05467087901469758	-0.07734894187448156	-0.03187622184700145	True	2000	contig	42
+multi_evidence_e1b_nonredundant	VirSorter2	VIBRANT	-0.07282839442978412	-0.09612758121080764	-0.04865123384304419	True	2000	contig	42
+multi_evidence_e1b_nonredundant	VirSorter2	Jaeger	0.09749041494398575	0.07311522525911424	0.12287598769408763	True	2000	contig	42
+multi_evidence_e1b_nonredundant	VIBRANT	Jaeger	0.17031880937376986	0.14724460832984068	0.19360269978590788	True	2000	contig	42

@@ -26,3 +26,10 @@ __pycache__/
 *.pyc
 .Rhistory
 Rplots.pdf
+docs/PREPRINT-virbench_manuscript_24092026.pdf
+docs/IMBactSeminars.pdf
+docs/seminar
+videos/
+audio/
+# MiTCH per-sample CST input: carries participant tokens/sequencing IDs (public subset is Table S32)
+results/mgcst_mitch30/

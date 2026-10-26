@@ -278,12 +278,14 @@ CAT_DISPLAY <- c(
 )
 
 # --- CST metadata ---
+# VISTA mgCSTs_5Mar2026.csv collapsed to traditional CST (Table S2 grouping); must
+# match SAMPLE_CST in scripts/07_evaluation/rca_concordance.py.
 SAMPLE_CST <- c(
-  UC028_V2 = "CST-IV", UC055_V1 = "CST-III", UC055_V2 = "CST-III",
-  UC062_V2 = "CST-I",  UC065_V2 = "CST-IV",  UC074_V2 = "CST-III",
-  UC084_V2 = "CST-I",  UC093_V2 = "CST-IV",  UC093_V3 = "CST-IV",
-  UC096_V2 = "CST-I",  UC115_V2 = "CST-I",   UC139_V2 = "CST-I",
-  UC164_V2 = "CST-III"
+  UC028_V2 = "CST-III", UC055_V1 = "CST-III", UC055_V2 = "CST-IV",
+  UC062_V2 = "CST-IV",  UC065_V2 = "CST-III", UC074_V2 = "CST-IV",
+  UC084_V2 = "CST-I",   UC093_V2 = "CST-I",   UC093_V3 = "CST-IV",
+  UC096_V2 = "CST-III", UC115_V2 = "CST-I",   UC139_V2 = "CST-I",
+  UC164_V2 = "CST-I"
 )
 
 CST_COLORS <- c("CST-I" = "#3182bd", "CST-III" = "#31a354",
@@ -310,7 +312,7 @@ theme_pub <- function(base_size = 10) {
       # stacked on the axis line and competes with the data. A soft fill with no
       # border keeps the strip a label. Applied here, not per figure, so every
       # faceted panel in the pack matches: fig3A (MCC/AUPRC), fig4A
-      # (AUPRC/MCC/recall), fig5 (the two tool blocks), fig7C, fig9B, fig_s6.
+      # (AUPRC/MCC/recall), fig5 (the two tool blocks), fig6C, fig8B, fig_s6.
       # NB %+replace% swaps the whole element, so margin must be given here or
       # the strip text sits flush against the chip edge.
       strip.background = element_rect(fill = "grey92", colour = NA),
@@ -442,7 +444,7 @@ save_fig <- function(p, out_path, w, h, scale = ELEMENT_SCALE) {
 
 # --- Track B (assembly benchmark) -------------------------------------------
 
-# Spike-in co-assembly ground truth, both 10x backgrounds. Used by fig6, fig_s18.
+# Spike-in co-assembly ground truth, both 10x backgrounds. Used by fig_s18.
 .load_trackB_assemblies <- function(root) {
   assembly_dir <- file.path(root, "data/spike_in/assemblies")
   coverages <- c("0.1", "0.5", "1", "5", "10", "50")
@@ -500,9 +502,7 @@ save_fig <- function(p, out_path, w, h, scale = ELEMENT_SCALE) {
       stop("Track B delta table is stale relative to the active background manifest")
     }
   }
-  d %>%
-    mutate(resolved = ifelse(as.character(delta_excludes_0) %in% c("TRUE", "True"),
-                             "resolved", "not resolved"))
+  d
 }
 
 .trackB_main_tools <- function(root) {
@@ -512,33 +512,35 @@ save_fig <- function(p, out_path, w, h, scale = ELEMENT_SCALE) {
     pull(tool)
 }
 
-# Fig. 6B (and, with all 14 tools, Fig. S12): per-tool delta (CST-IV-B minus
-# CST-I) with bootstrap 95% CI.
+# Fig. S12: per-tool false-positive-rate delta (CST-IV-B minus CST-I) with
+# bootstrap 95% CI. FPR, not MCC: viral fraction differs widely between
+# backgrounds (3.7-92.5%) and MCC depends on it.
 build_fig5d_delta_ci <- function(root = ROOT,
                                  tools = .trackB_main_tools(root)) {
   d <- .load_trackB_deltas(root) %>%
     filter(tool %in% tools) %>%
-    mutate(tool = factor(tool, levels = rev(tools)))
-  ggplot(d, aes(x = delta_IVB_minus_I, y = tool)) +
+    mutate(tool = factor(tool, levels = rev(tools)),
+           resolved = ifelse(as.character(FPR_delta_excludes_0) %in% c("TRUE", "True"),
+                             "resolved", "not resolved"))
+  ggplot(d, aes(x = FPR_delta_IVB_minus_I, y = tool)) +
     geom_vline(xintercept = 0, linetype = "dashed", colour = "grey50") +
-    geom_errorbarh(aes(xmin = delta_CIl, xmax = delta_CIh), height = 0.25,
+    geom_errorbarh(aes(xmin = FPR_delta_CIl, xmax = FPR_delta_CIh), height = 0.25,
                    linewidth = 0.5) +
     geom_point(aes(shape = resolved), size = 2.6) +
-    # Display only: the internal levels stay "resolved"/"not resolved" (set from
-    # delta_excludes_0 in .load_trackB_deltas), but "resolved" does not say what
-    # was resolved. Spell out the actual criterion on the key.
+    # Display only: the internal levels stay "resolved"/"not resolved", but
+    # "resolved" does not say what was resolved. Spell out the criterion on the key.
     scale_shape_manual(values = c("resolved" = 19, "not resolved" = 1),
                        labels = c("resolved"     = "CI excludes 0",
                                   "not resolved" = "CI includes 0"),
                        name = NULL) +
-    labs(x = "ΔMCC (CST-IV-B − CST-I)", y = NULL,
+    labs(x = "ΔFalse-positive rate (CST-IV-B − CST-I)", y = NULL,
          subtitle = .trackB_sample_sizes(root)) +
     theme_pub()
 }
 
 # --- Track C / multi-evidence ground truth ----------------------------------
 
-# Used by fig7, fig_s20 and fig_s21.
+# Used by fig6, fig_s20 and fig_s21.
 .load_gt <- function(root) {
   # Single source of truth: the LOCKED 13-sample pooled benchmark-ready ground
   # truth (>= 1500 bp, tier 0/1/2; Gate 0), shared with the pooled multi-evidence
@@ -549,7 +551,7 @@ build_fig5d_delta_ci <- function(root = ROOT,
     mutate(CST = SAMPLE_CST[sample])
 }
 
-# Used by fig7 and fig_s21.
+# Used by fig6 and fig_s21.
 .load_rca <- function(root) {
   read_tsv(file.path(root, "results/test_real/coassembly/rca_ground_truth.tsv"),
            show_col_types = FALSE)
@@ -557,7 +559,7 @@ build_fig5d_delta_ci <- function(root = ROOT,
 
 # --- MiTCH external validation ----------------------------------------------
 
-# Used by fig8, fig_s13 and fig_s22.
+# Used by fig7, fig_s13 and fig_s22.
 .scaleup_dir <- function(root) {
   file.path(root, "results/test_real/viralm_investigation/mitch_scaleup30")
 }

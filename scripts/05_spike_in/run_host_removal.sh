@@ -48,7 +48,7 @@ RESULTS_DIR="${RESULTS_DIR:-${PROJ_DIR}/results/test_real}"
 # Expansion cohorts use "_{1,2}.fastq.gz" — wrapper overrides these.
 READS_SUFFIX_R1="${READS_SUFFIX_R1:-_R1.fastq.gz}"
 READS_SUFFIX_R2="${READS_SUFFIX_R2:-_R2.fastq.gz}"
-BOWTIE2_INDEX="${BOWTIE2_INDEX:-/sw/data/reference/Homo_sapiens/hg19/program_files/bowtie2/concat}"
+BOWTIE2_INDEX="${BOWTIE2_INDEX:?set BOWTIE2_INDEX to a human (hg19) Bowtie2 index prefix (see config/paths.example.sh)}"
 THREADS="${SLURM_CPUS_PER_TASK:-12}"
 
 # Samples to process (positional argument or default to both)

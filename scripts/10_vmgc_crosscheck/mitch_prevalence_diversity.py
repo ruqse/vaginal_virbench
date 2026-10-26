@@ -20,6 +20,11 @@ copied verbatim to results/tables/):
                           at the low arm's labelled viral fraction
         prev_std_cohort   both arms' pooled TPR and FPR evaluated at the fixed
                           whole-cohort labelled viral fraction
+  Table S39 (rates sheet)  contrast_rates.tsv
+      Per tool and arm: contigs, labelled viral contigs and viral calls per
+      sample, pooled recall, false-positive rate and precision; CST-IV minus
+      CST-I/III/V differences and CST-IV / CST-I/III/V ratios, with CIs from the
+      same draws as Table S39.
   Table S40a per_sample_diversity.tsv
       Per sample: CST, arm, bacterial Shannon diversity, richness, Lactobacillus
       fraction, contig counts by label/category, labelled viral fraction.
@@ -67,6 +72,7 @@ OUT = BASE / "prevalence_diversity"
 TABLES = ROOT / "results/tables"
 EXPORT = {
     "contrast_estimands.tsv": "table_s39_mitch_contrast_estimands.tsv",
+    "contrast_rates.tsv": "table_s39_rates_mitch_cst_calls.tsv",
     "per_sample_diversity.tsv": "table_s40a_mitch_per_sample_diversity.tsv",
     "diversity_correlations.tsv": "table_s40b_mitch_diversity_correlations.tsv",
 }
@@ -206,6 +212,63 @@ def contrast(conf, tools, low, high):
     return df.sort_values("_order", ascending=False).drop(columns="_order"), per_sample
 
 
+def arm_rates(c, n):
+    tp, fp, tn, fn = c
+    return {"contigs_per_sample": (tp + fp + tn + fn) / n, "viral_per_sample": (tp + fn) / n,
+            "calls_per_sample": (tp + fp) / n, "recall": tp / (tp + fn), "FPR": fp / (fp + tn),
+            "precision": tp / (tp + fp) if tp + fp else math.nan, "MCC": mcc_s31(*c)}
+
+
+def rates(conf, tools, low, high, contrast_df):
+    """What the S39 MCC contrast is made of: per-arm error rates and viral calls.
+
+    Replays the Table S31/S39 draws (same seed and order), and checks that the
+    pooled delta-MCC interval reproduces Table S39, so every interval here comes
+    from the same resamples.
+    """
+    def derived(t, lo, hi):
+        a, b = arm_rates(summed(conf, t, lo), len(lo)), arm_rates(summed(conf, t, hi), len(hi))
+        ratio = lambda k: b[k] / a[k] if a[k] else math.nan
+        d = {k: b[k] - a[k] for k in ("recall", "FPR", "precision", "MCC")}
+        d.update(viral_ratio=ratio("viral_per_sample"), calls_ratio=ratio("calls_per_sample"))
+        d["calls_vs_viral_ratio"] = d["calls_ratio"] / d["viral_ratio"]
+        return a, b, d
+
+    keys = ("recall", "FPR", "precision", "viral_ratio", "calls_ratio", "calls_vs_viral_ratio", "MCC")
+    boot = {t: {k: [] for k in keys} for t in tools}
+    rng = np.random.default_rng(SEED)
+    for _ in range(B):
+        rs_low = [low[i] for i in rng.integers(0, len(low), len(low))]
+        rs_high = [high[i] for i in rng.integers(0, len(high), len(high))]
+        for t in tools:
+            d = derived(t, rs_low, rs_high)[2]
+            for k in keys:
+                boot[t][k].append(d[k])
+
+    c = contrast_df.set_index("tool")
+    rows = []
+    for t in tools:
+        lo_ci, hi_ci = np.percentile(boot[t]["MCC"], [2.5, 97.5])
+        require(abs(lo_ci - c.loc[t, "pooled_CIl"]) < 6e-5 and abs(hi_ci - c.loc[t, "pooled_CIh"]) < 6e-5,
+                f"{t}: replayed draws do not reproduce the Table S39 pooled interval")
+        a, b, d = derived(t, low, high)
+        row = {"tool": t, "n_low": len(low), "n_high": len(high)}
+        for k in ("contigs_per_sample", "viral_per_sample", "calls_per_sample", "recall", "FPR", "precision"):
+            row[f"{k}_low"], row[f"{k}_high"] = a[k], b[k]
+        for k, null, label in (("recall", 0, "delta"), ("FPR", 0, "delta"), ("precision", 0, "delta"),
+                               ("viral_ratio", 1, ""), ("calls_ratio", 1, ""), ("calls_vs_viral_ratio", 1, "")):
+            v = np.array(boot[t][k], dtype=float)
+            v = v[np.isfinite(v)]
+            lo_k, hi_k = np.percentile(v, [2.5, 97.5]) if len(v) else (math.nan, math.nan)
+            name = f"{k}_{label}" if label else k
+            row[name] = d[k]
+            row[f"{name}_CIl"], row[f"{name}_CIh"] = lo_k, hi_k
+            row[f"{name}_excludes_{null}"] = bool(lo_k > null or hi_k < null) if len(v) else False
+        rows.append(row)
+    df = pd.DataFrame(rows).set_index("tool").loc[c.index].reset_index()
+    return df.round(4)
+
+
 # ------------------------------------------------------------------ diversity
 def per_sample_table(conf, tools, arm, per_sample):
     cst = pd.read_csv(CST)[["sampleID", "CST"]].rename(columns={"sampleID": "sample"})
@@ -316,6 +379,7 @@ def main():
 
     contrast_df, per_sample = contrast(conf, tools, low, high)
     check_against_published(contrast_df, per_sample, low, high, tools)
+    rates_df = rates(conf, tools, low, high, contrast_df)
     samples_df = per_sample_table(conf, tools, arm, per_sample)
     require(int(samples_df.n_viral.sum()) == 3582 and int(samples_df.n_contigs.sum()) == 75562,
             "label totals differ from the frozen MiTCH benchmark (3,582 viral / 75,562 contigs)")
@@ -323,6 +387,7 @@ def main():
 
     fmt = {"float_format": "%.4f"}
     contrast_df.to_csv(OUT / "contrast_estimands.tsv", sep="\t", index=False)
+    rates_df.to_csv(OUT / "contrast_rates.tsv", sep="\t", index=False)
     samples_df.to_csv(OUT / "per_sample_diversity.tsv", sep="\t", index=False, **fmt)
     corr_df.to_csv(OUT / "diversity_correlations.tsv", sep="\t", index=False)
     for src, dest in EXPORT.items():
@@ -336,6 +401,7 @@ def main():
         "richness_min_relative_abundance": RICHNESS_MIN_RELABUND,
         "arms": {"low_CST-I/III/V": low, "high_CST-IV": high},
         "checks": ["pooled estimand reproduces Table S31 point estimates and CIs",
+                   "rates sheet replays the S39 draws (pooled delta-MCC interval reproduced)",
                    "per-sample MCC reproduces Table S30",
                    "prevalence standardisation reduces to MCC at native prevalence",
                    "label totals match frozen benchmark"],
